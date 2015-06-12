@@ -1,0 +1,24 @@
+[package]
+name = "directx-sys"
+version = "0.0.1"
+
+description = "Rust FFI bindings for the DirectX API"
+repository = "https://github.com/Eljay/directx-sys"
+documentation = "http://eljay.github.io/directx-sys/directx_sys/index.html"
+
+authors = ["Lee Jeffery <lee@leejeffery.co.uk>"]
+license = "MIT"
+readme = "README.md"
+
+[dependencies]
+bitflags = "*"
+com-rs = "0.1.1"
+libc = "*"
+winapi = "*"
+
+[features]
+default = ["dxgi1_3", "d3d11"]
+d3d11 = ["dxgi"]
+dxgi1_3 = ["dxgi1_2"]
+dxgi1_2 = ["dxgi"]
+dxgi = []
