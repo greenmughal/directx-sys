@@ -22,9 +22,9 @@ extern "stdcall" {
         factory: *mut *mut c_void) -> HRESULT;
 }
 
-#[link(name = "dxgidebug")]
-extern "stdcall" {
-    pub fn DXGIGetDebugInterface(
-        iid: REFIID,
-        debug: *mut *mut c_void) -> HRESULT;
-}
+// #[link(name = "dxgidebug")]
+// extern "stdcall" {
+//     pub fn DXGIGetDebugInterface(
+//         iid: REFIID,
+//         debug: *mut *mut c_void) -> HRESULT;
+// }
