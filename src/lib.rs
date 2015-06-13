@@ -1,5 +1,5 @@
 /*!
-# directx-sys 0.0.1
+# directx-sys 0.0.2
 Rust FFI bindings for the DirectX API.
 
 # Components
@@ -7,7 +7,8 @@ Rust FFI bindings for the DirectX API.
 * [D3D11](d3d11/index.html) - 11.0 API complete but untested.
   11.1/11.2 not yet implemented.
 * D3DCompiler - not yet implemented.
-* Direct2D - not yet implemented.
+* [Direct2D](d2d/index.html) - 1.0 API mostly complete but untested.
+  1.1/1.2 not yet implemented.
 * DirectWrite - not yet implemented.
 * XAudio2 - not yet implemented.
 * XInput - not yet implemented.
@@ -38,3 +39,6 @@ pub mod dxgi;
 
 #[cfg(feature = "d3d11")]
 pub mod d3d11;
+
+#[cfg(feature = "d2d")]
+pub mod d2d;
