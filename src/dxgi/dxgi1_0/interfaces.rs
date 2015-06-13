@@ -1,7 +1,8 @@
 use com_rs::{IUnknown, Unknown};
 use libc::c_void;
-use winapi::{BOOL, DWORD, HANDLE, HDC, HMODULE, HRESULT, HWND, INT,
-             LARGE_INTEGER, RECT, REFGUID, REFIID, UINT, UINT64};
+use winapi::{BOOL, DWORD, GUID, HANDLE, HDC, HMODULE, HRESULT, HWND, INT,
+             LARGE_INTEGER, LPCSTR, RECT, REFGUID, REFIID, SIZE_T, UINT,
+             UINT64};
 
 use super::enums::*;
 use super::structs::*;
@@ -311,6 +312,134 @@ com_interface! {
     }
 }
 
+com_interface! {
+    struct IDXGIInfoQueue: IUnknown {
+        iid: IID_IDXGIINFOQUEUE {
+            0xD67441C7, 0x672A, 0x476F,
+            0x9E, 0x82, 0xCD, 0x55, 0xB4, 0x49, 0x49, 0xCE
+        },
+        vtable: IDXGIInfoQueueVtbl
+    }
+
+    trait DXGIInfoQueue: Unknown {
+        fn set_message_count_limit(
+            producer: GUID,
+            message_count_limit: UINT64) -> HRESULT,
+        fn clear_stored_messages(producer: GUID) -> (),
+        fn get_message(
+            producer: GUID,
+            message_index: UINT64,
+            message: *mut InfoQueueMessage,
+            message_byte_length: *mut SIZE_T) -> HRESULT,
+        fn get_num_stored_messages_allowed_by_retrieval_filters(
+            producer: GUID) -> UINT64,
+        fn get_num_stored_messages(producer: GUID) -> UINT64,
+        fn get_num_messages_discarded_by_message_count_limit(
+            producer: GUID) -> UINT64,
+        fn get_message_count_limit(producer: GUID) -> UINT64,
+        fn get_num_messages_allowed_by_storage_filter(producer: GUID) -> UINT64,
+        fn get_num_messages_denied_by_storage_filter(producer: GUID) -> UINT64,
+        fn add_storage_filter_entries(
+            producer: GUID,
+            filter: *const InfoQueueFilter) -> HRESULT,
+        fn get_storage_filter(
+            producer: GUID,
+            filter: *mut InfoQueueFilter,
+            filter_byte_length: *mut SIZE_T) -> HRESULT,
+        fn clear_storage_filter(producer: GUID) -> (),
+        fn push_empty_storage_filter(producer: GUID) -> HRESULT,
+        fn push_deny_all_storage_filter(producer: GUID) -> HRESULT,
+        fn push_copy_of_storage_filter(producer: GUID) -> HRESULT,
+        fn push_storage_filter(
+            producer: GUID,
+            filter: *const InfoQueueFilter) -> HRESULT,
+        fn pop_storage_filter(producer: GUID) -> (),
+        fn get_storage_filter_stack_size(producer: GUID) -> UINT,
+        fn add_retrieval_filter_entries(
+            producer: GUID,
+            filter: *const InfoQueueFilter) -> HRESULT,
+        fn get_retrieval_filter(
+            producer: GUID,
+            filter: *mut InfoQueueFilter,
+            filter_byte_length: *mut SIZE_T) -> HRESULT,
+        fn clear_retrieval_filter(producer: GUID) -> (),
+        fn push_empty_retrieval_filter(producer: GUID) -> HRESULT,
+        fn push_deny_all_retrieval_filter(producer: GUID) -> HRESULT,
+        fn push_copy_of_retrieval_filter(producer: GUID) -> HRESULT,
+        fn push_retrieval_filter(
+            producer: GUID,
+            filter: *const InfoQueueFilter) -> HRESULT,
+        fn pop_retrieval_filter(producer: GUID) -> (),
+        fn get_retrieval_filter_stack_size(producer: GUID) -> UINT,
+        fn add_message(
+            producer: GUID,
+            category: InfoQueueMessageCategory,
+            severity: InfoQueueMessageSeverity,
+            id: INT,
+            description: LPCSTR) -> HRESULT,
+        fn add_application_message(
+            severity: InfoQueueMessageSeverity,
+            description: LPCSTR) -> HRESULT,
+        fn set_break_on_category(
+            producer: GUID,
+            category: InfoQueueMessageCategory,
+            enable: BOOL) -> HRESULT,
+        fn set_break_on_severity(
+            producer: GUID,
+            severity: InfoQueueMessageSeverity,
+            enable: BOOL) -> HRESULT,
+        fn set_break_on_id(
+            producer: GUID,
+            id: INT,
+            enable: BOOL) -> HRESULT,
+        fn get_break_on_category(
+            producer: GUID,
+            category: InfoQueueMessageCategory) -> BOOL,
+        fn get_break_on_severity(
+            producer: GUID,
+            category: InfoQueueMessageSeverity) -> BOOL,
+        fn get_break_on_id(
+            producer: GUID,
+            id: INT) -> BOOL,
+        fn set_mute_debug_output(
+            producer: GUID,
+            mute: BOOL) -> (),
+        fn get_mute_debug_output(producer: GUID) -> BOOL
+    }
+}
+
+com_interface! {
+    struct IDXGIDebug: IUnknown {
+        iid: IID_IDXGIDEBUG {
+            0x119E7452, 0xDE9E, 0x40FE,
+            0x88, 0x06, 0x88, 0xF9, 0x0C, 0x12, 0xB4, 0x41
+        },
+        vtable: IDXGIDebugVtbl
+    }
+
+    trait DXGIDebug: Unknown {
+        fn report_live_objects(
+            api_id: GUID,
+            flags: DebugRLOFlags) -> HRESULT
+    }
+}
+
+com_interface! {
+    struct IDXGIDebug1: IDXGIDebug, IUnknown {
+        iid: IID_IDXGIDEBUG1 {
+            0xC5A05F0C, 0x16F2, 0x4ADF,
+            0x9F, 0x4D, 0xA8, 0xC4, 0xD5, 0x8A, 0xC5, 0x50
+        },
+        vtable: IDXGIDebug1Vtbl
+    }
+
+    trait DXGIDebug1: DXGIDebug, Unknown {
+        fn enable_leak_tracking_for_thread() -> (),
+        fn disable_leak_tracking_for_thread() -> (),
+        fn is_leak_tracking_enabled_for_thread() -> BOOL
+    }
+}
+
 #[test]
 fn check_dxgi_vtable_sizes() {
     use std::mem::size_of;
@@ -318,11 +447,14 @@ fn check_dxgi_vtable_sizes() {
     if cfg!(target_arch = "x86_64") {
         assert_eq!(size_of::<IDXGIAdapterVtbl>(), 80);
         assert_eq!(size_of::<IDXGIAdapter1Vtbl>(), 88);
+        assert_eq!(size_of::<IDXGIDebugVtbl>(), 32);
+        assert_eq!(size_of::<IDXGIDebug1Vtbl>(), 56);
         assert_eq!(size_of::<IDXGIDeviceVtbl>(), 96);
         assert_eq!(size_of::<IDXGIDevice1Vtbl>(), 112);
         assert_eq!(size_of::<IDXGIDeviceSubObjectVtbl>(), 64);
         assert_eq!(size_of::<IDXGIFactoryVtbl>(), 96);
         assert_eq!(size_of::<IDXGIFactory1Vtbl>(), 112);
+        assert_eq!(size_of::<IDXGIInfoQueueVtbl>(), 320);
         assert_eq!(size_of::<IDXGIKeyedMutexVtbl>(), 80);
         assert_eq!(size_of::<IDXGIObjectVtbl>(), 56);
         assert_eq!(size_of::<IDXGIOutputVtbl>(), 152);
@@ -333,11 +465,14 @@ fn check_dxgi_vtable_sizes() {
     } else {
         assert_eq!(size_of::<IDXGIAdapterVtbl>(), 40);
         assert_eq!(size_of::<IDXGIAdapter1Vtbl>(), 44);
+        assert_eq!(size_of::<IDXGIDebugVtbl>(), 16);
+        assert_eq!(size_of::<IDXGIDebug1Vtbl>(), 28);
         assert_eq!(size_of::<IDXGIDeviceVtbl>(), 48);
         assert_eq!(size_of::<IDXGIDevice1Vtbl>(), 56);
         assert_eq!(size_of::<IDXGIDeviceSubObjectVtbl>(), 32);
         assert_eq!(size_of::<IDXGIFactoryVtbl>(), 48);
         assert_eq!(size_of::<IDXGIFactory1Vtbl>(), 56);
+        assert_eq!(size_of::<IDXGIInfoQueueVtbl>(), 160);
         assert_eq!(size_of::<IDXGIKeyedMutexVtbl>(), 40);
         assert_eq!(size_of::<IDXGIObjectVtbl>(), 28);
         assert_eq!(size_of::<IDXGIOutputVtbl>(), 76);

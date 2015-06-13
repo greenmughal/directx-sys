@@ -1,7 +1,8 @@
 use std::fmt;
 
-use winapi::{BOOL, BYTE, FLOAT, HANDLE, HMONITOR, HWND, INT, LARGE_INTEGER,
-             LUID, RECT, SIZE_T, UINT, WCHAR};
+use libc::c_char;
+use winapi::{BOOL, BYTE, FLOAT, GUID, HANDLE, HMONITOR, HWND, INT,
+             LARGE_INTEGER, LUID, RECT, SIZE_T, UINT, WCHAR};
 
 use super::enums::*;
 
@@ -289,6 +290,38 @@ impl Default for DisplayColorSpace {
     }
 }
 
+#[repr(C)]
+#[allow(raw_pointer_derive)]
+#[derive(Debug)]
+pub struct InfoQueueMessage {
+    pub producer: GUID,
+    pub category: InfoQueueMessageCategory,
+    pub severity: InfoQueueMessageSeverity,
+    pub id: INT,
+    pub description: *const c_char,
+    pub description_byte_length: SIZE_T
+}
+
+#[repr(C)]
+#[allow(raw_pointer_derive)]
+#[derive(Debug)]
+pub struct InfoQueueFilterDesc {
+    pub num_categories: UINT,
+    pub category_list: *mut InfoQueueMessageCategory,
+    pub num_severities: UINT,
+    pub severity_list: *mut InfoQueueMessageSeverity,
+    pub num_ids: UINT,
+    pub id_list: *mut INT
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct InfoQueueFilter {
+    pub allow_list: InfoQueueFilterDesc,
+    pub deny_list: InfoQueueFilterDesc
+}
+
+
 #[test]
 fn check_dxgi_struct_sizes() {
     use std::mem::size_of;
@@ -296,6 +329,9 @@ fn check_dxgi_struct_sizes() {
     if cfg!(target_arch = "x86_64") {
         assert_eq!(size_of::<AdapterDesc>(), 304);
         assert_eq!(size_of::<AdapterDesc1>(), 312);
+        assert_eq!(size_of::<InfoQueueMessage>(), 48);
+        assert_eq!(size_of::<InfoQueueFilterDesc>(), 48);
+        assert_eq!(size_of::<InfoQueueFilter>(), 96);
         assert_eq!(size_of::<MappedRect>(), 16);
         assert_eq!(size_of::<OutputDesc>(), 96);
         assert_eq!(size_of::<SharedResource>(), 8);
@@ -303,6 +339,9 @@ fn check_dxgi_struct_sizes() {
     } else {
         assert_eq!(size_of::<AdapterDesc>(), 292);
         assert_eq!(size_of::<AdapterDesc1>(), 296);
+        assert_eq!(size_of::<InfoQueueMessage>(), 36);
+        assert_eq!(size_of::<InfoQueueFilterDesc>(), 24);
+        assert_eq!(size_of::<InfoQueueFilter>(), 48);
         assert_eq!(size_of::<MappedRect>(), 8);
         assert_eq!(size_of::<OutputDesc>(), 92);
         assert_eq!(size_of::<SharedResource>(), 4);

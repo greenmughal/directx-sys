@@ -1,4 +1,4 @@
-use winapi::UINT;
+use winapi::{GUID, UINT};
 
 #[repr(u32)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -330,4 +330,67 @@ bitflags! {
 
 impl Default for AdapterFlag {
     fn default() -> AdapterFlag { AdapterFlag::empty() }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags DebugRLOFlags: UINT {
+        const DXGI_DEBUG_RLO_SUMMARY = 0x1,
+        const DXGI_DEBUG_RLO_DETAIL = 0x2,
+        const DXGI_DEBUG_RLO_ALL = 0x3
+    }
+}
+
+pub const DXGI_DEBUG_ALL: GUID = GUID {
+    Data1: 0xe48ae283,
+    Data2: 0xda80,
+    Data3: 0x490b,
+    Data4: [0x87, 0xe6, 0x43, 0xe9, 0xa9, 0xcf, 0xda, 0x8]
+};
+
+pub const DXGI_DEBUG_DX: GUID = GUID {
+    Data1: 0x35cdd7fc,
+    Data2: 0x13b2,
+    Data3: 0x421d,
+    Data4: [0xa5, 0xd7, 0x7e, 0x44, 0x51, 0x28, 0x7d, 0x64]
+};
+
+pub const DXGI_DEBUG_DXGI: GUID = GUID {
+    Data1: 0x25cddaa4,
+    Data2: 0xb1c6,
+    Data3: 0x47e1,
+    Data4: [0xac, 0x3e, 0x98, 0x87, 0x5b, 0x5a, 0x2e, 0x2a]
+};
+
+pub const DXGI_DEBUG_APP: GUID = GUID {
+    Data1: 0x6cd6e01,
+    Data2: 0x4219,
+    Data3: 0x4ebd,
+    Data4: [0x87, 0x9, 0x27, 0xed, 0x23, 0x36, 0xc, 0x62]
+};
+
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum InfoQueueMessageCategory {
+    Unknown,
+    Miscellaneous,
+    Initialization,
+    Cleanup,
+    Compilation,
+    StateCreation,
+    StateSetting,
+    StateGetting,
+    ResourceManipulation,
+    Execution,
+    Shader
+}
+
+#[repr(u32)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum InfoQueueMessageSeverity {
+    Corruption,
+    Error,
+    Warning,
+    Info,
+    Message
 }
