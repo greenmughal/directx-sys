@@ -3,7 +3,15 @@ use libc::c_void;
 use winapi::{BOOL, BYTE, COLORREF, FILETIME, FLOAT, HDC, HMONITOR, HRESULT,
              LOGFONTW, RECT, SIZE, UINT8, UINT16, UINT32, UINT64, WCHAR};
 
+#[cfg(feature = "d2d")]
 use d2d;
+
+// Stub Direct2D types to use DirectWrite without it.
+#[cfg(not(feature = "d2d"))]
+mod d2d {
+    use com_rs::IUnknown;
+    pub type ID2D1SimplifiedGeometrySink = IUnknown;
+}
 
 use super::enums::*;
 use super::structs::*;

@@ -1,7 +1,20 @@
 use com_rs::{IUnknown, Unknown};
 use libc::c_void;
-use winapi::{BOOL, FLOAT, HDC, HRESULT, HWND, RECT, REFIID, UINT, UINT32,
-             WCHAR};
+use winapi::{BOOL, FLOAT, HDC, HRESULT, HWND, RECT, REFIID, UINT32, WCHAR};
+
+#[cfg(feature = "dwrite")]
+use dwrite;
+
+// Stub DirectWrite types to use D2D without it.
+#[cfg(not(feature = "dwrite"))]
+mod dwrite {
+    use com_rs::IUnknown;
+    pub type IDWriteRenderingParams = IUnknown;
+    pub type IDWriteTextFormat = IUnknown;
+    pub type IDWriteTextLayout = IUnknown;
+    pub type MeasuringMode = u32;
+    pub type GlyphRun = u32;
+}
 
 use dxgi;
 
@@ -481,9 +494,10 @@ com_interface! {
         fn set_description(
             state_description: *const DrawingStateDescription) -> (),
         fn set_text_rendering_params(
-            text_rendering_params: *const IUnknown) -> (), // TODO IDWriteRenderingParams
+            text_rendering_params: *const dwrite::IDWriteRenderingParams) -> (),
         fn get_text_rendering_params(
-            text_rendering_params: *mut *mut IUnknown) -> () // TODO IDWriteRenderingParams
+            text_rendering_params: *mut *mut dwrite::IDWriteRenderingParams)
+        -> ()
     }
 }
 
@@ -604,21 +618,21 @@ com_interface! {
         fn draw_text(
             string: *const WCHAR,
             string_length: UINT32,
-            text_format: *const IUnknown, // TODO IDWriteTextFormat
+            text_format: *const dwrite::IDWriteTextFormat,
             layout_rect: *const RectF,
             default_foreground_brush: *const ID2D1Brush,
             options: DrawTextOptions,
-            measuring_mode: UINT) -> (), // TODO dwrite::MeasuringMode
+            measuring_mode: dwrite::MeasuringMode) -> (),
         fn draw_text_layout(
             origin: Point2F,
-            text_layout: *const IUnknown, // TODO IDWriteTextLayout)
+            text_layout: *const dwrite::IDWriteTextLayout,
             default_foreground_brush: *const ID2D1Brush,
             options: DrawTextOptions) -> (),
         fn draw_glyph_run(
             baseline_origin: Point2F,
-            glyph_run: *const u32, // TODO dwrite::GlyphRun
+            glyph_run: *const dwrite::GlyphRun,
             foreground_brush: *const ID2D1Brush,
-            measuring_mode: u32) -> (), // TODO dwrite::MeasuringMode
+            measuring_mode: dwrite::MeasuringMode) -> (),
         fn set_transform(transform: *const Matrix3x2F) -> (),
         fn get_transform(transform: *mut Matrix3x2F) -> (),
         fn set_antialias_mode(antialias_mode: AntialiasMode) -> (),
@@ -627,9 +641,10 @@ com_interface! {
             text_antialias_mode: TextAntialiasMode) -> (),
         fn get_text_antialias_mode() -> TextAntialiasMode,
         fn set_text_rendering_params(
-            text_rendering_params: *const IUnknown) -> (), // TODO IDWriteRenderingParams
+            text_rendering_params: *const dwrite::IDWriteRenderingParams) -> (),
         fn get_text_rendering_params(
-            text_rendering_params: *mut *mut IUnknown) -> (), // TODO IDWriteRenderingParams)
+            text_rendering_params: *mut *mut dwrite::IDWriteRenderingParams)
+            -> (),
         fn set_tags(
             tag1: Tag,
             tag2: Tag) -> (),
@@ -777,7 +792,7 @@ com_interface! {
             stroke_style: *mut *mut ID2D1StrokeStyle) -> HRESULT,
         fn create_drawing_state_block(
             drawing_state_description: *const DrawingStateDescription,
-            text_rendering_params: *const IUnknown, // TODO IDWriteRenderingParams)
+            text_rendering_params: *const dwrite::IDWriteRenderingParams,
             drawing_state_block: *mut *mut ID2D1DrawingStateBlock) -> HRESULT,
         fn create_wic_bitmap_render_target(
             target: *const IUnknown, // TODO IWICBitmap,
