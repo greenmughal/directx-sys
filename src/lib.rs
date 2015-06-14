@@ -1,5 +1,5 @@
 /*!
-# directx-sys 0.0.2
+# directx-sys 0.0.3
 Rust FFI bindings for the DirectX API.
 
 # Components
@@ -9,7 +9,8 @@ Rust FFI bindings for the DirectX API.
 * D3DCompiler - not yet implemented.
 * [Direct2D](d2d/index.html) - 1.0 API mostly complete but untested.
   1.1/1.2 not yet implemented.
-* DirectWrite - not yet implemented.
+* [DirectWrite](dwrite/index.html) - 1.0 API complete but untested.
+  1.1/1.2 not yet implemented.
 * XAudio2 - not yet implemented.
 * XInput - not yet implemented.
 
@@ -36,9 +37,28 @@ mod macros;
 
 #[cfg(feature = "dxgi")]
 pub mod dxgi;
+#[cfg(not(feature = "dxgi"))]
+pub mod dxgi {
+    //! DXGI disabled, enable `dxgi` feature to use.
+}
 
 #[cfg(feature = "d3d11")]
 pub mod d3d11;
+#[cfg(not(feature = "d3d11"))]
+pub mod d3d11 {
+    //! D3D11 disabled, enable `d3d11` feature to use.
+}
 
 #[cfg(feature = "d2d")]
 pub mod d2d;
+#[cfg(not(feature = "d2d"))]
+pub mod d2d {
+    //! Direct2D disabled, enable `d2d` feature to use.
+}
+
+#[cfg(feature = "dwrite")]
+pub mod dwrite;
+#[cfg(not(feature = "dwrite"))]
+pub mod dwrite {
+    //! DirectWrite disabled, enable `dwrite` feature to use.
+}
