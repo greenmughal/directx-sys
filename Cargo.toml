@@ -16,6 +16,10 @@ com-rs = "0.1.2"
 libc = "*"
 winapi = "*"
 
+[dev-dependencies]
+kernel32-sys = "*"
+user32-sys = "*"
+
 [features]
 default = ["dxgi1_3", "d3d11", "d2d", "dwrite"]
 d3d11 = ["dxgi"]
