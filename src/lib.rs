@@ -1,5 +1,5 @@
 /*!
-# directx-sys 0.0.3
+# directx-sys 0.0.4
 Rust FFI bindings for the DirectX API.
 
 # Components
@@ -24,6 +24,8 @@ writing bindings for them:
 * DirectSound - use XAudio2 instead.
 
 */
+
+#![deny(missing_debug_implementations)]
 
 #[macro_use]
 extern crate bitflags;

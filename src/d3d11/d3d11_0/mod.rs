@@ -10,6 +10,8 @@ mod enums;
 mod interfaces;
 mod structs;
 
+pub const SDK_VERSION: UINT = 7;
+
 #[link(name = "d3d11")]
 extern "stdcall" {
     pub fn D3D11CreateDevice(
@@ -29,6 +31,7 @@ extern "stdcall" {
         software: HMODULE,
         flags: CreateDeviceFlag,
         feature_levels: *const FeatureLevel,
+        num_feature_levels: UINT,
         sdk_version: UINT,
         swap_chain_desc: *const dxgi::SwapChainDesc,
         swap_chain: *mut *mut dxgi::IDXGISwapChain,

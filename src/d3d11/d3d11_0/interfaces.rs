@@ -554,7 +554,7 @@ com_interface! {
             uav_initial_counts: *const UINT) -> (),
         fn om_set_blend_state(
             blend_state: *const ID3D11BlendState,
-            blend_factor: [FLOAT; 4],
+            blend_factor: &[FLOAT; 4],
             sample_mask: UINT) -> (),
         fn om_set_depth_stencil_state(
             depth_stencil_state: *const ID3D11DepthStencilState,
@@ -609,13 +609,13 @@ com_interface! {
             src_view: *const ID3D11UnorderedAccessView) -> (),
         fn clear_render_target_view(
             render_target_view: *const ID3D11RenderTargetView,
-            color_rgba: [FLOAT; 4]) -> (),
+            color_rgba: &[FLOAT; 4]) -> (),
         fn clear_unordered_access_view_uint(
             unordered_access_view: *const ID3D11UnorderedAccessView,
-            values: [UINT; 4]) -> (),
+            values: &[UINT; 4]) -> (),
         fn clear_unordered_access_view_float(
             unordered_access_view: *const ID3D11UnorderedAccessView,
-            values: [FLOAT; 4]) -> (),
+            values: &[FLOAT; 4]) -> (),
         fn clear_depth_stencil_view(
             depth_stencil_view: *const ID3D11DepthStencilView,
             clear_flags: ClearFlag,

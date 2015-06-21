@@ -191,6 +191,8 @@ impl Default for RasterizerDesc {
 }
 
 #[repr(C)]
+#[allow(raw_pointer_derive)]
+#[derive(Debug)]
 pub struct SubresourceData {
     pub sys_mem: *const c_void,
     pub sys_mem_pitch: UINT,
@@ -198,6 +200,8 @@ pub struct SubresourceData {
 }
 
 #[repr(C)]
+#[allow(raw_pointer_derive)]
+#[derive(Debug)]
 pub struct MappedSubresource {
     pub data: *mut c_void,
     pub row_pitch: UINT,

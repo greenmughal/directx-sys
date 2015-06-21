@@ -12,7 +12,7 @@ readme = "README.md"
 
 [dependencies]
 bitflags = "*"
-com-rs = "0.1.1"
+com-rs = "0.1.2"
 libc = "*"
 winapi = "*"
 
