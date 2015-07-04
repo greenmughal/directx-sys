@@ -127,15 +127,16 @@ pub enum DriverType {
 }
 
 #[repr(u32)]
+#[allow(non_camel_case_types)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum FeatureLevel {
-    Level91 = 0x9100,
-    Level92 = 0x9200,
-    Level93 = 0x9300,
-    Level100 = 0xa000,
-    Level101 = 0xa100,
-    Level110 = 0xb000,
-    Level111 = 0xb100
+    Level_9_1 = 0x9100,
+    Level_9_2 = 0x9200,
+    Level_9_3 = 0x9300,
+    Level_10_0 = 0xa000,
+    Level_10_1 = 0xa100,
+    Level_11_0 = 0xb000,
+    Level_11_1 = 0xb100
 }
 
 #[repr(u32)]

@@ -100,7 +100,7 @@ fn main() {
         ..Default::default()
     };
 
-    let feature_levels = [d3d11::FeatureLevel::Level110];
+    let feature_levels = [d3d11::FeatureLevel::Level_11_0];
     let mut actual_feature_level: d3d11::FeatureLevel = unsafe { mem::zeroed() };
 
     let result = unsafe {
