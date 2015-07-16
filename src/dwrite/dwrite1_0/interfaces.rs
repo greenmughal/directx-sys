@@ -1,5 +1,6 @@
+use std::os::raw::c_void;
+
 use com_rs::{IUnknown, Unknown};
-use libc::c_void;
 use winapi::{BOOL, BYTE, COLORREF, FILETIME, FLOAT, HDC, HMONITOR, HRESULT,
              LOGFONTW, RECT, SIZE, UINT8, UINT16, UINT32, UINT64, WCHAR};
 

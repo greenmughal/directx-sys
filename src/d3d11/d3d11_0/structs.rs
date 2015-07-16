@@ -1,6 +1,6 @@
 use std::fmt;
+use std::os::raw::c_void;
 
-use libc::c_void;
 use winapi::{BOOL, BYTE, FALSE, FLOAT, INT, LPCSTR, TRUE, UINT, UINT8, UINT64};
 
 use dxgi;

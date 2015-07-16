@@ -1,6 +1,6 @@
 use std::fmt;
+use std::os::raw::c_char;
 
-use libc::c_char;
 use winapi::{BOOL, BYTE, FLOAT, GUID, HANDLE, HMONITOR, HWND, INT,
              LARGE_INTEGER, LUID, RECT, SIZE_T, UINT, WCHAR};
 

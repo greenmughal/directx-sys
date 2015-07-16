@@ -1,4 +1,5 @@
-use libc::c_void;
+use std::os::raw::c_void;
+
 use winapi::{HRESULT, REFIID, UINT};
 
 pub use self::enums::*;

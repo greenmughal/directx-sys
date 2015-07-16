@@ -1,5 +1,6 @@
+use std::os::raw::c_void;
+
 use com_rs::{IUnknown, Unknown};
-use libc::c_void;
 use winapi::{BOOL, FLOAT, HDC, HRESULT, HWND, RECT, REFIID, UINT32, WCHAR};
 
 #[cfg(feature = "dwrite")]

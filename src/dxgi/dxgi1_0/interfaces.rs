@@ -1,5 +1,6 @@
+use std::os::raw::c_void;
+
 use com_rs::{IUnknown, Unknown};
-use libc::c_void;
 use winapi::{BOOL, DWORD, GUID, HANDLE, HDC, HMODULE, HRESULT, HWND, INT,
              LARGE_INTEGER, LPCSTR, RECT, REFGUID, REFIID, SIZE_T, UINT,
              UINT64};

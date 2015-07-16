@@ -31,7 +31,6 @@ writing bindings for them:
 extern crate bitflags;
 #[macro_use]
 extern crate com_rs;
-extern crate libc;
 extern crate winapi;
 
 #[macro_use]
