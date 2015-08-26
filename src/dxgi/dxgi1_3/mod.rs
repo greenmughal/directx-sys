@@ -1,6 +1,7 @@
 use std::os::raw::c_void;
 
-use winapi::{HRESULT, REFIID, UINT};
+use com_rs::IID;
+use winapi::{HRESULT, UINT};
 
 pub use self::enums::*;
 pub use self::interfaces::*;
@@ -17,10 +18,10 @@ mod tests;
 extern "stdcall" {
     pub fn CreateDXGIFactory2(
         flags: CreateFactoryFlags,
-        iid: REFIID,
+        iid: &IID,
         factory: *mut *mut c_void) -> HRESULT;
     pub fn DXGIGetDebugInterface1(
         flags: UINT,
-        iid: REFIID,
+        iid: &IID,
         factory: *mut *mut c_void) -> HRESULT;
 }

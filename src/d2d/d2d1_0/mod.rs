@@ -1,6 +1,7 @@
 use std::os::raw::c_void;
 
-use winapi::{BOOL, FLOAT, HRESULT, REFIID};
+use com_rs::IID;
+use winapi::{BOOL, FLOAT, HRESULT};
 
 pub use self::enums::*;
 pub use self::interfaces::*;
@@ -14,7 +15,7 @@ mod structs;
 extern "stdcall" {
     pub fn D2D1CreateFactory(
         factory_type: FactoryType,
-        iid: REFIID,
+        iid: &IID,
         factory_options: *const FactoryOptions,
         factory: *mut *mut c_void) -> HRESULT;
     pub fn D2D1MakeRotateMatrix(

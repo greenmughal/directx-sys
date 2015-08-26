@@ -1,5 +1,5 @@
-use com_rs::IUnknown;
-use winapi::{HRESULT, REFIID};
+use com_rs::{IID, IUnknown};
+use winapi::HRESULT;
 
 pub use self::enums::*;
 pub use self::interfaces::*;
@@ -13,7 +13,7 @@ mod structs;
 extern "stdcall" {
     pub fn DWriteCreateFactory(
         factory_type: FactoryType,
-        iid: REFIID,
+        iid: &IID,
         factory: *mut *mut IUnknown) -> HRESULT;
 }
 
@@ -24,7 +24,7 @@ fn dwrite_test_create_factory() {
     let mut factory: ComPtr<IDWriteFactory> = ComPtr::new();
     let result = unsafe {
         DWriteCreateFactory(FactoryType::Shared, &factory.iid(),
-                            factory.as_mut())
+                            factory.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!factory.is_null());

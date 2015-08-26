@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_imports)]
 extern crate com_rs;
 extern crate directx_sys;
 extern crate kernel32;
@@ -10,9 +11,8 @@ use std::os::windows::ffi::OsStrExt;
 use std::ptr;
 
 use com_rs::ComPtr;
+#[cfg(feature = "d3d11")]
 use directx_sys::{d3d11, dxgi};
-use directx_sys::d3d11::{D3D11Device, D3D11DeviceContext};
-use directx_sys::dxgi::DXGISwapChain;
 use kernel32::*;
 use user32::*;
 use winapi::*;
@@ -34,6 +34,7 @@ unsafe extern "system" fn wndproc(window: HWND, msg: UINT, wparam: WPARAM,
     }
 }
 
+#[cfg(feature = "d3d11")]
 fn main() {
     let class_name = utf16_str("WindowClass");
     let window_title = utf16_str("D3D11 Demo");
@@ -113,10 +114,10 @@ fn main() {
             feature_levels.len() as u32,
             d3d11::SDK_VERSION,
             &swapchain_desc,
-            dxgi_swapchain.as_mut(),
-            d3d_device.as_mut(),
+            dxgi_swapchain.as_mut_ptr(),
+            d3d_device.as_mut_ptr(),
             &mut actual_feature_level,
-            d3d_context.as_mut())
+            d3d_context.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!dxgi_swapchain.is_null());
@@ -127,7 +128,7 @@ fn main() {
     let result = unsafe {
         dxgi_swapchain.get_buffer(0,
                                   &d3d_back_buffer.iid(),
-                                  d3d_back_buffer.as_mut())
+                                  d3d_back_buffer.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!d3d_back_buffer.is_null());
@@ -136,7 +137,7 @@ fn main() {
     let result = unsafe {
         d3d_device.create_render_target_view(d3d_back_buffer.as_ptr(),
                                              ptr::null(),
-                                             d3d_rtv.as_mut())
+                                             d3d_rtv.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!d3d_rtv.is_null());
@@ -170,3 +171,6 @@ fn main() {
         }
     }
 }
+
+#[cfg(not(feature = "d3d11"))]
+fn main() {}

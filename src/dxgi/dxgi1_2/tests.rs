@@ -7,7 +7,7 @@ use super::*;
 fn dxgi_create_factory2() {
     let mut factory: ComPtr<IDXGIFactory2> = ComPtr::new();
     let result = unsafe {
-        CreateDXGIFactory(&factory.iid(), factory.as_mut())
+        CreateDXGIFactory(&factory.iid(), factory.as_mut_ptr())
     };
 
     assert_eq!(result, 0);

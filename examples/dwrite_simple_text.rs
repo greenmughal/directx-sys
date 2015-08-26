@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_imports)]
 extern crate com_rs;
 extern crate directx_sys;
 extern crate kernel32;
@@ -10,8 +11,8 @@ use std::os::windows::ffi::OsStrExt;
 use std::ptr;
 
 use com_rs::ComPtr;
-use directx_sys::d2d::{self, D2D1Factory, D2D1RenderTarget};
-use directx_sys::dwrite::{self, DWriteFactory, DWriteTextFormat};
+#[cfg(all(feature = "d2d", feature = "dwrite"))]
+use directx_sys::{d2d, dwrite};
 use kernel32::*;
 use user32::*;
 use winapi::*;
@@ -33,6 +34,7 @@ unsafe extern "system" fn wndproc(window: HWND, msg: UINT, wparam: WPARAM,
     }
 }
 
+#[cfg(all(feature = "d2d", feature = "dwrite"))]
 fn main() {
     let class_name = utf16_str("WindowClass");
     let window_title = utf16_str("DirectWrite Demo");
@@ -80,7 +82,7 @@ fn main() {
             d2d::FactoryType::SingleThreaded,
             &d2d_factory.iid(),
             &d2d::FactoryOptions::default(),
-            d2d_factory.as_mut())
+            d2d_factory.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!d2d_factory.is_null());
@@ -90,7 +92,7 @@ fn main() {
         dwrite::DWriteCreateFactory(
             dwrite::FactoryType::Shared,
             &dwrite_factory.iid(),
-            dwrite_factory.as_mut())
+            dwrite_factory.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!dwrite_factory.is_null());
@@ -107,7 +109,7 @@ fn main() {
         dwrite::FontStretch::Normal,
         72.0,
         utf16_str("en-us").as_ptr(),
-        text_format.as_mut())
+        text_format.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!text_format.is_null());
@@ -134,7 +136,7 @@ fn main() {
                 pixel_size: size,
                 present_options: d2d::PresentOptions::empty()
             },
-            render_target.as_mut())
+            render_target.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!render_target.is_null());
@@ -144,7 +146,7 @@ fn main() {
         render_target.create_solid_color_brush(
             &d2d::ColorF { r: 0.0, g: 0.0, b: 0.0, a: 1.0 },
             ptr::null(),
-            black_brush.as_mut())
+            black_brush.as_mut_ptr())
     };
     assert_eq!(result, 0);
     assert!(!black_brush.is_null());
@@ -191,3 +193,6 @@ fn main() {
         }
     }
 }
+
+#[cfg(not(all(feature = "d2d", feature = "dwrite")))]
+fn main() {}
