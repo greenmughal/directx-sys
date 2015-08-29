@@ -8,12 +8,44 @@ use dxgi;
 use super::enums::*;
 use super::structs::*;
 
+#[link(name = "dxguid")]
+extern {
+    static IID_ID3D11DeviceChild: IID;
+    static IID_ID3D11DepthStencilState: IID;
+    static IID_ID3D11BlendState: IID;
+    static IID_ID3D11RasterizerState: IID;
+    static IID_ID3D11Resource: IID;
+    static IID_ID3D11Buffer: IID;
+    static IID_ID3D11Texture1D: IID;
+    static IID_ID3D11Texture2D: IID;
+    static IID_ID3D11Texture3D: IID;
+    static IID_ID3D11View: IID;
+    static IID_ID3D11ShaderResourceView: IID;
+    static IID_ID3D11RenderTargetView: IID;
+    static IID_ID3D11DepthStencilView: IID;
+    static IID_ID3D11UnorderedAccessView: IID;
+    static IID_ID3D11VertexShader: IID;
+    static IID_ID3D11HullShader: IID;
+    static IID_ID3D11DomainShader: IID;
+    static IID_ID3D11GeometryShader: IID;
+    static IID_ID3D11PixelShader: IID;
+    static IID_ID3D11ComputeShader: IID;
+    static IID_ID3D11InputLayout: IID;
+    static IID_ID3D11SamplerState: IID;
+    static IID_ID3D11Asynchronous: IID;
+    static IID_ID3D11Query: IID;
+    static IID_ID3D11Predicate: IID;
+    static IID_ID3D11Counter: IID;
+    static IID_ID3D11ClassInstance: IID;
+    static IID_ID3D11ClassLinkage: IID;
+    static IID_ID3D11CommandList: IID;
+    static IID_ID3D11DeviceContext: IID;
+    static IID_ID3D11Device: IID;
+}
+
 com_interface! {
     interface ID3D11DeviceChild: IUnknown {
-        iid: IID_ID3D11DEVICECHILD {
-            0x1841E5C8, 0x16B0, 0x489B,
-            0xBC, 0xC8, 0x44, 0xCF, 0xB0, 0xD5, 0xDE, 0xAE
-        },
+        iid: IID_ID3D11DeviceChild,
         vtable: ID3D11DeviceChildVtbl,
         fn get_device(device: *mut *mut ID3D11Device) -> ();
         fn get_private_data(
@@ -32,21 +64,14 @@ com_interface! {
 
 com_interface! {
     interface ID3D11DepthStencilState: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11DEPTHSTENCILSTATE {
-            0x03823EFB, 0x8D8F, 0x4E1C,
-            0x9A, 0xA2, 0xF6, 0x4B, 0xB2, 0xCB, 0xFD, 0xF1
-        },
+        iid: IID_ID3D11DepthStencilState,
         vtable: ID3D11DepthStencilStateVtbl,
         fn get_desc(desc: *mut DepthStencilDesc) -> ();
     }
 }
-
 com_interface! {
     interface ID3D11BlendState: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11BLENDSTATE {
-            0x75B68FAA, 0x347D, 0x4159,
-            0x8F, 0x45, 0xA0, 0x64, 0x0F, 0x01, 0xCD, 0x9A
-        },
+        iid: IID_ID3D11BlendState,
         vtable: ID3D11BlendStateVtbl,
         fn get_desc(desc: *mut BlendDesc) -> ();
     }
@@ -54,10 +79,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11RasterizerState: ID3D11DeviceChild, IUnknown {
-        iid: IID {
-            0x9BB4AB81, 0xAB1A, 0x4D8F,
-            0xB5, 0x06, 0xFC, 0x04, 0x20, 0x0B, 0x6E, 0xE7
-        },
+        iid: IID_ID3D11RasterizerState,
         vtable: ID3D11RasterizerStateVtbl,
         fn get_desc(desc: *mut RasterizerDesc) -> ();
     }
@@ -65,10 +87,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Resource: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11RESOURCE {
-            0xDC8E63F3, 0xD12B, 0x4952,
-            0xB4, 0x7B, 0x5E, 0x45, 0x02, 0x6A, 0x86, 0x2D
-        },
+        iid: IID_ID3D11Resource,
         vtable: ID3D11ResourceVtbl,
         fn get_type(resource_dimension: *mut ResourceDimension) -> ();
         fn set_eviction_priority(eviction_priority: UINT) -> ();
@@ -78,10 +97,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Buffer: ID3D11Resource, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11BUFFER {
-            0x48570B85, 0xD1EE, 0x4FCD,
-            0xA2, 0x50, 0xEB, 0x35, 0x07, 0x22, 0xB0, 0x37
-        },
+        iid: IID_ID3D11Buffer,
         vtable: ID3D11BufferVtbl,
         fn get_desc(desc: *mut BufferDesc) -> ();
     }
@@ -89,10 +105,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Texture1D: ID3D11Resource, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11TEXTURE1D {
-            0xF8FB5C27, 0xC6B3, 0x4F75,
-            0xA4, 0xC8, 0x43, 0x9A, 0xF2, 0xEF, 0x56, 0x4C
-        },
+        iid: IID_ID3D11Texture1D,
         vtable: ID3D11Texture1DVtbl,
         fn get_desc(desc: *mut Texture1DDesc) -> ();
     }
@@ -100,10 +113,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Texture2D: ID3D11Resource, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11TEXTURE2D {
-            0x6F15AAF2, 0xD208, 0x4E89,
-            0x9A, 0xB4, 0x48, 0x95, 0x35, 0xD3, 0x4F, 0x9C
-        },
+        iid: IID_ID3D11Texture2D,
         vtable: ID3D11Texture2DVtbl,
         fn get_desc(desc: *mut Texture2DDesc) -> ();
     }
@@ -111,10 +121,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Texture3D: ID3D11Resource, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11TEXTURE3D {
-            0x037E866E, 0xF56D, 0x4357,
-            0xA8, 0xAF, 0x9D, 0xAB, 0xBE, 0x6E, 0x25, 0x0E
-        },
+        iid: IID_ID3D11Texture3D,
         vtable: ID3D11Texture3DVtbl,
         fn get_desc(desc: *mut Texture3DDesc) -> ();
     }
@@ -122,21 +129,16 @@ com_interface! {
 
 com_interface! {
     interface ID3D11View: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11VIEW {
-            0x839D1216, 0xBB2E, 0x412B,
-            0xB7, 0xF4, 0xA9, 0xDB, 0xEB, 0xE0, 0x8E, 0xD1
-        },
+        iid: IID_ID3D11View,
         vtable: ID3D11ViewVtbl,
         fn get_resource(resource: *mut *mut ID3D11Resource) -> ();
     }
 }
 
 com_interface! {
-    interface ID3D11ShaderResourceView: ID3D11View, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11SHADERRESOURCEVIEW {
-            0xB0E06FE0, 0x8192, 0x4E1A,
-            0xB1, 0xCA, 0x36, 0xD7, 0x41, 0x47, 0x10, 0xB2
-        },
+    interface ID3D11ShaderResourceView: ID3D11View, ID3D11DeviceChild,
+                                        IUnknown {
+        iid: IID_ID3D11ShaderResourceView,
         vtable: ID3D11ShaderResourceViewVtbl,
         fn get_desc(desc: *mut ShaderResourceViewDesc) -> ();
     }
@@ -144,10 +146,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11RenderTargetView: ID3D11View, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11RENDERTARGETVIEW {
-            0xDFDBA067, 0x0B8D, 0x4865,
-            0x87, 0x5B, 0xD7, 0xB4, 0x51, 0x6C, 0xC1, 0x64
-        },
+        iid: IID_ID3D11RenderTargetView,
         vtable: ID3D11RenderTargetViewVtbl,
         fn get_desc(desc: *mut RenderTargetViewDesc) -> ();
     }
@@ -155,10 +154,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11DepthStencilView: ID3D11View, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11DEPTHSTENCILVIEW {
-            0x9FDAC92A, 0x1876, 0x48C3,
-            0xAF, 0xAD, 0x25, 0xB9, 0x4F, 0x84, 0xA9, 0xB6
-        },
+        iid: IID_ID3D11DepthStencilView,
         vtable: ID3D11DepthStencilViewVtbl,
         fn get_desc(desc: *mut DepthStencilViewDesc) -> ();
     }
@@ -166,10 +162,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11UnorderedAccessView: ID3D11View, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11UNORDEREDACCESSVIEW {
-            0x28ACF509, 0x7F5C, 0x48F6,
-            0x86, 0x11, 0xF3, 0x16, 0x01, 0x0A, 0x63, 0x80
-        },
+        iid: IID_ID3D11UnorderedAccessView,
         vtable: ID3D11UnorderedAccessViewVtbl,
         fn get_desc(desc: *mut UnorderedAccessViewDesc) -> ();
     }
@@ -177,80 +170,56 @@ com_interface! {
 
 com_interface! {
     interface ID3D11VertexShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11VERTEXSHADER {
-            0x3B301D64, 0xD678, 0x4289,
-            0x88, 0x97, 0x22, 0xF8, 0x92, 0x8B, 0x72, 0xF3
-        },
+        iid: IID_ID3D11VertexShader,
         vtable: ID3D11VertexShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11HullShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11HULLSHADER {
-            0x8E5C6061, 0x628A, 0x4C8E,
-            0x82, 0x64, 0xBB, 0xE4, 0x5C, 0xB3, 0xD5, 0xDD
-        },
+        iid: IID_ID3D11HullShader,
         vtable: ID3D11HullShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11DomainShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11DOMAINSHADER {
-            0xF582C508, 0x0F36, 0x490C,
-            0x99, 0x77, 0x31, 0xEE, 0xCE, 0x26, 0x8C, 0xFA
-        },
+        iid: IID_ID3D11DomainShader,
         vtable: ID3D11DomainShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11GeometryShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11GEOMETRYSHADER {
-            0x38325B96, 0xEFFB, 0x4022,
-            0xBA, 0x02, 0x2E, 0x79, 0x5B, 0x70, 0x27, 0x5C
-        },
+        iid: IID_ID3D11GeometryShader,
         vtable: ID3D11GeometryShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11PixelShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11PIXELSHADER {
-            0xEA82E40D, 0x51DC, 0x4F33,
-            0x93, 0xD4, 0xDB, 0x7C, 0x91, 0x25, 0xAE, 0x8C
-        },
+        iid: IID_ID3D11PixelShader,
         vtable: ID3D11PixelShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11ComputeShader: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11COMPUTESHADER {
-            0x4F5B196E, 0xC2BD, 0x495E,
-            0xBD, 0x01, 0x1F, 0xDE, 0xD3, 0x8E, 0x49, 0x69
-        },
+        iid: IID_ID3D11ComputeShader,
         vtable: ID3D11ComputeShaderVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11InputLayout: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11INPUTLAYOUT {
-            0xE4819DDC, 0x4CF0, 0x4025,
-            0xBD, 0x26, 0x5D, 0xE8, 0x2A, 0x3E, 0x07, 0xB7
-        },
+        iid: IID_ID3D11InputLayout,
         vtable: ID3D11InputLayoutVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11SamplerState: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11SAMPLERSTATE {
-            0xDA6FEA51, 0x564C, 0x4487,
-            0x98, 0x10, 0xF0, 0xD0, 0xF9, 0xB4, 0xE3, 0xA5
-        },
+        iid: IID_ID3D11SamplerState,
         vtable: ID3D11SamplerStateVtbl,
         fn get_desc(desc: *mut SamplerDesc) -> ();
     }
@@ -258,10 +227,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Asynchronous: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11ASYNCHRONOUS {
-            0x4B35D0CD, 0x1E15, 0x4258,
-            0x9C, 0x98, 0x1B, 0x13, 0x33, 0xF6, 0xDD, 0x3B
-        },
+        iid: IID_ID3D11Asynchronous,
         vtable: ID3D11AsynchronousVtbl,
         fn get_data_size() -> UINT;
     }
@@ -269,10 +235,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Query: ID3D11Asynchronous, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11QUERY {
-            0xD6C00747, 0x87B7, 0x425E,
-            0xB8, 0x4D, 0x44, 0xD1, 0x08, 0x56, 0x0A, 0xFD
-        },
+        iid: IID_ID3D11Query,
         vtable: ID3D11QueryVtbl,
         fn get_desc(desc: *mut QueryDesc) -> ();
     }
@@ -281,20 +244,14 @@ com_interface! {
 com_interface! {
     interface ID3D11Predicate: ID3D11Query, ID3D11Asynchronous,
                                ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11PREDICATE {
-            0x9EB576DD, 0x9F77, 0x4D86,
-            0x81, 0xAA, 0x8B, 0xAB, 0x5F, 0xE4, 0x90, 0xE2
-        },
+        iid: IID_ID3D11Predicate,
         vtable: ID3D11PredicateVtbl,
     }
 }
 
 com_interface! {
     interface ID3D11Counter: ID3D11Asynchronous, ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11COUNTER {
-            0x6E8C49FB, 0xA371, 0x4770,
-            0xB4, 0x40, 0x29, 0x08, 0x60, 0x22, 0xB7, 0x41
-        },
+        iid: IID_ID3D11Counter,
         vtable: ID3D11CounterVtbl,
         fn get_desc(desc: *mut CounterDesc) -> ();
     }
@@ -302,10 +259,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11ClassInstance: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11CLASSINSTANCE {
-            0xA6CD7FAA, 0xB0B7, 0x4A2F,
-            0x94, 0x36, 0x86, 0x62, 0xA6, 0x57, 0x97, 0xCB
-        },
+        iid: IID_ID3D11ClassInstance,
         vtable: ID3D11ClassInstanceVtbl,
         fn get_class_linkage(linkage: *mut *mut ID3D11ClassLinkage) -> ();
         fn get_desc(desc: *mut ClassInstanceDesc) -> ();
@@ -320,10 +274,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11ClassLinkage: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11CLASSLINKAGE {
-            0xDDF57CBA, 0x9543, 0x46E4,
-            0xA1, 0x2B, 0xF2, 0x07, 0xA0, 0xFE, 0x7F, 0xED
-        },
+        iid: IID_ID3D11ClassLinkage,
         vtable: ID3D11ClassLinkageVtbl,
         fn get_class_instance(
             class_instance_name: LPCSTR,
@@ -341,10 +292,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11CommandList: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11COMMANDLIST {
-            0xA24BC4D1, 0x769E, 0x43F7,
-            0x80, 0x13, 0x98, 0xFF, 0x56, 0x6C, 0x18, 0xE2
-        },
+        iid: IID_ID3D11CommandList,
         vtable: ID3D11CommandListVtbl,
         fn get_context_flags() -> UINT;
     }
@@ -352,10 +300,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11DeviceContext: ID3D11DeviceChild, IUnknown {
-        iid: IID_ID3D11DEVICECONTEXT {
-            0xC0BFA96C, 0xE089, 0x44FB,
-            0x8E, 0xAF, 0x26, 0xF8, 0x79, 0x61, 0x90, 0xDA
-        },
+        iid: IID_ID3D11DeviceContext,
         vtable: ID3D11DeviceContextVtbl,
         fn vs_set_constant_buffers(
             start_slot: UINT,
@@ -762,10 +707,7 @@ com_interface! {
 
 com_interface! {
     interface ID3D11Device: IUnknown {
-        iid: IID_ID3D11DEVICE {
-            0xDB6F6DDB, 0xAC77, 0x4E88,
-            0x82, 0x53, 0x81, 0x9D, 0xF9, 0xBB, 0xF1, 0x40
-        },
+        iid: IID_ID3D11Device,
         vtable: ID3D11DeviceVtbl,
         fn create_buffer(
             desc: *const BufferDesc,
@@ -953,6 +895,7 @@ fn check_d3d11_vtable_sizes() {
         assert_eq!(size_of::<ID3D11ClassLinkageVtbl>(), 72);
         assert_eq!(size_of::<ID3D11CommandListVtbl>(), 64);
         assert_eq!(size_of::<ID3D11DeviceContextVtbl>(), 920);
+        assert_eq!(size_of::<ID3D11DeviceVtbl>(), 344);
     } else {
         assert_eq!(size_of::<ID3D11DeviceChildVtbl>(), 28);
         assert_eq!(size_of::<ID3D11DepthStencilStateVtbl>(), 32);
@@ -984,5 +927,6 @@ fn check_d3d11_vtable_sizes() {
         assert_eq!(size_of::<ID3D11ClassLinkageVtbl>(), 36);
         assert_eq!(size_of::<ID3D11CommandListVtbl>(), 32);
         assert_eq!(size_of::<ID3D11DeviceContextVtbl>(), 460);
+        assert_eq!(size_of::<ID3D11DeviceVtbl>(), 172);
     }
 }

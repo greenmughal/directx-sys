@@ -22,12 +22,42 @@ use dxgi;
 use super::enums::*;
 use super::structs::*;
 
+#[link(name = "dxguid")]
+extern {
+    static IID_ID2D1Bitmap: IID;
+    static IID_ID2D1BitmapBrush: IID;
+    static IID_ID2D1BitmapRenderTarget: IID;
+    static IID_ID2D1Brush: IID;
+    static IID_ID2D1DCRenderTarget: IID;
+    static IID_ID2D1DrawingStateBlock: IID;
+    static IID_ID2D1EllipseGeometry: IID;
+    static IID_ID2D1Factory: IID;
+    static IID_ID2D1GdiInteropRenderTarget: IID;
+    static IID_ID2D1Geometry: IID;
+    static IID_ID2D1GeometryGroup: IID;
+    static IID_ID2D1GeometrySink: IID;
+    static IID_ID2D1GradientStopCollection: IID;
+    static IID_ID2D1HwndRenderTarget: IID;
+    static IID_ID2D1Image: IID;
+    static IID_ID2D1Layer: IID;
+    static IID_ID2D1LinearGradientBrush: IID;
+    static IID_ID2D1Mesh: IID;
+    static IID_ID2D1PathGeometry: IID;
+    static IID_ID2D1RadialGradientBrush: IID;
+    static IID_ID2D1RectangleGeometry: IID;
+    static IID_ID2D1RenderTarget: IID;
+    static IID_ID2D1Resource: IID;
+    static IID_ID2D1RoundedRectangleGeometry: IID;
+    static IID_ID2D1SimplifiedGeometrySink: IID;
+    static IID_ID2D1SolidColorBrush: IID;
+    static IID_ID2D1StrokeStyle: IID;
+    static IID_ID2D1TessellationSink: IID;
+    static IID_ID2D1TransformedGeometry: IID;
+}
+
 com_interface! {
     interface ID2D1Resource: IUnknown {
-        iid: IID_ID2D1RESOURCE {
-            0x2CD90691, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1Resource,
         vtable: ID2D1ResourceVtbl,
         fn get_factory(factory: *mut *mut ID2D1Factory) -> ();
     }
@@ -35,20 +65,14 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Image: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1IMAGE {
-            0x65019F75, 0x8DA2, 0x497C,
-            0xB3, 0x2C, 0xDF, 0xA3, 0x4E, 0x48, 0xED, 0xE6
-        },
+        iid: IID_ID2D1Image,
         vtable: ID2D1ImageVtbl,
     }
 }
 
 com_interface! {
     interface ID2D1Bitmap: ID2D1Image, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1BITMAP {
-            0xA2296057, 0xEA42, 0x4099,
-            0x98, 0x3B, 0x53, 0x9F, 0xB6, 0x50, 0x54, 0x26
-        },
+        iid: IID_ID2D1Bitmap,
         vtable: ID2D1BitmapVtbl,
         fn get_size() -> SizeF;
         fn get_pixel_size() -> SizeU;
@@ -71,10 +95,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1GradientStopCollection: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1GRADIENTSTOPCOLLECTION {
-            0x2CD906A7, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1GradientStopCollection,
         vtable: ID2D1GradientStopCollectionVtbl,
         fn get_gradient_stop_count() -> UINT32;
         fn get_gradient_stops(
@@ -87,10 +108,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Brush: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1BRUSH {
-            0x2CD906A8, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1Brush,
         vtable: ID2D1BrushVtbl,
         fn set_opacity(opacity: FLOAT) -> ();
         fn set_transform(transform: *const Matrix3x2F) -> ();
@@ -101,10 +119,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1BitmapBrush: ID2D1Brush, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1BITMAPBRUSH {
-            0x2CD906AA, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1BitmapBrush,
         vtable: ID2D1BitmapBrushVtbl,
         fn set_extend_mode_x(extend_mode_x: ExtendMode) -> ();
         fn set_extend_mode_y(extend_mode_y: ExtendMode) -> ();
@@ -120,10 +135,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1SolidColorBrush: ID2D1Brush, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1SOLIDCOLORBRUSH {
-            0x2CD906A9, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1SolidColorBrush,
         vtable: ID2D1SolidColorBrushVtbl,
         fn set_color(color: *const ColorF) -> ();
         fn get_color() -> ColorF;
@@ -132,10 +144,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1LinearGradientBrush: ID2D1Brush, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1LINEARGRADIENTBRUSH {
-            0x2CD906AB, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1LinearGradientBrush,
         vtable: ID2D1LinearGradientBrushVtbl,
         fn set_start_point(start_point: Point2F) -> ();
         fn set_end_point(end_point: Point2F) -> ();
@@ -148,10 +157,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1RadialGradientBrush: ID2D1Brush, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1RADIALGRADIENTBRUSH {
-            0x2CD906AC, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1RadialGradientBrush,
         vtable: ID2D1RadialGradientBrushVtbl,
         fn set_center(center: Point2F) -> ();
         fn set_gradient_origin_offset(gradient_origin_offset: Point2F) -> ();
@@ -168,10 +174,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1StrokeStyle: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1STROKESTYLE {
-            0x2CD9069D, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1StrokeStyle,
         vtable: ID2D1StrokeStyleVtbl,
         fn get_start_cap() -> CapStyle;
         fn get_end_cap() -> CapStyle;
@@ -189,10 +192,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Geometry: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1GEOMETRY {
-            0x2CD906A1, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1Geometry,
         vtable: ID2D1GeometryVtbl,
         fn get_bounds(
             world_transform: *const Matrix3x2F,
@@ -264,10 +264,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1RectangleGeometry: ID2D1Geometry, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1RECTANGLEGEOMETRY {
-            0x2CD906A2, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1RectangleGeometry,
         vtable: ID2D1RectangleGeometryVtbl,
         fn get_rect(rect: *mut RectF) -> ();
     }
@@ -276,10 +273,7 @@ com_interface! {
 com_interface! {
     interface ID2D1RoundedRectangleGeometry: ID2D1Geometry, ID2D1Resource,
                                              IUnknown {
-        iid: IID_ID2D1ROUNDEDRECTANGLEGEOMETRY {
-            0x2CD906A3, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1RoundedRectangleGeometry,
         vtable: ID2D1RoundedRectangleGeometryVtbl,
         fn get_rounded_rect(rounded_rect: *mut RoundedRect) -> ();
     }
@@ -287,10 +281,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1EllipseGeometry: ID2D1Geometry, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1ELLIPSEGEOMETRY {
-            0x2CD906A4, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1EllipseGeometry,
         vtable: ID2D1EllipseGeometryVtbl,
         fn get_ellipse(ellipse: *mut Ellipse) -> ();
     }
@@ -298,10 +289,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1GeometryGroup: ID2D1Geometry, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1GEOMETRYGROUP {
-            0x2CD906A6, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1GeometryGroup,
         vtable: ID2D1GeometryGroupVtbl,
         fn get_fill_mode() -> FillMode;
         fn get_source_geometry_count() -> UINT32;
@@ -313,10 +301,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1TransformedGeometry: ID2D1Geometry, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1TRANSFORMEDGEOMETRY {
-            0x2CD906BB, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1TransformedGeometry,
         vtable: ID2D1TransformedGeometryVtbl,
         fn get_source_geometry(source_geometry: *mut *mut ID2D1Geometry) -> ();
         fn get_transform(transform: *mut Matrix3x2F) -> ();
@@ -325,10 +310,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1SimplifiedGeometrySink: IUnknown {
-        iid: IID_ID2D1SIMPLIFIEDGEOMETRYSINK {
-            0x2CD9069E, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1SimplifiedGeometrySink,
         vtable: ID2D1SimplifiedGeometrySinkVtbl,
         fn set_fill_mode(fill_mode: FillMode) -> ();
         fn set_segment_flags(vertex_flags: PathSegment) -> ();
@@ -348,10 +330,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1GeometrySink: ID2D1SimplifiedGeometrySink, IUnknown {
-        iid: IID_ID2D1GEOMETRYSINK {
-            0x2CD9069F, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1GeometrySink,
         vtable: ID2D1GeometrySinkVtbl,
         fn add_line(point: Point2F) -> ();
         fn add_bezier(bezier: *const BezierSegment) -> ();
@@ -365,10 +344,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1TessellationSink: IUnknown {
-        iid: IID_ID2D1TESSELLATIONSINK {
-            0x2CD906C1, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1TessellationSink,
         vtable: ID2D1TessellationSinkVtbl,
         fn add_triangles(
             triangles: *const Triangle,
@@ -379,10 +355,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1PathGeometry: ID2D1Geometry, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1PATHGEOMETRY {
-            0x2CD906A5, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1PathGeometry,
         vtable: ID2D1PathGeometryVtbl,
         fn open(geometry_sink: *mut *mut ID2D1GeometrySink) -> HRESULT;
         fn stream(geometry_sink: *const ID2D1GeometrySink) -> HRESULT;
@@ -393,10 +366,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Mesh: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1MESH {
-            0x2CD906C2, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1Mesh,
         vtable: ID2D1MeshVtbl,
         fn open(tessellation_sink: *mut *mut ID2D1TessellationSink) -> HRESULT;
     }
@@ -404,10 +374,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Layer: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1LAYER {
-            0x2CD9069B, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1Layer,
         vtable: ID2D1LayerVtbl,
         fn get_size() -> SizeF;
     }
@@ -415,10 +382,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1DrawingStateBlock: ID2D1Resource, IUnknown {
-        iid: IID_ID2D1DRAWINGSTATEBLOCK {
-            0x28506E39, 0xEBF6, 0x46A1,
-            0xBB, 0x47, 0xFD, 0x85, 0x56, 0x5A, 0xB9, 0x57
-        },
+        iid: IID_ID2D1DrawingStateBlock,
         vtable: ID2D1DrawingStateBlockVtbl,
         fn get_description(
             state_description: *mut DrawingStateDescription) -> ();
@@ -434,10 +398,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1RenderTarget: ID2D1Resource, IUnknown {
-        iid: IID {
-            0x2CD90694, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1RenderTarget,
         vtable: ID2D1RenderTargetVtbl,
         fn create_bitmap(
             size: SizeU,
@@ -617,10 +578,7 @@ com_interface! {
 com_interface! {
     interface ID2D1BitmapRenderTarget: ID2D1RenderTarget, ID2D1Resource,
                                        IUnknown {
-        iid: IID_ID2D1BITMAPRENDERTARGET {
-            0x2CD90695, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1BitmapRenderTarget,
         vtable: ID2D1BitmapRenderTargetVtbl,
         fn get_bitmap(bitmap: *mut *mut ID2D1Bitmap) -> HRESULT;
     }
@@ -628,10 +586,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1HwndRenderTarget: ID2D1RenderTarget, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1HWNDRENDERTARGET {
-            0x2CD90698, 0x12E2, 0x11DC,
-            0x9F, 0xED, 0x00, 0x11, 0x43, 0xA0, 0x55, 0xF9
-        },
+        iid: IID_ID2D1HwndRenderTarget,
         vtable: ID2D1HwndRenderTargetVtbl,
         fn check_window_state() -> WindowState;
         fn resize(pixel_size: *const SizeU) -> HRESULT;
@@ -641,10 +596,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1GdiInteropRenderTarget: IUnknown {
-        iid: IID_ID2D1GDIINTEROPRENDERTARGET {
-            0xE0DB51C3, 0x6F77, 0x4BAE,
-            0xB3, 0xD5, 0xE4, 0x75, 0x09, 0xB3, 0x58, 0x38
-        },
+        iid: IID_ID2D1GdiInteropRenderTarget,
         vtable: ID2D1GdiInteropRenderTargetVtbl,
         fn get_dc(mode: DCInitializeMode, hdc: *mut HDC) -> HRESULT;
         fn release_dc(update: *const RECT) -> HRESULT;
@@ -653,10 +605,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1DCRenderTarget: ID2D1RenderTarget, ID2D1Resource, IUnknown {
-        iid: IID_ID2D1DCRENDERTARGET {
-            0x1C51BC64, 0xDE61, 0x46FD,
-            0x98, 0x99, 0x63, 0xA5, 0xD8, 0xF0, 0x39, 0x50
-        },
+        iid: IID_ID2D1DCRenderTarget,
         vtable: ID2D1DCRenderTargetVtbl,
         fn bind_dc(hdc: HDC, sub_rect: *const RECT) -> HRESULT;
     }
@@ -664,10 +613,7 @@ com_interface! {
 
 com_interface! {
     interface ID2D1Factory: IUnknown {
-        iid: IID_ID2D1FACTORY {
-            0x06152247, 0x6F50, 0x465A,
-            0x92, 0x45, 0x11, 0x8B, 0xFD, 0x3B, 0x60, 0x07
-        },
+        iid: IID_ID2D1Factory,
         vtable: ID2D1FactoryVtbl,
         fn reload_system_metrics() -> HRESULT;
         fn get_desktop_dpi(dpi_x: *mut FLOAT, dpi_y: *mut FLOAT) -> ();

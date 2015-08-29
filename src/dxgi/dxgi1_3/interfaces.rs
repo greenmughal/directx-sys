@@ -1,4 +1,4 @@
-use com_rs::IUnknown;
+use com_rs::{IID, IUnknown};
 use winapi::{BOOL, HANDLE, HRESULT, RECT, UINT};
 
 use super::super::dxgi1_0::*;
@@ -7,13 +7,22 @@ use super::super::dxgi1_2::*;
 use super::enums::*;
 use super::structs::*;
 
+#[link(name = "dxguid")]
+extern {
+    static IID_IDXGIDecodeSwapChain: IID;
+    static IID_IDXGIDevice3: IID;
+    static IID_IDXGIFactory3: IID;
+    static IID_IDXGIFactoryMedia: IID;
+    static IID_IDXGIOutput2: IID;
+    static IID_IDXGIOutput3: IID;
+    static IID_IDXGISwapChain2: IID;
+    static IID_IDXGISwapChainMedia: IID;
+}
+
 com_interface! {
     interface IDXGIDevice3: IDXGIDevice2, IDXGIDevice1, IDXGIDevice,
                             IDXGIObject, IUnknown {
-        iid: IID_IDXGIDEVICE3 {
-            0x6007896C, 0x3244, 0x4AFD,
-            0xBF, 0x18, 0xA6, 0xD3, 0xBE, 0xDA, 0x50, 0x23
-        },
+        iid: IID_IDXGIDevice3,
         vtable: IDXGIDevice3Vtbl,
         fn trim() -> ();
     }
@@ -22,10 +31,7 @@ com_interface! {
 com_interface! {
     interface IDXGISwapChain2: IDXGISwapChain1, IDXGISwapChain,
                                IDXGIDeviceSubObject, IDXGIObject, IUnknown {
-        iid: IID_IDXGISWAPCHAIN2 {
-            0xA8BE2AC4, 0x199F, 0x4946,
-            0xB3, 0x31, 0x79, 0x59, 0x9F, 0xB9, 0x8D, 0xE7
-        },
+        iid: IID_IDXGISwapChain2,
         vtable: IDXGISwapChain2Vtbl,
         fn set_source_size(
             width: UINT,
@@ -43,10 +49,7 @@ com_interface! {
 
 com_interface! {
     interface IDXGIOutput2: IDXGIOutput1, IDXGIOutput, IDXGIObject, IUnknown {
-        iid: IID_IDXGIOUTPUT2 {
-            0x595E39D1, 0x2724, 0x4663,
-            0x99, 0xB1, 0xDA, 0x96, 0x9D, 0xE2, 0x83, 0x64
-        },
+        iid: IID_IDXGIOutput2,
         vtable: IDXGIOutput2Vtbl,
         fn supports_overlays() -> BOOL;
     }
@@ -55,10 +58,7 @@ com_interface! {
 com_interface! {
     interface IDXGIFactory3: IDXGIFactory2, IDXGIFactory1, IDXGIFactory,
                              IDXGIObject, IUnknown {
-        iid: IID_IDXGIFACTORY3 {
-            0x25483823, 0xCD46, 0x4C7D,
-            0x86, 0xCA, 0x47, 0xAA, 0x95, 0xB8, 0x37, 0xBD
-        },
+        iid: IID_IDXGIFactory3,
         vtable: IDXGIFactory3Vtbl,
         fn get_creation_flags() -> CreateFactoryFlags;
     }
@@ -66,10 +66,7 @@ com_interface! {
 
 com_interface! {
     interface IDXGIDecodeSwapChain: IUnknown {
-        iid: IID_IDXGIDECODESWAPCHAIN {
-            0x2633066B, 0x4514, 0x4C7A,
-            0x8F, 0xD8, 0x12, 0xEA, 0x98, 0x05, 0x9D, 0x18
-        },
+        iid: IID_IDXGIDecodeSwapChain,
         vtable: IDXGIDecodeSwapChainVtbl,
         fn present_buffer(
             buffer_to_present: UINT,
@@ -88,10 +85,7 @@ com_interface! {
 
 com_interface! {
     interface IDXGIFactoryMedia: IUnknown {
-        iid: IID_IDXGIFACTORYMEDIA {
-            0x41E7D1F2, 0xA591, 0x4F7B,
-            0xA2, 0xE5, 0xFA, 0x9C, 0x84, 0x3E, 0x1C, 0x12
-        },
+        iid: IID_IDXGIFactoryMedia,
         vtable: IDXGIFactoryMediaVtbl,
         fn create_swap_chain_for_composition_surface_handle(
             device: *const IUnknown,
@@ -111,10 +105,7 @@ com_interface! {
 
 com_interface! {
     interface IDXGISwapChainMedia: IUnknown {
-        iid: IID_IDXGISWAPCHAINMEDIA {
-            0xDD95B90B, 0xF05F, 0x4F6A,
-            0xBD, 0x65, 0x25, 0xBF, 0xB2, 0x64, 0xBD, 0x84
-        },
+        iid: IID_IDXGISwapChainMedia,
         vtable: IDXGISwapChainMediaVtbl,
         fn get_frame_statistics_media(
             stats: *mut FrameStatisticsMedia) -> HRESULT;
@@ -129,10 +120,7 @@ com_interface! {
 com_interface! {
     interface IDXGIOutput3: IDXGIOutput2, IDXGIOutput1, IDXGIOutput,
                             IDXGIObject, IUnknown {
-        iid: IID_IDXGIOUTPUT3 {
-            0x8A6BB301, 0x7E7E, 0x41F4,
-            0xA8, 0xE0, 0x5B, 0x32, 0xF7, 0xF9, 0x9B, 0x18
-        },
+        iid: IID_IDXGIOutput3,
         vtable: IDXGIOutput3Vtbl,
         fn check_overlay_support(
             format: Format,
