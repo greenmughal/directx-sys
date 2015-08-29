@@ -11,14 +11,11 @@ use super::structs::*;
 extern {
     static IID_IDXGIAdapter: IID;
     static IID_IDXGIAdapter1: IID;
-    static IID_IDXGIDebug: IID;
-    static IID_IDXGIDebug1: IID;
     static IID_IDXGIDevice: IID;
     static IID_IDXGIDevice1: IID;
     static IID_IDXGIDeviceSubObject: IID;
     static IID_IDXGIFactory: IID;
     static IID_IDXGIFactory1: IID;
-    static IID_IDXGIInfoQueue: IID;
     static IID_IDXGIKeyedMutex: IID;
     static IID_IDXGIObject: IID;
     static IID_IDXGIOutput: IID;
@@ -233,9 +230,11 @@ com_interface! {
     }
 }
 
+iid!(IID_IDXGIINFOQUEUE =
+    0xD67441C7, 0x672A, 0x476f, 0x9E, 0x82, 0xCD, 0x55, 0xB4, 0x49, 0x49, 0xCE);
 com_interface! {
     interface IDXGIInfoQueue: IUnknown {
-        iid: IID_IDXGIInfoQueue,
+        iid: IID_IDXGIINFOQUEUE,
         vtable: IDXGIInfoQueueVtbl,
         fn set_message_count_limit(
             producer: GUID,
@@ -323,9 +322,11 @@ com_interface! {
     }
 }
 
+iid!(IID_IDXGIDEBUG =
+    0x119E7452, 0xDE9E, 0x40fe, 0x88, 0x06, 0x88, 0xF9, 0x0C, 0x12, 0xB4, 0x41);
 com_interface! {
     interface IDXGIDebug: IUnknown {
-        iid: IID_IDXGIDebug,
+        iid: IID_IDXGIDEBUG,
         vtable: IDXGIDebugVtbl,
         fn report_live_objects(
             api_id: GUID,
@@ -333,9 +334,11 @@ com_interface! {
     }
 }
 
+iid!(IID_IDXGIDEBUG1 =
+    0xc5a05f0c, 0x16f2, 0x4adf, 0x9f, 0x4d, 0xa8, 0xc4, 0xd5, 0x8a, 0xc5, 0x50);
 com_interface! {
     interface IDXGIDebug1: IDXGIDebug, IUnknown {
-        iid: IID_IDXGIDebug1,
+        iid: IID_IDXGIDEBUG1,
         vtable: IDXGIDebug1Vtbl,
         fn enable_leak_tracking_for_thread() -> ();
         fn disable_leak_tracking_for_thread() -> ();
