@@ -118,7 +118,10 @@ pub enum Format {
     IA44 = 112,
     P8 = 113,
     A8P8 = 114,
-    B4G4R4A4Unorm = 115
+    B4G4R4A4Unorm = 115,
+    #[cfg(feature = "dxgi1_4")] P208 = 130,
+    #[cfg(feature = "dxgi1_4")] V208 = 131,
+    #[cfg(feature = "dxgi1_4")] V408 = 132,
 }
 
 impl Default for Format {
@@ -234,7 +237,8 @@ impl Default for Residency {
 pub enum SwapEffect {
     Discard = 0,
     Sequential = 1,
-    FlipSequential = 3
+    FlipSequential = 3,
+    #[cfg(feature = "dxgi1_4")] FlipDiscard = 4,
 }
 
 impl Default for SwapEffect {
@@ -253,7 +257,9 @@ bitflags! {
         const DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT = 64,
         const DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER = 128,
         const DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO = 256,
-        const DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO = 512
+        const DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO = 512,
+        #[cfg(feature = "dxgi1_4")]
+        const DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED = 1024,
     }
 }
 

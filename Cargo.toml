@@ -22,6 +22,7 @@ user32-sys = "*"
 [features]
 default = ["dxgi1_3", "d3d11", "d2d", "dwrite"]
 d3d11 = ["dxgi"]
+dxgi1_4 = ["dxgi1_3"]
 dxgi1_3 = ["dxgi1_2"]
 dxgi1_2 = ["dxgi"]
 dxgi = []
