@@ -171,14 +171,13 @@ fn check_dxgi1_2_struct_sizes() {
 
     if cfg!(target_arch = "x86_64") {
         assert_eq!(size_of::<AdapterDesc2>(), 320);
-        assert_eq!(size_of::<ModeDesc1>(), 32);
         assert_eq!(size_of::<PresentParameters>(), 32);
     } else {
         assert_eq!(size_of::<AdapterDesc2>(), 304);
-        assert_eq!(size_of::<ModeDesc1>(), 28);
         assert_eq!(size_of::<PresentParameters>(), 16);
     }
 
+    assert_eq!(size_of::<ModeDesc1>(), 32);
     assert_eq!(size_of::<OutDuplDesc>(), 36);
     assert_eq!(size_of::<OutDuplFrameInfo>(), 48);
     assert_eq!(size_of::<OutDuplMoveRect>(), 24);
