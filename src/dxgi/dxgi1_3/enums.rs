@@ -3,7 +3,7 @@ use winapi::UINT;
 bitflags! {
     #[repr(C)]
     flags CreateFactoryFlags: UINT {
-        const DXGI_CREATE_FACTORY_DEBUG = 0x1
+        const CREATE_FACTORY_DEBUG = 0x1
     }
 }
 
@@ -13,9 +13,9 @@ impl Default for CreateFactoryFlags {
 
 bitflags! {
     flags MultiPlaneOverlayYCbCrFlags: UINT {
-        const DXGI_MULTIPLANE_OVERLAY_YCBCR_FLAG_NOMINAL_RANGE = 0x1,
-        const DXGI_MULTIPLANE_OVERLAY_YCBCR_FLAG_BT709 = 0x2,
-        const DXGI_MULTIPLANE_OVERLAY_YCBCR_FLAG_XVYCC = 0x4
+        const MULTIPLANE_OVERLAY_YCBCR_FLAG_NOMINAL_RANGE = 0x1,
+        const MULTIPLANE_OVERLAY_YCBCR_FLAG_BT709 = 0x2,
+        const MULTIPLANE_OVERLAY_YCBCR_FLAG_XVYCC = 0x4
     }
 }
 
@@ -30,7 +30,8 @@ impl Default for MultiPlaneOverlayYCbCrFlags {
 pub enum FramePresentationMode {
     Composed = 0,
     Overlay = 1,
-    None = 2
+    None = 2,
+    #[cfg(feature = "dxgi1_4")] CompositionFailure = 4,
 }
 
 impl Default for FramePresentationMode {
@@ -39,8 +40,8 @@ impl Default for FramePresentationMode {
 
 bitflags! {
     flags OverlaySupportFlag: UINT {
-        const DXGI_OVERLAY_SUPPORT_FLAG_DIRECT = 0x1,
-        const DXGI_OVERLAY_SUPPORT_FLAG_SCALING = 0x2
+        const OVERLAY_SUPPORT_FLAG_DIRECT = 0x1,
+        const OVERLAY_SUPPORT_FLAG_SCALING = 0x2
     }
 }
 

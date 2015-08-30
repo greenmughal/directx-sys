@@ -19,17 +19,15 @@ pub enum ColorSpaceType {
 bitflags! {
     #[repr(C)]
     flags SwapChainColorSpaceSupportFlags: u32 {
-        const DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT
-            = 0x00000001,
-        const DXGI_SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT
-            = 0x00000002,
+        const SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT = 0x00000001,
+        const SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT = 0x00000002,
     }
 }
 
 bitflags! {
     #[repr(C)]
     flags OverlayColorSpaceSupportFlags: u32 {
-        const DXGI_OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT = 0x00000001,
+        const OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT = 0x00000001,
     }
 }
 

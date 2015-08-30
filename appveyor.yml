@@ -33,6 +33,7 @@ test_script:
   - cargo test -v
   - cargo test -v --no-default-features
   - cargo test -v --no-default-features --features="d3d11"
+  - cargo test -v --no-default-features --features="dxgi1_4"
   - cargo test -v --no-default-features --features="dxgi1_3"
   - cargo test -v --no-default-features --features="dxgi1_2"
   - cargo test -v --no-default-features --features="dxgi"

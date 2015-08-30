@@ -249,16 +249,16 @@ impl Default for Usage {
 bitflags! {
     #[repr(C)]
     flags BindFlag: UINT {
-        const D3D11_BIND_VERTEX_BUFFER = 0x00000001,
-        const D3D11_BIND_INDEX_BUFFER = 0x00000002,
-        const D3D11_BIND_CONSTANT_BUFFER = 0x00000004,
-        const D3D11_BIND_SHADER_RESOURCE = 0x00000008,
-        const D3D11_BIND_STREAM_OUTPUT = 0x00000010,
-        const D3D11_BIND_RENDER_TARGET = 0x00000020,
-        const D3D11_BIND_DEPTH_STENCIL = 0x00000040,
-        const D3D11_BIND_UNORDERED_ACCESS = 0x00000080,
-        const D3D11_BIND_DECODER = 0x00000200,
-        const D3D11_BIND_VIDEO_ENCODER = 0x00000400
+        const BIND_VERTEX_BUFFER = 0x00000001,
+        const BIND_INDEX_BUFFER = 0x00000002,
+        const BIND_CONSTANT_BUFFER = 0x00000004,
+        const BIND_SHADER_RESOURCE = 0x00000008,
+        const BIND_STREAM_OUTPUT = 0x00000010,
+        const BIND_RENDER_TARGET = 0x00000020,
+        const BIND_DEPTH_STENCIL = 0x00000040,
+        const BIND_UNORDERED_ACCESS = 0x00000080,
+        const BIND_DECODER = 0x00000200,
+        const BIND_VIDEO_ENCODER = 0x00000400
     }
 }
 
@@ -269,8 +269,8 @@ impl Default for BindFlag {
 bitflags! {
     #[repr(C)]
     flags CPUAccessFlag: UINT {
-        const D3D11_CPU_ACCESS_WRITE = 0x00010000,
-        const D3D11_CPU_ACCESS_READ = 0x00020000
+        const CPU_ACCESS_WRITE = 0x00010000,
+        const CPU_ACCESS_READ = 0x00020000
     }
 }
 
@@ -281,22 +281,22 @@ impl Default for CPUAccessFlag {
 bitflags! {
     #[repr(C)]
     flags ResourceMiscFlag: UINT {
-        const D3D11_RESOURCE_MISC_GENERATE_MIPS = 0x00000001,
-        const D3D11_RESOURCE_MISC_SHARED = 0x00000002,
-        const D3D11_RESOURCE_MISC_TEXTURECUBE = 0x00000004,
-        const D3D11_RESOURCE_MISC_DRAWINDIRECT_ARGS = 0x00000010,
-        const D3D11_RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS = 0x00000020,
-        const D3D11_RESOURCE_MISC_BUFFER_STRUCTURED = 0x00000040,
-        const D3D11_RESOURCE_MISC_RESOURCE_CLAMP = 0x00000080,
-        const D3D11_RESOURCE_MISC_SHARED_KEYEDMUTEX = 0x00000100,
-        const D3D11_RESOURCE_MISC_GDI_COMPATIBLE = 0x00000200,
-        const D3D11_RESOURCE_MISC_SHARED_NTHANDLE = 0x00000800,
-        const D3D11_RESOURCE_MISC_RESTRICTED_CONTENT = 0x00001000,
-        const D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE = 0x00002000,
-        const D3D11_RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER = 0x00004000,
-        const D3D11_RESOURCE_MISC_GUARDED = 0x00008000,
-        const D3D11_RESOURCE_MISC_TILE_POOL = 0x00020000,
-        const D3D11_RESOURCE_MISC_TILED = 0x00040000
+        const RESOURCE_MISC_GENERATE_MIPS = 0x00000001,
+        const RESOURCE_MISC_SHARED = 0x00000002,
+        const RESOURCE_MISC_TEXTURECUBE = 0x00000004,
+        const RESOURCE_MISC_DRAWINDIRECT_ARGS = 0x00000010,
+        const RESOURCE_MISC_BUFFER_ALLOW_RAW_VIEWS = 0x00000020,
+        const RESOURCE_MISC_BUFFER_STRUCTURED = 0x00000040,
+        const RESOURCE_MISC_RESOURCE_CLAMP = 0x00000080,
+        const RESOURCE_MISC_SHARED_KEYEDMUTEX = 0x00000100,
+        const RESOURCE_MISC_GDI_COMPATIBLE = 0x00000200,
+        const RESOURCE_MISC_SHARED_NTHANDLE = 0x00000800,
+        const RESOURCE_MISC_RESTRICTED_CONTENT = 0x00001000,
+        const RESOURCE_MISC_RESTRICT_SHARED_RESOURCE = 0x00002000,
+        const RESOURCE_MISC_RESTRICT_SHARED_RESOURCE_DRIVER = 0x00004000,
+        const RESOURCE_MISC_GUARDED = 0x00008000,
+        const RESOURCE_MISC_TILE_POOL = 0x00020000,
+        const RESOURCE_MISC_TILED = 0x00040000,
     }
 }
 
@@ -317,7 +317,7 @@ pub enum Map {
 bitflags! {
     #[repr(C)]
     flags MapFlag: UINT {
-        const D3D11_MAP_FLAG_DO_NOT_WAIT = 0x00100000
+        const MAP_FLAG_DO_NOT_WAIT = 0x00100000
     }
 }
 
@@ -328,7 +328,7 @@ impl Default for MapFlag {
 bitflags! {
     #[repr(C)]
     flags RaiseFlag: UINT {
-        const D3D11_RAISE_FLAG_DRIVER_INTERNAL_ERROR = 0x1
+        const RAISE_FLAG_DRIVER_INTERNAL_ERROR = 0x1
     }
 }
 
@@ -339,8 +339,8 @@ impl Default for RaiseFlag {
 bitflags! {
     #[repr(C)]
     flags ClearFlag: UINT {
-        const D3D11_CLEAR_DEPTH = 0x01,
-        const D3D11_CLEAR_STENCIL = 0x02
+        const CLEAR_DEPTH = 0x01,
+        const CLEAR_STENCIL = 0x02
     }
 }
 
@@ -370,8 +370,8 @@ impl Default for ComparisonFunc {
 bitflags! {
     #[repr(C)]
     flags DepthWriteMask: UINT {
-        const D3D11_DEPTH_WRITE_MASK_ZERO = 0,
-        const D3D11_DEPTH_WRITE_MASK_ALL = 1
+        const DEPTH_WRITE_MASK_ZERO = 0,
+        const DEPTH_WRITE_MASK_ALL = 1
     }
 }
 
@@ -431,10 +431,10 @@ pub enum BlendOp {
 bitflags! {
     #[repr(C)]
     flags ColorWriteEnable: UINT {
-        const D3D11_COLOR_WRITE_ENABLE_RED = 1,
-        const D3D11_COLOR_WRITE_ENABLE_GREEN = 2,
-        const D3D11_COLOR_WRITE_ENABLE_BLUE = 4,
-        const D3D11_COLOR_WRITE_ENABLE_ALPHA = 8
+        const COLOR_WRITE_ENABLE_RED = 1,
+        const COLOR_WRITE_ENABLE_GREEN = 2,
+        const COLOR_WRITE_ENABLE_BLUE = 4,
+        const COLOR_WRITE_ENABLE_ALPHA = 8
     }
 }
 
@@ -456,7 +456,7 @@ pub enum TextureCubeFace {
 bitflags! {
     #[repr(C)]
     flags BufferExSRVFlag: UINT {
-        const D3D11_BUFFEREX_SRV_FLAG_RAW = 0x00000001
+        const BUFFEREX_SRV_FLAG_RAW = 0x00000001
     }
 }
 
@@ -467,8 +467,8 @@ impl Default for BufferExSRVFlag {
 bitflags! {
     #[repr(C)]
     flags DSVFlag: UINT {
-        const D3D11_DSV_READ_ONLY_DEPTH = 0x1,
-        const D3D11_DSV_READ_ONLY_STENCIL = 0x2
+        const DSV_READ_ONLY_DEPTH = 0x1,
+        const DSV_READ_ONLY_STENCIL = 0x2
     }
 }
 
@@ -479,9 +479,9 @@ impl Default for DSVFlag {
 bitflags! {
     #[repr(C)]
     flags BufferUAVFlag: UINT {
-        const D3D11_BUFFER_UAV_FLAG_RAW = 0x00000001,
-        const D3D11_BUFFER_UAV_FLAG_APPEND = 0x00000002,
-        const D3D11_BUFFER_UAV_FLAG_COUNTER = 0x00000004
+        const BUFFER_UAV_FLAG_RAW = 0x00000001,
+        const BUFFER_UAV_FLAG_APPEND = 0x00000002,
+        const BUFFER_UAV_FLAG_COUNTER = 0x00000004
     }
 }
 
@@ -586,37 +586,37 @@ pub enum TextureAddressMode {
 bitflags! {
     #[repr(C)]
     flags FormatSupport: UINT {
-        const D3D11_FORMAT_SUPPORT_BUFFER = 0x00000001,
-        const D3D11_FORMAT_SUPPORT_IA_VERTEX_BUFFER = 0x00000002,
-        const D3D11_FORMAT_SUPPORT_IA_INDEX_BUFFER = 0x00000004,
-        const D3D11_FORMAT_SUPPORT_SO_BUFFER = 0x00000008,
-        const D3D11_FORMAT_SUPPORT_TEXTURE1D = 0x00000010,
-        const D3D11_FORMAT_SUPPORT_TEXTURE2D = 0x00000020,
-        const D3D11_FORMAT_SUPPORT_TEXTURE3D = 0x00000040,
-        const D3D11_FORMAT_SUPPORT_TEXTURECUBE = 0x00000080,
-        const D3D11_FORMAT_SUPPORT_SHADER_LOAD = 0x00000100,
-        const D3D11_FORMAT_SUPPORT_SHADER_SAMPLE = 0x00000200,
-        const D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON = 0x00000400,
-        const D3D11_FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT = 0x00000800,
-        const D3D11_FORMAT_SUPPORT_MIP = 0x00001000,
-        const D3D11_FORMAT_SUPPORT_MIP_AUTOGEN = 0x00002000,
-        const D3D11_FORMAT_SUPPORT_RENDER_TARGET = 0x00004000,
-        const D3D11_FORMAT_SUPPORT_BLENDABLE = 0x00008000,
-        const D3D11_FORMAT_SUPPORT_DEPTH_STENCIL = 0x00010000,
-        const D3D11_FORMAT_SUPPORT_CPU_LOCKABLE = 0x00020000,
-        const D3D11_FORMAT_SUPPORT_MULTISAMPLE_RESOLVE = 0x00040000,
-        const D3D11_FORMAT_SUPPORT_DISPLAY = 0x00080000,
-        const D3D11_FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT = 0x00100000,
-        const D3D11_FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET = 0x00200000,
-        const D3D11_FORMAT_SUPPORT_MULTISAMPLE_LOAD = 0x00400000,
-        const D3D11_FORMAT_SUPPORT_SHADER_GATHER = 0x00800000,
-        const D3D11_FORMAT_SUPPORT_BACK_BUFFER_CAST = 0x01000000,
-        const D3D11_FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW = 0x02000000,
-        const D3D11_FORMAT_SUPPORT_SHADER_GATHER_COMPARISON = 0x04000000,
-        const D3D11_FORMAT_SUPPORT_DECODER_OUTPUT = 0x08000000,
-        const D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT = 0x10000000,
-        const D3D11_FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT = 0x20000000,
-        const D3D11_FORMAT_SUPPORT_VIDEO_ENCODER = 0x40000000
+        const FORMAT_SUPPORT_BUFFER = 0x00000001,
+        const FORMAT_SUPPORT_IA_VERTEX_BUFFER = 0x00000002,
+        const FORMAT_SUPPORT_IA_INDEX_BUFFER = 0x00000004,
+        const FORMAT_SUPPORT_SO_BUFFER = 0x00000008,
+        const FORMAT_SUPPORT_TEXTURE1D = 0x00000010,
+        const FORMAT_SUPPORT_TEXTURE2D = 0x00000020,
+        const FORMAT_SUPPORT_TEXTURE3D = 0x00000040,
+        const FORMAT_SUPPORT_TEXTURECUBE = 0x00000080,
+        const FORMAT_SUPPORT_SHADER_LOAD = 0x00000100,
+        const FORMAT_SUPPORT_SHADER_SAMPLE = 0x00000200,
+        const FORMAT_SUPPORT_SHADER_SAMPLE_COMPARISON = 0x00000400,
+        const FORMAT_SUPPORT_SHADER_SAMPLE_MONO_TEXT = 0x00000800,
+        const FORMAT_SUPPORT_MIP = 0x00001000,
+        const FORMAT_SUPPORT_MIP_AUTOGEN = 0x00002000,
+        const FORMAT_SUPPORT_RENDER_TARGET = 0x00004000,
+        const FORMAT_SUPPORT_BLENDABLE = 0x00008000,
+        const FORMAT_SUPPORT_DEPTH_STENCIL = 0x00010000,
+        const FORMAT_SUPPORT_CPU_LOCKABLE = 0x00020000,
+        const FORMAT_SUPPORT_MULTISAMPLE_RESOLVE = 0x00040000,
+        const FORMAT_SUPPORT_DISPLAY = 0x00080000,
+        const FORMAT_SUPPORT_CAST_WITHIN_BIT_LAYOUT = 0x00100000,
+        const FORMAT_SUPPORT_MULTISAMPLE_RENDERTARGET = 0x00200000,
+        const FORMAT_SUPPORT_MULTISAMPLE_LOAD = 0x00400000,
+        const FORMAT_SUPPORT_SHADER_GATHER = 0x00800000,
+        const FORMAT_SUPPORT_BACK_BUFFER_CAST = 0x01000000,
+        const FORMAT_SUPPORT_TYPED_UNORDERED_ACCESS_VIEW = 0x02000000,
+        const FORMAT_SUPPORT_SHADER_GATHER_COMPARISON = 0x04000000,
+        const FORMAT_SUPPORT_DECODER_OUTPUT = 0x08000000,
+        const FORMAT_SUPPORT_VIDEO_PROCESSOR_OUTPUT = 0x10000000,
+        const FORMAT_SUPPORT_VIDEO_PROCESSOR_INPUT = 0x20000000,
+        const FORMAT_SUPPORT_VIDEO_ENCODER = 0x40000000
     }
 }
 
@@ -627,18 +627,18 @@ impl Default for FormatSupport {
 bitflags! {
     #[repr(C)]
     flags FormatSupport2: UINT {
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_ADD = 0x00000001,
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS = 0x00000002,
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE
+        const FORMAT_SUPPORT2_UAV_ATOMIC_ADD = 0x00000001,
+        const FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS = 0x00000002,
+        const FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE
             = 0x00000004,
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE = 0x00000008,
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX = 0x00000010,
-        const D3D11_FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX = 0x00000020,
-        const D3D11_FORMAT_SUPPORT2_UAV_TYPED_LOAD = 0x00000040,
-        const D3D11_FORMAT_SUPPORT2_UAV_TYPED_STORE = 0x00000080,
-        const D3D11_FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP = 0x00000100,
-        const D3D11_FORMAT_SUPPORT2_TILED = 0x00000200,
-        const D3D11_FORMAT_SUPPORT2_SHAREABLE = 0x00000400
+        const FORMAT_SUPPORT2_UAV_ATOMIC_EXCHANGE = 0x00000008,
+        const FORMAT_SUPPORT2_UAV_ATOMIC_SIGNED_MIN_OR_MAX = 0x00000010,
+        const FORMAT_SUPPORT2_UAV_ATOMIC_UNSIGNED_MIN_OR_MAX = 0x00000020,
+        const FORMAT_SUPPORT2_UAV_TYPED_LOAD = 0x00000040,
+        const FORMAT_SUPPORT2_UAV_TYPED_STORE = 0x00000080,
+        const FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP = 0x00000100,
+        const FORMAT_SUPPORT2_TILED = 0x00000200,
+        const FORMAT_SUPPORT2_SHAREABLE = 0x00000400,
     }
 }
 
@@ -649,7 +649,7 @@ impl Default for FormatSupport2 {
 bitflags! {
     #[repr(C)]
     flags AsyncGetDataFlag: UINT {
-        const D3D11_ASYNC_GETDATA_DONOTFLUSH = 0x1
+        const ASYNC_GETDATA_DONOTFLUSH = 0x1
     }
 }
 
@@ -685,7 +685,7 @@ impl Default for Query {
 bitflags! {
     #[repr(C)]
     flags QueryMiscFlag: UINT {
-        const D3D11_QUERY_MISC_PREDICATEHINT = 0x1
+        const QUERY_MISC_PREDICATEHINT = 0x1
     }
 }
 
@@ -760,8 +760,8 @@ pub enum Feature {
 bitflags! {
     #[repr(C)]
     flags ShaderMinPrecisionSupport: UINT {
-        const D3D11_SHADER_MIN_PRECISION_10_BIT = 0x1,
-        const D3D11_SHADER_MIN_PRECISION_16_BIT = 0x2
+        const SHADER_MIN_PRECISION_10_BIT = 0x1,
+        const SHADER_MIN_PRECISION_16_BIT = 0x2
     }
 }
 
@@ -783,19 +783,280 @@ impl Default for TiledResourcesTier {
     fn default() -> TiledResourcesTier { TiledResourcesTier::NotSupported }
 }
 
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoDecoderBufferType {
+    PictureParameters,
+    MacroBlockControl,
+    ResidualDifference,
+    DeblockingControl,
+    InverseQuantizationMatrix,
+    SliceControl,
+    Bitstream,
+    MotionVector,
+    FilmGrain,
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorFormatSupport: u32 {
+        const VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT = 0x00000001,
+        const VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT = 0x00000002,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorDeviceCaps: u32 {
+        const VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE            = 0x1,
+        const VIDEO_PROCESSOR_DEVICE_CAPS_XVYCC                   = 0x2,
+        const VIDEO_PROCESSOR_DEVICE_CAPS_RGB_RANGE_CONVERSION    = 0x4,
+        const VIDEO_PROCESSOR_DEVICE_CAPS_YCBCR_MATRIX_CONVERSION = 0x8,
+        const VIDEO_PROCESSOR_DEVICE_CAPS_NOMINAL_RANGE           = 0x10,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorFeatureCaps: u32 {
+        const VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL             = 0x1,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_CONSTRICTION           = 0x2,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_LUMA_KEY               = 0x4,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_PALETTE          = 0x8,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_LEGACY                 = 0x10,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_STEREO                 = 0x20,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_ROTATION               = 0x40,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_STREAM           = 0x80,
+        const VIDEO_PROCESSOR_FEATURE_CAPS_PIXEL_ASPECT_RATIO     = 0x100,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorFilterCaps: u32 {
+        const VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS         = 0x1,
+        const VIDEO_PROCESSOR_FILTER_CAPS_CONTRAST           = 0x2,
+        const VIDEO_PROCESSOR_FILTER_CAPS_HUE                = 0x4,
+        const VIDEO_PROCESSOR_FILTER_CAPS_SATURATION         = 0x8,
+        const VIDEO_PROCESSOR_FILTER_CAPS_NOISE_REDUCTION    = 0x10,
+        const VIDEO_PROCESSOR_FILTER_CAPS_EDGE_ENHANCEMENT   = 0x20,
+        const VIDEO_PROCESSOR_FILTER_CAPS_ANAMORPHIC_SCALING = 0x40,
+        const VIDEO_PROCESSOR_FILTER_CAPS_STEREO_ADJUSTMENT  = 0x80,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorFormatCaps: u32 {
+        const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED     = 0x1,
+        const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_PROCAMP        = 0x2,
+        const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_LUMA_KEY       = 0x4,
+        const VIDEO_PROCESSOR_FORMAT_CAPS_PALETTE_INTERLACED = 0x8,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorAutoStreamCaps: u32 {
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE              = 0x01,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DERINGING            = 0x02,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_EDGE_ENHANCEMENT     = 0x04,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_COLOR_CORRECTION     = 0x08,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_FLESH_TONE_MAPPING   = 0x10,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_IMAGE_STABILIZATION  = 0x20,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_SUPER_RESOLUTION     = 0x40,
+        const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_ANAMORPHIC_SCALING   = 0x80,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags VideoProcessorStereoCaps: u32 {
+        const VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET         = 0x01,
+        const VIDEO_PROCESSOR_STEREO_CAPS_ROW_INTERLEAVED     = 0x02,
+        const VIDEO_PROCESSOR_STEREO_CAPS_COLUMN_INTERLEAVED  = 0x04,
+        const VIDEO_PROCESSOR_STEREO_CAPS_CHECKERBOARD        = 0x08,
+        const VIDEO_PROCESSOR_STEREO_CAPS_FLIP_MODE           = 0x10,
+    }
+}
+
+bitflags! {
+    #[repr(C)]
+    flags ContentProtectionCaps: u32 {
+        const CONTENT_PROTECTION_CAPS_SOFTWARE = 0x00000001,
+        const CONTENT_PROTECTION_CAPS_HARDWARE = 0x00000002,
+        const CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON = 0x00000004,
+        const CONTENT_PROTECTION_CAPS_PARTIAL_DECRYPTION = 0x00000008,
+        const CONTENT_PROTECTION_CAPS_CONTENT_KEY = 0x00000010,
+        const CONTENT_PROTECTION_CAPS_FRESHEN_SESSION_KEY = 0x00000020,
+        const CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK = 0x00000040,
+        const CONTENT_PROTECTION_CAPS_ENCRYPTED_READ_BACK_KEY = 0x00000080,
+        const CONTENT_PROTECTION_CAPS_SEQUENTIAL_CTR_IV = 0x00000100,
+        const CONTENT_PROTECTION_CAPS_ENCRYPT_SLICEDATA_ONLY = 0x00000200,
+        const CONTENT_PROTECTION_CAPS_DECRYPTION_BLT = 0x00000400,
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorFilter {
+    Brightness,
+    Contrast,
+    Hue,
+    Saturation,
+    NoiseReduction,
+    EdgeEnhancement,
+    AnamorphicScaling,
+    StereoAdjustment,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoFrameFormat {
+    Progressive,
+    InterlacedTopFieldFirst,
+    InterlacedBottomFieldFirst,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoUsage {
+    PlaybackNormal,
+    OptimalSpeed,
+    OptimalQuality,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorNominalRange {
+    Undefined,
+    Range16to235,
+    Range0to255,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorAlphaFillMode {
+    Opaque,
+    Background,
+    Destination,
+    SourceStream,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorOutputRate {
+    Normal,
+    Half,
+    Custom,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorStereoFormat {
+    Mono,
+    Horizontal,
+    Vertical,
+    Separate,
+    MonoOffset,
+    RowInterleaved,
+    ColumnInterleaved,
+    Checkerboard,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorStereoFlipMode {
+    None,
+    Frame0,
+    Frame1,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VideoProcessorRotation {
+    Identity,
+    Rot90,
+    Rot180,
+    Rot270,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum AuthenticatedChannelType {
+    D3D11 = 1,
+    DriverSoftware,
+    DriverHardware,
+}
+
+bitflags! {
+    #[repr(C)]
+    flags AuthenticatedProtectionFlags: u32 {
+        const AUTHENTICATED_PROTECTION_FLAG_ENABLED                        = 0x1,
+        const AUTHENTICATED_PROTECTION_FLAG_OVERLAY_OR_FULLSCREEN_REQUIRED = 0x2,
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum AuthenticatedProcessIdentifierType {
+    Unknown,
+    DWM,
+    Handle,
+}
+
+bitflags! {
+    #[repr(C)]
+    flags BusType: u32 {
+        const BUS_TYPE_OTHER                                            = 0x00000000,
+        const BUS_TYPE_PCI                                              = 0x00000001,
+        const BUS_TYPE_PCIX                                             = 0x00000002,
+        const BUS_TYPE_PCIEXPRESS                                       = 0x00000003,
+        const BUS_TYPE_AGP                                              = 0x00000004,
+        const BUS_IMPL_MODIFIER_INSIDE_OF_CHIPSET                       = 0x00010000,
+        const BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_CHIP          = 0x00020000,
+        const BUS_IMPL_MODIFIER_TRACKS_ON_MOTHER_BOARD_TO_SOCKET        = 0x00030000,
+        const BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR                = 0x00040000,
+        const BUS_IMPL_MODIFIER_DAUGHTER_BOARD_CONNECTOR_INSIDE_OF_NUAE = 0x00050000,
+        const BUS_IMPL_MODIFIER_NON_STANDARD                            = 0x80000000,
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VDOVDimension {
+    Unknown,
+    Texture2D,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VPIVDimension {
+    Unknown,
+    Texture2D,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum VPOVDimension {
+    Unknown,
+    Texture2D,
+    Texture2DArray,
+}
+
 bitflags! {
     #[repr(C)]
     flags CreateDeviceFlag: UINT {
-        const D3D11_CREATE_DEVICE_SINGLETHREADED = 0x1,
-        const D3D11_CREATE_DEVICE_DEBUG = 0x2,
-        const D3D11_CREATE_DEVICE_SWITCH_TO_REF = 0x4,
-        const D3D11_CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS
+        const CREATE_DEVICE_SINGLETHREADED = 0x1,
+        const CREATE_DEVICE_DEBUG = 0x2,
+        const CREATE_DEVICE_SWITCH_TO_REF = 0x4,
+        const CREATE_DEVICE_PREVENT_INTERNAL_THREADING_OPTIMIZATIONS
             = 0x8,
-        const D3D11_CREATE_DEVICE_BGRA_SUPPORT = 0x20,
-        const D3D11_CREATE_DEVICE_DEBUGGABLE = 0x40,
-        const D3D11_CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY
+        const CREATE_DEVICE_BGRA_SUPPORT = 0x20,
+        const CREATE_DEVICE_DEBUGGABLE = 0x40,
+        const CREATE_DEVICE_PREVENT_ALTERING_LAYER_SETTINGS_FROM_REGISTRY
             = 0x0080,
-        const D3D11_CREATE_DEVICE_DISABLE_GPU_TIMEOUT = 0x0100,
-        const D3D11_CREATE_DEVICE_VIDEO_SUPPORT = 0x0800
+        const CREATE_DEVICE_DISABLE_GPU_TIMEOUT = 0x0100,
+        const CREATE_DEVICE_VIDEO_SUPPORT = 0x0800
     }
 }

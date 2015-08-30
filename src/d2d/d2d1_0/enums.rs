@@ -107,8 +107,8 @@ impl Default for BitmapInterpolationMode {
 bitflags! {
     #[repr(C)]
     flags DrawTextOptions: UINT {
-        const D2D1_DRAW_TEXT_OPTIONS_NO_SNAP = 1,
-        const D2D1_DRAW_TEXT_OPTIONS_CLIP = 2
+        const DRAW_TEXT_OPTIONS_NO_SNAP = 1,
+        const DRAW_TEXT_OPTIONS_CLIP = 2
     }
 }
 
@@ -233,8 +233,8 @@ impl Default for FigureEnd {
 bitflags! {
     #[repr(C)]
     flags PathSegment: UINT {
-        const D2D1_PATH_SEGMENT_FORCE_UNSTROKED = 1,
-        const D2D1_PATH_SEGMENT_FORCE_ROUND_LINE_JOIN = 2
+        const PATH_SEGMENT_FORCE_UNSTROKED = 1,
+        const PATH_SEGMENT_FORCE_ROUND_LINE_JOIN = 2
     }
 }
 
@@ -267,7 +267,7 @@ impl Default for FillMode {
 bitflags! {
     #[repr(C)]
     flags LayerOptions: UINT {
-        const D2D1_LAYER_OPTIONS_INITIALIZE_FOR_CLEARTYPE = 1
+        const LAYER_OPTIONS_INITIALIZE_FOR_CLEARTYPE = 1
     }
 }
 
@@ -278,7 +278,7 @@ impl Default for LayerOptions {
 bitflags! {
     #[repr(C)]
     flags WindowState: UINT {
-        const D2D1_WINDOW_STATE_OCCLUDED = 1
+        const WINDOW_STATE_OCCLUDED = 1
     }
 }
 
@@ -313,8 +313,8 @@ impl Default for FeatureLevel {
 bitflags! {
     #[repr(C)]
     flags RenderTargetUsage: UINT {
-        const D2D1_RENDER_TARGET_USAGE_FORCE_BITMAP_REMOTING = 1,
-        const D2D1_RENDER_TARGET_USAGE_GDI_COMPATIBLE = 2
+        const RENDER_TARGET_USAGE_FORCE_BITMAP_REMOTING = 1,
+        const RENDER_TARGET_USAGE_GDI_COMPATIBLE = 2
     }
 }
 
@@ -325,8 +325,8 @@ impl Default for RenderTargetUsage {
 bitflags! {
     #[repr(C)]
     flags PresentOptions: UINT {
-        const D2D1_PRESENT_OPTIONS_RETAIN_CONTENTS = 1,
-        const D2D1_PRESENT_OPTIONS_IMMEDIATELY = 2
+        const PRESENT_OPTIONS_RETAIN_CONTENTS = 1,
+        const PRESENT_OPTIONS_IMMEDIATELY = 2
     }
 }
 
@@ -337,7 +337,7 @@ impl Default for PresentOptions {
 bitflags! {
     #[repr(C)]
     flags CompatibleRenderTargetOptions: UINT {
-        const D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_GDI_COMPATIBLE = 1
+        const COMPATIBLE_RENDER_TARGET_OPTIONS_GDI_COMPATIBLE = 1
     }
 }
 

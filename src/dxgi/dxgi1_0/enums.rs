@@ -183,13 +183,13 @@ impl Default for CPUAccessFlags {
 bitflags! {
     #[repr(C)]
     flags UsageFlags: UINT {
-        const DXGI_USAGE_SHADER_INPUT = 1,
-        const DXGI_USAGE_RENDER_TARGET_OUTPUT = 2,
-        const DXGI_USAGE_BACK_BUFFER = 4,
-        const DXGI_USAGE_SHARED = 8,
-        const DXGI_USAGE_READ_ONLY = 16,
-        const DXGI_USAGE_DISCARD_ON_PRESENT = 32,
-        const DXGI_USAGE_UNORDERED_ACCESS = 64
+        const USAGE_SHADER_INPUT = 1,
+        const USAGE_RENDER_TARGET_OUTPUT = 2,
+        const USAGE_BACK_BUFFER = 4,
+        const USAGE_SHARED = 8,
+        const USAGE_READ_ONLY = 16,
+        const USAGE_DISCARD_ON_PRESENT = 32,
+        const USAGE_UNORDERED_ACCESS = 64
     }
 }
 
@@ -248,18 +248,18 @@ impl Default for SwapEffect {
 bitflags! {
     #[repr(C)]
     flags SwapChainFlag: UINT {
-        const DXGI_SWAP_CHAIN_FLAG_NONPREROTATED = 1,
-        const DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH = 2,
-        const DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE = 4,
-        const DXGI_SWAP_CHAIN_FLAG_RESTRICTED_CONTENT = 8,
-        const DXGI_SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER = 16,
-        const DXGI_SWAP_CHAIN_FLAG_DISPLAY_ONLY = 32,
-        const DXGI_SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT = 64,
-        const DXGI_SWAP_CHAIN_FLAG_FOREGROUND_LAYER = 128,
-        const DXGI_SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO = 256,
-        const DXGI_SWAP_CHAIN_FLAG_YUV_VIDEO = 512,
+        const SWAP_CHAIN_FLAG_NONPREROTATED = 1,
+        const SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH = 2,
+        const SWAP_CHAIN_FLAG_GDI_COMPATIBLE = 4,
+        const SWAP_CHAIN_FLAG_RESTRICTED_CONTENT = 8,
+        const SWAP_CHAIN_FLAG_RESTRICT_SHARED_RESOURCE_DRIVER = 16,
+        const SWAP_CHAIN_FLAG_DISPLAY_ONLY = 32,
+        const SWAP_CHAIN_FLAG_FRAME_LATENCY_WAITABLE_OBJECT = 64,
+        const SWAP_CHAIN_FLAG_FOREGROUND_LAYER = 128,
+        const SWAP_CHAIN_FLAG_FULLSCREEN_VIDEO = 256,
+        const SWAP_CHAIN_FLAG_YUV_VIDEO = 512,
         #[cfg(feature = "dxgi1_4")]
-        const DXGI_SWAP_CHAIN_FLAG_HW_PROTECTED = 1024,
+        const SWAP_CHAIN_FLAG_HW_PROTECTED = 1024,
     }
 }
 
@@ -270,9 +270,9 @@ impl Default for SwapChainFlag {
 bitflags! {
     #[repr(C)]
     flags MapFlags: UINT {
-        const DXGI_MAP_READ = 1,
-        const DXGI_MAP_WRITE = 2,
-        const DXGI_MAP_DISCARD = 4
+        const MAP_READ = 1,
+        const MAP_WRITE = 2,
+        const MAP_DISCARD = 4
     }
 }
 
@@ -283,10 +283,10 @@ impl Default for MapFlags {
 bitflags! {
     #[repr(C)]
     flags DisplayModeFlag: UINT {
-        const DXGI_ENUM_MODES_INTERLACED = 1,
-        const DXGI_ENUM_MODES_SCALING = 2,
-        #[cfg(feature = "dxgi1_2")] const DXGI_ENUM_MODES_STEREO = 4,
-        #[cfg(feature = "dxgi1_2")] const DXGI_ENUM_MODES_DISABLED_STEREO = 4,
+        const ENUM_MODES_INTERLACED = 1,
+        const ENUM_MODES_SCALING = 2,
+        #[cfg(feature = "dxgi1_2")] const ENUM_MODES_STEREO = 4,
+        #[cfg(feature = "dxgi1_2")] const ENUM_MODES_DISABLED_STEREO = 4,
     }
 }
 
@@ -297,14 +297,14 @@ impl Default for DisplayModeFlag {
 bitflags! {
     #[repr(C)]
     flags PresentFlags: UINT {
-        const DXGI_PRESENT_TEST = 0x01,
-        const DXGI_PRESENT_DO_NOT_SEQUENCE = 0x02,
-        const DXGI_PRESENT_RESTART = 0x04,
-        const DXGI_PRESENT_DO_NOT_WAIT = 0x08,
-        const DXGI_PRESENT_STEREO_PREFER_RIGHT = 0x10,
-        const DXGI_PRESENT_STEREO_TEMPORARY_MONO = 0x20,
-        const DXGI_PRESENT_RESTRICT_TO_OUTPUT = 0x40,
-        const DXGI_PRESENT_USE_DURATION = 0x100
+        const PRESENT_TEST = 0x01,
+        const PRESENT_DO_NOT_SEQUENCE = 0x02,
+        const PRESENT_RESTART = 0x04,
+        const PRESENT_DO_NOT_WAIT = 0x08,
+        const PRESENT_STEREO_PREFER_RIGHT = 0x10,
+        const PRESENT_STEREO_TEMPORARY_MONO = 0x20,
+        const PRESENT_RESTRICT_TO_OUTPUT = 0x40,
+        const PRESENT_USE_DURATION = 0x100
     }
 }
 
@@ -315,9 +315,9 @@ impl Default for PresentFlags {
 bitflags! {
     #[repr(C)]
     flags WindowAssociationFlags: UINT {
-        const DXGI_MWA_NO_WINDOW_CHANGES = (1 << 0),
-        const DXGI_MWA_NO_ALT_ENTER = (1 << 1),
-        const DXGI_MWA_NO_PRINT_SCREEN = (1 << 2),
+        const MWA_NO_WINDOW_CHANGES = (1 << 0),
+        const MWA_NO_ALT_ENTER = (1 << 1),
+        const MWA_NO_PRINT_SCREEN = (1 << 2),
     }
 }
 
@@ -328,9 +328,9 @@ impl Default for WindowAssociationFlags {
 bitflags! {
     #[repr(C)]
     flags AdapterFlag: UINT {
-        const DXGI_ADAPTER_FLAG_NONE = 0,
-        const DXGI_ADAPTER_FLAG_REMOTE = 1,
-        const DXGI_ADAPTER_FLAG_SOFTWARE = 2
+        const ADAPTER_FLAG_NONE = 0,
+        const ADAPTER_FLAG_REMOTE = 1,
+        const ADAPTER_FLAG_SOFTWARE = 2
     }
 }
 
@@ -341,39 +341,20 @@ impl Default for AdapterFlag {
 bitflags! {
     #[repr(C)]
     flags DebugRLOFlags: UINT {
-        const DXGI_DEBUG_RLO_SUMMARY = 0x1,
-        const DXGI_DEBUG_RLO_DETAIL = 0x2,
-        const DXGI_DEBUG_RLO_ALL = 0x3
+        const DEBUG_RLO_SUMMARY = 0x1,
+        const DEBUG_RLO_DETAIL = 0x2,
+        const DEBUG_RLO_ALL = 0x3
     }
 }
 
-pub const DXGI_DEBUG_ALL: GUID = GUID {
-    Data1: 0xe48ae283,
-    Data2: 0xda80,
-    Data3: 0x490b,
-    Data4: [0x87, 0xe6, 0x43, 0xe9, 0xa9, 0xcf, 0xda, 0x8]
-};
-
-pub const DXGI_DEBUG_DX: GUID = GUID {
-    Data1: 0x35cdd7fc,
-    Data2: 0x13b2,
-    Data3: 0x421d,
-    Data4: [0xa5, 0xd7, 0x7e, 0x44, 0x51, 0x28, 0x7d, 0x64]
-};
-
-pub const DXGI_DEBUG_DXGI: GUID = GUID {
-    Data1: 0x25cddaa4,
-    Data2: 0xb1c6,
-    Data3: 0x47e1,
-    Data4: [0xac, 0x3e, 0x98, 0x87, 0x5b, 0x5a, 0x2e, 0x2a]
-};
-
-pub const DXGI_DEBUG_APP: GUID = GUID {
-    Data1: 0x6cd6e01,
-    Data2: 0x4219,
-    Data3: 0x4ebd,
-    Data4: [0x87, 0x9, 0x27, 0xed, 0x23, 0x36, 0xc, 0x62]
-};
+guid!(DEBUG_ALL =
+    0xe48ae283, 0xda80, 0x490b, 0x87, 0xe6, 0x43, 0xe9, 0xa9, 0xcf, 0xda, 0x08);
+guid!(DEBUG_DX =
+    0x35cdd7fc, 0x13b2, 0x421d, 0xa5, 0xd7, 0x7e, 0x44, 0x51, 0x28, 0x7d, 0x64);
+guid!(DEBUG_DXGI =
+    0x25cddaa4, 0xb1c6, 0x47e1, 0xac, 0x3e, 0x98, 0x87, 0x5b, 0x5a, 0x2e, 0x2a);
+guid!(DEBUG_APP =
+    0x06cd6e01, 0x4219, 0x4ebd, 0x87, 0x09, 0x27, 0xed, 0x23, 0x36, 0x0c, 0x62);
 
 #[repr(u32)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]

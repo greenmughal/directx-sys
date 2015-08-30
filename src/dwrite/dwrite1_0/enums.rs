@@ -37,8 +37,8 @@ pub enum FontFaceType {
 bitflags! {
     #[repr(C)]
     flags FontSimulations: UINT {
-        const DWRITE_FONT_SIMULATIONS_BOLD = 1,
-        const DWRITE_FONT_SIMULATIONS_OBLIQUE = 2
+        const FONT_SIMULATIONS_BOLD = 1,
+        const FONT_SIMULATIONS_OBLIQUE = 2
     }
 }
 
@@ -320,7 +320,7 @@ fn dwrite_test_font_feature_tag() {
 bitflags! {
     #[repr(C)]
     flags ScriptShapes: UINT {
-        const DWRITE_SCRIPT_SHAPES_NO_VISUAL = 1
+        const SCRIPT_SHAPES_NO_VISUAL = 1
     }
 }
 

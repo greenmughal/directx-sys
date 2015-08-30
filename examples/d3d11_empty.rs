@@ -81,7 +81,7 @@ fn main() {
     let mut dxgi_swapchain: ComPtr<dxgi::IDXGISwapChain> = ComPtr::new();
 
     let mut usage = dxgi::Usage::default();
-    usage.set_dxgi_usage(dxgi::DXGI_USAGE_RENDER_TARGET_OUTPUT);
+    usage.set_dxgi_usage(dxgi::USAGE_RENDER_TARGET_OUTPUT);
 
     let swapchain_desc = dxgi::SwapChainDesc {
         buffer_desc: dxgi::ModeDesc {
@@ -109,7 +109,7 @@ fn main() {
             ptr::null(),
             d3d11::DriverType::Hardware,
             ptr::null_mut(),
-            d3d11::D3D11_CREATE_DEVICE_DEBUG,
+            d3d11::CREATE_DEVICE_DEBUG,
             feature_levels.as_ptr(),
             feature_levels.len() as u32,
             d3d11::SDK_VERSION,

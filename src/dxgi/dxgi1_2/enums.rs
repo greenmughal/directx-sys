@@ -2,9 +2,9 @@ use winapi::UINT;
 
 bitflags! {
     flags OutDuplPointerShapeType: UINT {
-        const DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME = 0x1,
-        const DXGI_OUTDUPL_POINTER_SHAPE_TYPE_COLOR = 0x2,
-        const DXGI_OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR = 0x4
+        const OUTDUPL_POINTER_SHAPE_TYPE_MONOCHROME = 0x1,
+        const OUTDUPL_POINTER_SHAPE_TYPE_COLOR = 0x2,
+        const OUTDUPL_POINTER_SHAPE_TYPE_MASKED_COLOR = 0x4
     }
 }
 

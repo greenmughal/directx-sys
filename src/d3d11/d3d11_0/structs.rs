@@ -1,7 +1,8 @@
 use std::fmt;
 use std::os::raw::c_void;
 
-use winapi::{BOOL, BYTE, FALSE, FLOAT, INT, LPCSTR, TRUE, UINT, UINT8, UINT64};
+use winapi::{BOOL, BYTE, FALSE, FLOAT, GUID, HANDLE, HRESULT, INT, LPCSTR, TRUE,
+             UINT, UINT8, UINT64, ULONGLONG, USHORT};
 
 use dxgi;
 use super::enums::*;
@@ -101,7 +102,7 @@ impl Default for DepthStencilDesc {
     fn default() -> DepthStencilDesc {
         DepthStencilDesc {
             depth_enable: TRUE,
-            depth_write_mask: D3D11_DEPTH_WRITE_MASK_ALL,
+            depth_write_mask: DEPTH_WRITE_MASK_ALL,
             depth_func: ComparisonFunc::Less,
             stencil_enable: FALSE,
             stencil_read_mask: 0xFF,
@@ -1036,10 +1037,517 @@ pub struct FeatureDataD3D9Options1 {
         BOOL
 }
 
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct VideoDecoderDesc {
+    pub guid: GUID,
+    pub sample_width: UINT,
+    pub sample_height: UINT,
+    pub output_format: dxgi::Format,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct VideoDecoderConfig {
+    pub guid_config_bitstream_encryption: GUID,
+    pub guid_config_mb_control_encryption: GUID,
+    pub guid_config_resid_diff_encryption: GUID,
+    pub config_bitstream_raw: UINT,
+    pub config_mb_control_raster_order: UINT,
+    pub config_resid_diff_host: UINT,
+    pub config_spatial_resid8: UINT,
+    pub config_resid8_subtraction: UINT,
+    pub config_spatial_host_8_or_9_clipping: UINT,
+    pub config_spatial_resid_interleaved: UINT,
+    pub config_intra_resid_unsigned: UINT,
+    pub config_resid_diff_accelerator: UINT,
+    pub config_host_inverse_scan: UINT,
+    pub config_specific_idct: UINT,
+    pub config_4_grouped_coefs: UINT,
+    pub config_min_render_target_buff_count: USHORT,
+    pub config_decoder_specific: USHORT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct AesCtrIV {
+    pub iv: UINT64,
+    pub count: UINT64,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct EncryptedBlockInfo {
+    pub num_encrypted_bytes_at_beginning: UINT,
+    pub num_bytes_in_skip_pattern: UINT,
+    pub num_bytes_in_encrypt_pattern: UINT,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+#[allow(raw_pointer_derive)]
+pub struct VideoDecoderBufferDesc {
+    pub buffer_type: VideoDecoderBufferType,
+    pub buffer_index: UINT,
+    pub data_offset: UINT,
+    pub data_size: UINT,
+    pub first_mb_address: UINT,
+    pub num_mbs_in_buffer: UINT,
+    pub width: UINT,
+    pub height: UINT,
+    pub stride: UINT,
+    pub reserved_bits: UINT,
+    pub iv: *mut c_void,
+    pub iv_size: UINT,
+    pub partial_encryption: BOOL,
+    pub encrypted_block_info: EncryptedBlockInfo,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+#[allow(raw_pointer_derive)]
+pub struct VideoDecoderExtension {
+    pub function: UINT,
+    pub private_input_data: *mut c_void,
+    pub private_input_data_size: UINT,
+    pub private_output_data: *mut c_void,
+    pub private_output_data_size: UINT,
+    pub resource_count: UINT,
+    pub resource_list: *mut *mut super::ID3D11Resource,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoProcessorCaps {
+    pub device_caps: VideoProcessorDeviceCaps,
+    pub feature_caps: VideoProcessorFeatureCaps,
+    pub filter_caps: VideoProcessorFilterCaps,
+    pub input_format_caps: VideoProcessorFormatCaps,
+    pub auto_stream_caps: VideoProcessorAutoStreamCaps,
+    pub stereo_caps: VideoProcessorStereoCaps,
+    pub rate_conversion_caps_count: UINT,
+    pub max_input_streams: UINT,
+    pub max_stream_states: UINT,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoProcessorRateConversionCaps {
+    pub past_frames: UINT,
+    pub future_frames: UINT,
+    pub processor_caps: UINT,
+    pub itelecine_caps: UINT,
+    pub custom_rate_count: UINT,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoContentProtectionCaps {
+    pub caps: ContentProtectionCaps,
+    pub key_exchange_type_count: UINT,
+    pub block_alignment_size: UINT,
+    pub protected_memory_size: ULONGLONG,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoProcessorCustomRate {
+    pub custom_rate: dxgi::Rational,
+    pub output_frames: UINT,
+    pub input_interlaced: BOOL,
+    pub input_frames_or_fields: UINT,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoProcessorFilterRange {
+    pub minimum: i32,
+    pub maximum: i32,
+    pub default: i32,
+    pub multiplier: f32,
+}
+
+#[repr(C)]
+#[derive(Debug)]
+pub struct VideoProcessorContentDesc {
+    pub input_frame_format: VideoFrameFormat,
+    pub input_frame_rate: dxgi::Rational,
+    pub input_width: UINT,
+    pub input_height: UINT,
+    pub output_frame_rate: dxgi::Rational,
+    pub output_width: UINT,
+    pub output_height: UINT,
+    pub usage: VideoUsage,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct VideoColorRGBA {
+    pub r: f32,
+    pub g: f32,
+    pub b: f32,
+    pub a: f32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct VideoColorYCbCrA {
+    pub y: f32,
+    pub cb: f32,
+    pub cr: f32,
+    pub a: f32,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
+pub struct VideoColor {
+    union: VideoColorRGBA,
+}
+
+union! {
+    VideoColor.union {
+        fn ycbcr() -> VideoColorYCbCrA,
+        fn set_ycbcr(value: VideoColorYCbCrA),
+        fn rgba() -> VideoColorRGBA,
+        fn set_rgba(value: VideoColorRGBA)
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct VideoProcessorColorSpace {
+    bits: u32,
+}
+
+bitfields! {
+    VideoProcessorColorSpace.bits: u32 {
+        (0, 1 => u8, usage, set_usage),
+        (1, 1 => u8, rgb_range, set_rgb_range),
+        (2, 1 => u8, ycbcr_matrix, set_ycbcr_matrix),
+        (3, 1 => u8, ycbcr_xvycc, set_ycbcr_xvycc),
+        (4, 2 => struct VideoProcessorNominalRange, nominal_range, set_nominal_range)
+    }
+}
+
+#[repr(C)]
+#[derive(Debug)]
+#[allow(raw_pointer_derive)]
+pub struct VideoProcessorStream {
+    pub enable: BOOL,
+    pub output_index: UINT,
+    pub input_frame_or_field: UINT,
+    pub past_frames: UINT,
+    pub future_frames: UINT,
+    pub past_surfaces: *mut *mut super::ID3D11VideoProcessorInputView,
+    pub input_surface: *mut super::ID3D11VideoProcessorInputView,
+    pub future_surfaces: *mut *mut super::ID3D11VideoProcessorInputView,
+    pub past_surfaces_right: *mut *mut super::ID3D11VideoProcessorInputView,
+    pub input_surface_right: *mut super::ID3D11VideoProcessorInputView,
+    pub future_surfaces_right: *mut *mut super::ID3D11VideoProcessorInputView,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct OMAC {
+    pub omac: [u8; 16]
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryInput {
+    pub query_type: GUID,
+    pub channel: HANDLE,
+    pub sequence_number: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryOutput {
+    pub omac: OMAC,
+    pub query_type: GUID,
+    pub channel: HANDLE,
+    pub sequence_number: UINT,
+    pub return_code: HRESULT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryProtectionOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub protection_flags: AuthenticatedProtectionFlags,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryChannelTypeOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub channel_type: AuthenticatedChannelType,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryDeviceHandleOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub device_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryCryptoSessionInput {
+    pub input: AuthenticatedQueryInput,
+    pub decoder_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryCryptoSessionOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub decoder_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+    pub device_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryRestrictedSharedResourceProcessCountOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub restricted_shared_resource_process_count: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryRestrictedSharedResourceProcessInput {
+    pub input: AuthenticatedQueryInput,
+    pub process_index: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryRestrictedSharedResourceProcessOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub process_index: UINT,
+    pub process_identifier: AuthenticatedProcessIdentifierType,
+    pub process_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryUnrestrictedProtectedSharedResourceCountOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub unrestricted_protected_shared_resource_count: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryOutputIdCountInput {
+    pub input: AuthenticatedQueryInput,
+    pub device_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryOutputIdCountOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub device_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+    pub output_id_count: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryOutputIdInput {
+    pub input: AuthenticatedQueryInput,
+    pub device_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+    pub output_id_index: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryOutputIdOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub device_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+    pub output_id_index: UINT,
+    pub output_id: UINT64,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryAccessibilityOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub bus_type: BusType,
+    pub accessible_in_contiguous_blocks: BOOL,
+    pub accessible_in_non_contiguous_blocks: BOOL,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryAccessibilityEncryptionGUIDCountOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub encryption_guid_count: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryAccessibilityEncryptionGUIDInput {
+    pub input: AuthenticatedQueryInput,
+    pub encryption_guid_index: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryAccessibilityEncryptionGUIDOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub encryption_guid_index: UINT,
+    pub encryption_guid: GUID,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedQueryCurrentAccessibilityEncryptionOutput {
+    pub output: AuthenticatedQueryOutput,
+    pub encryption_guid: GUID,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureInput {
+    pub omac: OMAC,
+    pub configure_type: GUID,
+    pub channel: HANDLE,
+    pub sequence_number: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureOutput {
+    pub omac: OMAC,
+    pub configure_type: GUID,
+    pub channel: HANDLE,
+    pub sequence_number: UINT,
+    pub return_code: HRESULT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureInitializeInput {
+    pub parameters: AuthenticatedConfigureInput,
+    pub start_sequence_query: UINT,
+    pub start_sequence_configure: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureProtectionInput {
+    pub parameters: AuthenticatedConfigureInput,
+    pub protections: AuthenticatedProtectionFlags,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureCryptoSessionInput {
+    pub parameters: AuthenticatedConfigureInput,
+    pub decoder_handle: HANDLE,
+    pub crypto_session_handle: HANDLE,
+    pub device_handle: HANDLE,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureSharedResourceInput {
+    pub parameters: AuthenticatedConfigureInput,
+    pub process_type: AuthenticatedProcessIdentifierType,
+    pub process_handle: HANDLE,
+    pub allow_access: BOOL,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct AuthenticatedConfigureAccessibleEncryptionInput {
+    pub parameters: AuthenticatedConfigureInput,
+    pub encryption_guid: GUID,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct Tex2DVDOV {
+    pub array_slice: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct VideoDecoderOutputViewDesc {
+    pub decoder_profile: GUID,
+    pub view_dimension: VDOVDimension,
+    union: Tex2DVDOV,
+}
+
+union! {
+    VideoDecoderOutputViewDesc.union {
+        fn texture_2d() -> Tex2DVDOV,
+        fn set_texture_2d(value: Tex2DVDOV)
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct Tex2DVPIV {
+    pub mip_slice: UINT,
+    pub array_slice: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct VideoProcessorInputViewDesc {
+    pub four_cc: UINT,
+    pub view_dimension: VPIVDimension,
+    union: Tex2DVPIV,
+}
+
+union! {
+    VideoProcessorInputViewDesc.union {
+        fn texture_2d() -> Tex2DVPIV,
+        fn set_texture_2d(value: Tex2DVPIV)
+    }
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct Tex2DVPOV {
+    pub mip_slice: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct Tex2DArrayVPOV {
+    pub mip_slice: UINT,
+    pub first_array_slice: UINT,
+    pub array_size: UINT,
+}
+
+#[repr(C)]
+#[derive(Clone, Copy, Debug)]
+pub struct VideoProcessorOutputViewDesc {
+    pub view_dimension: VPOVDimension,
+    union: Tex2DArrayVPOV,
+}
+
+union! {
+    VideoProcessorOutputViewDesc.union {
+        fn texture_2d() -> Tex2DVPOV,
+        fn set_texture_2d(value: Tex2DVPOV),
+        fn texture_2d_array() -> Tex2DArrayVPOV,
+        fn set_texture_2d_array(value: Tex2DArrayVPOV)
+    }
+}
+
 #[test]
 fn check_d3d11_struct_sizes() {
     use std::mem::size_of;
 
+    assert_eq!(size_of::<AesCtrIV>(), 16);
     assert_eq!(size_of::<AsyncGetDataFlag>(), 4);
     assert_eq!(size_of::<BindFlag>(), 4);
     assert_eq!(size_of::<Blend>(), 4);
@@ -1072,6 +1580,7 @@ fn check_d3d11_struct_sizes() {
     assert_eq!(size_of::<DriverType>(), 4);
     assert_eq!(size_of::<DSVDimension>(), 4);
     assert_eq!(size_of::<DSVFlag>(), 4);
+    assert_eq!(size_of::<EncryptedBlockInfo>(), 12);
     assert_eq!(size_of::<Feature>(), 4);
     assert_eq!(size_of::<FeatureDataD3D10XHardwareOptions>(), 4);
     assert_eq!(size_of::<FeatureDataDoubles>(), 4);
@@ -1087,6 +1596,7 @@ fn check_d3d11_struct_sizes() {
     assert_eq!(size_of::<InputClassification>(), 4);
     assert_eq!(size_of::<Map>(), 4);
     assert_eq!(size_of::<MapFlag>(), 4);
+    assert_eq!(size_of::<OMAC>(), 16);
     assert_eq!(size_of::<Primitive>(), 4);
     assert_eq!(size_of::<PrimitiveTopology>(), 4);
     assert_eq!(size_of::<Query>(), 4);
@@ -1120,6 +1630,7 @@ fn check_d3d11_struct_sizes() {
     assert_eq!(size_of::<Tex2DArrayRTV>(), 12);
     assert_eq!(size_of::<Tex2DArraySRV>(), 16);
     assert_eq!(size_of::<Tex2DArrayUAV>(), 12);
+    assert_eq!(size_of::<Tex2DArrayVPOV>(), 12);
     assert_eq!(size_of::<Tex2DDSV>(), 4);
     assert_eq!(size_of::<Tex2DMSArrayDSV>(), 8);
     assert_eq!(size_of::<Tex2DMSArrayRTV>(), 8);
@@ -1130,6 +1641,9 @@ fn check_d3d11_struct_sizes() {
     assert_eq!(size_of::<Tex2DRTV>(), 4);
     assert_eq!(size_of::<Tex2DSRV>(), 8);
     assert_eq!(size_of::<Tex2DUAV>(), 4);
+    assert_eq!(size_of::<Tex2DVDOV>(), 4);
+    assert_eq!(size_of::<Tex2DVPIV>(), 8);
+    assert_eq!(size_of::<Tex2DVPOV>(), 4);
     assert_eq!(size_of::<Tex3DRTV>(), 12);
     assert_eq!(size_of::<Tex3DSRV>(), 8);
     assert_eq!(size_of::<Tex3DUAV>(), 12);
@@ -1143,17 +1657,90 @@ fn check_d3d11_struct_sizes() {
     assert_eq!(size_of::<UAVDimension>(), 4);
     assert_eq!(size_of::<UnorderedAccessViewDesc>(), 20);
     assert_eq!(size_of::<Usage>(), 4);
+    assert_eq!(size_of::<VideoColor>(), 16);
+    assert_eq!(size_of::<VideoColorRGBA>(), 16);
+    assert_eq!(size_of::<VideoColorYCbCrA>(), 16);
+    assert_eq!(size_of::<VideoContentProtectionCaps>(), 24);
+    assert_eq!(size_of::<VideoDecoderConfig>(), 100);
+    assert_eq!(size_of::<VideoDecoderDesc>(), 28);
+    assert_eq!(size_of::<VideoDecoderOutputViewDesc>(), 24);
+    assert_eq!(size_of::<VideoProcessorCaps>(), 36);
+    assert_eq!(size_of::<VideoProcessorColorSpace>(), 4);
+    assert_eq!(size_of::<VideoProcessorContentDesc>(), 40);
+    assert_eq!(size_of::<VideoProcessorCustomRate>(), 20);
+    assert_eq!(size_of::<VideoProcessorFilterRange>(), 16);
+    assert_eq!(size_of::<VideoProcessorInputViewDesc>(), 16);
+    assert_eq!(size_of::<VideoProcessorOutputViewDesc>(), 16);
+    assert_eq!(size_of::<VideoProcessorRateConversionCaps>(), 20);
     assert_eq!(size_of::<Viewport>(), 24);
 
     if cfg!(target_arch = "x86_64") {
+        assert_eq!(size_of::<AuthenticatedConfigureAccessibleEncryptionInput>(), 64);
+        assert_eq!(size_of::<AuthenticatedConfigureCryptoSessionInput>(), 72);
+        assert_eq!(size_of::<AuthenticatedConfigureInitializeInput>(), 56);
+        assert_eq!(size_of::<AuthenticatedConfigureInput>(), 48);
+        assert_eq!(size_of::<AuthenticatedConfigureOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedConfigureProtectionInput>(), 56);
+        assert_eq!(size_of::<AuthenticatedConfigureSharedResourceInput>(), 72);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDCountOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDInput>(), 40);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDOutput>(), 72);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityOutput>(), 64);
+        assert_eq!(size_of::<AuthenticatedQueryChannelTypeOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryCryptoSessionInput>(), 40);
+        assert_eq!(size_of::<AuthenticatedQueryCryptoSessionOutput>(), 72);
+        assert_eq!(size_of::<AuthenticatedQueryCurrentAccessibilityEncryptionOutput>(), 64);
+        assert_eq!(size_of::<AuthenticatedQueryDeviceHandleOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryInput>(), 32);
+        assert_eq!(size_of::<AuthenticatedQueryOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdCountInput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdInput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdOutput>(), 80);
+        assert_eq!(size_of::<AuthenticatedQueryProtectionOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessCountOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessInput>(), 40);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessOutput>(), 64);
+        assert_eq!(size_of::<AuthenticatedQueryUnrestrictedProtectedSharedResourceCountOutput>(), 56);
         assert_eq!(size_of::<InputElementDesc>(), 32);
         assert_eq!(size_of::<MappedSubresource>(), 16);
         assert_eq!(size_of::<SODeclarationEntry>(), 24);
         assert_eq!(size_of::<SubresourceData>(), 16);
+        assert_eq!(size_of::<VideoDecoderBufferDesc>(), 72);
+        assert_eq!(size_of::<VideoDecoderExtension>(), 48);
+        assert_eq!(size_of::<VideoProcessorStream>(), 72);
     } else {
+        assert_eq!(size_of::<AuthenticatedConfigureAccessibleEncryptionInput>(), 56);
+        assert_eq!(size_of::<AuthenticatedConfigureCryptoSessionInput>(), 52);
+        assert_eq!(size_of::<AuthenticatedConfigureInitializeInput>(), 48);
+        assert_eq!(size_of::<AuthenticatedConfigureInput>(), 40);
+        assert_eq!(size_of::<AuthenticatedConfigureOutput>(), 44);
+        assert_eq!(size_of::<AuthenticatedConfigureProtectionInput>(), 44);
+        assert_eq!(size_of::<AuthenticatedConfigureSharedResourceInput>(), 52);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDCountOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDInput>(), 28);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityEncryptionGUIDOutput>(), 64);
+        assert_eq!(size_of::<AuthenticatedQueryAccessibilityOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryChannelTypeOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryCryptoSessionInput>(), 28);
+        assert_eq!(size_of::<AuthenticatedQueryCryptoSessionOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryCurrentAccessibilityEncryptionOutput>(), 60);
+        assert_eq!(size_of::<AuthenticatedQueryDeviceHandleOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryInput>(), 24);
+        assert_eq!(size_of::<AuthenticatedQueryOutput>(), 44);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdCountInput>(), 32);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdInput>(), 36);
+        assert_eq!(size_of::<AuthenticatedQueryOutputIdOutput>(), 64);
+        assert_eq!(size_of::<AuthenticatedQueryProtectionOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessCountOutput>(), 48);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessInput>(), 28);
+        assert_eq!(size_of::<AuthenticatedQueryRestrictedSharedResourceProcessOutput>(), 56);
+        assert_eq!(size_of::<AuthenticatedQueryUnrestrictedProtectedSharedResourceCountOutput>(), 48);
         assert_eq!(size_of::<InputElementDesc>(), 28);
         assert_eq!(size_of::<MappedSubresource>(), 12);
         assert_eq!(size_of::<SODeclarationEntry>(), 16);
         assert_eq!(size_of::<SubresourceData>(), 12);
+        assert_eq!(size_of::<VideoDecoderBufferDesc>(), 68);
+        assert_eq!(size_of::<VideoDecoderExtension>(), 28);
+        assert_eq!(size_of::<VideoProcessorStream>(), 44);
     }
 }

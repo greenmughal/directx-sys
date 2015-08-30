@@ -109,3 +109,16 @@ macro_rules! __bitfields_field {
         }
     )
 }
+
+macro_rules! guid {
+    ($(#[$iid_attr:meta])*
+    $name:ident = $d1:expr, $d2:expr, $d3:expr, $($d4:expr),*) => (
+        $(#[$iid_attr])*
+        pub const $name: GUID = GUID {
+            Data1: $d1,
+            Data2: $d2,
+            Data3: $d3,
+            Data4: [$($d4),*],
+        };
+    )
+}
