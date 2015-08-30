@@ -1468,6 +1468,16 @@ fn check_d3d11_vtable_sizes() {
         assert_eq!(size_of::<ID3D11CommandListVtbl>(), 64);
         assert_eq!(size_of::<ID3D11DeviceContextVtbl>(), 920);
         assert_eq!(size_of::<ID3D11DeviceVtbl>(), 344);
+        assert_eq!(size_of::<ID3D11VideoDecoderVtbl>(), 72);
+        assert_eq!(size_of::<ID3D11VideoProcessorEnumeratorVtbl>(), 104);
+        assert_eq!(size_of::<ID3D11VideoProcessorVtbl>(), 72);
+        assert_eq!(size_of::<ID3D11AuthenticatedChannelVtbl>(), 80);
+        assert_eq!(size_of::<ID3D11CryptoSessionVtbl>(), 96);
+        assert_eq!(size_of::<ID3D11VideoDecoderOutputViewVtbl>(), 72);
+        assert_eq!(size_of::<ID3D11VideoProcessorInputViewVtbl>(), 72);
+        assert_eq!(size_of::<ID3D11VideoProcessorOutputViewVtbl>(), 72);
+        assert_eq!(size_of::<ID3D11VideoContextVtbl>(), 520);
+        assert_eq!(size_of::<ID3D11VideoDeviceVtbl>(), 160);
     } else {
         assert_eq!(size_of::<ID3D11DeviceChildVtbl>(), 28);
         assert_eq!(size_of::<ID3D11DepthStencilStateVtbl>(), 32);
@@ -1500,5 +1510,15 @@ fn check_d3d11_vtable_sizes() {
         assert_eq!(size_of::<ID3D11CommandListVtbl>(), 32);
         assert_eq!(size_of::<ID3D11DeviceContextVtbl>(), 460);
         assert_eq!(size_of::<ID3D11DeviceVtbl>(), 172);
+        assert_eq!(size_of::<ID3D11VideoDecoderVtbl>(), 36);
+        assert_eq!(size_of::<ID3D11VideoProcessorEnumeratorVtbl>(), 52);
+        assert_eq!(size_of::<ID3D11VideoProcessorVtbl>(), 36);
+        assert_eq!(size_of::<ID3D11AuthenticatedChannelVtbl>(), 40);
+        assert_eq!(size_of::<ID3D11CryptoSessionVtbl>(), 48);
+        assert_eq!(size_of::<ID3D11VideoDecoderOutputViewVtbl>(), 36);
+        assert_eq!(size_of::<ID3D11VideoProcessorInputViewVtbl>(), 36);
+        assert_eq!(size_of::<ID3D11VideoProcessorOutputViewVtbl>(), 36);
+        assert_eq!(size_of::<ID3D11VideoContextVtbl>(), 260);
+        assert_eq!(size_of::<ID3D11VideoDeviceVtbl>(), 80);
     }
 }
