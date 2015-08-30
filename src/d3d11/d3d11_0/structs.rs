@@ -1247,9 +1247,13 @@ pub struct VideoProcessorStream {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct OMAC {
     pub omac: [u8; 16]
+}
+
+impl Default for OMAC {
+    fn default() -> OMAC { OMAC { omac: [0; 16] } }
 }
 
 #[repr(C)]
