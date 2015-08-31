@@ -1,4 +1,3 @@
-use std::fmt;
 use std::os::raw::c_void;
 
 use winapi::{BOOL, BYTE, FALSE, FLOAT, GUID, HANDLE, HRESULT, INT, LPCSTR, TRUE,
@@ -52,6 +51,27 @@ impl Default for Viewport {
             max_depth: 1.0
         }
     }
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct DrawInstancedIndirectArgs {
+    pub vertex_count_per_instance: UINT,
+    pub instance_count: UINT,
+    pub start_vertex_location: UINT,
+    pub start_instance_location: UINT,
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct DrawIndexedInstancedIndirectArgs {
+    pub index_count_per_instance: UINT,
+    pub instance_count: UINT,
+    pub start_index_location: UINT,
+    pub base_vertex_location: INT,
+    pub start_instance_location: UINT,
 }
 
 #[repr(C)]
@@ -364,11 +384,11 @@ pub struct Tex2DMSArraySRV {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug, Default)]
 pub struct ShaderResourceViewDesc  {
     pub format: dxgi::Format,
     pub view_dimension: SRVDimension,
-    union: [u8; 16]
+    union: Tex2DArraySRV,
 }
 
 union! {
@@ -395,65 +415,6 @@ union! {
         fn set_texture_cube_array(value: TexCubeArraySRV),
         fn buffer_ex() -> BufferExSRV,
         fn set_buffer_ex(value: BufferExSRV)
-    }
-}
-
-impl fmt::Debug for ShaderResourceViewDesc {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        try!(write!(f, "ShaderResourceViewDesc {{ "));
-        try!(write!(f, "format: {:?}, ", self.format));
-        try!(write!(f, "view_dimension: {:?}", self.view_dimension));
-        match self.view_dimension {
-            SRVDimension::Unknown => { },
-            SRVDimension::Buffer => {
-                try!(write!(f, ", buffer: {:?}", self.buffer()));
-            },
-            SRVDimension::Texture1D => {
-                try!(write!(f, ", texture_1d: {:?}", self.texture_1d()));
-            },
-            SRVDimension::Texture1DArray => {
-                try!(write!(f, ", texture_1d_array: {:?}",
-                            self.texture_1d_array()));
-            },
-            SRVDimension::Texture2D => {
-                try!(write!(f, ", texture_2d: {:?}", self.texture_2d()));
-            },
-            SRVDimension::Texture2DArray => {
-                try!(write!(f, ", texture_2d_array: {:?}",
-                            self.texture_2d_array()));
-            },
-            SRVDimension::Texture2DMS => {
-                try!(write!(f, ", texture_2d_ms: {:?}", self.texture_2d_ms()));
-            },
-            SRVDimension::Texture2DMSArray => {
-                try!(write!(f, ", texture_2d_ms_array: {:?}",
-                            self.texture_2d_ms_array()));
-            },
-            SRVDimension::Texture3D => {
-                try!(write!(f, ", texture_3d: {:?}", self.texture_3d()));
-            },
-            SRVDimension::TextureCube => {
-                try!(write!(f, ", texture_cube: {:?}", self.texture_cube()));
-            },
-            SRVDimension::TextureCubeArray => {
-                try!(write!(f, ", texture_cube_array: {:?}",
-                            self.texture_cube_array()));
-            },
-            SRVDimension::BufferEx => {
-                try!(write!(f, ", buffer_ex: {:?}", self.buffer_ex()));
-            }
-        }
-        write!(f, " }}")
-    }
-}
-
-impl Default for ShaderResourceViewDesc {
-    fn default() -> ShaderResourceViewDesc {
-        ShaderResourceViewDesc {
-            format: dxgi::Format::Unknown,
-            view_dimension: SRVDimension::Unknown,
-            union: [0; 16]
-        }
     }
 }
 
@@ -532,11 +493,11 @@ pub struct Tex3DRTV {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug, Default)]
 pub struct RenderTargetViewDesc {
     pub format: dxgi::Format,
     pub view_dimension: RTVDimension,
-    union: [u8; 12]
+    union: Tex3DRTV,
 }
 
 union! {
@@ -557,55 +518,6 @@ union! {
         fn set_texture_2d_ms_array(value: Tex2DMSArrayRTV),
         fn texture_3d() -> Tex3DRTV,
         fn set_texture_3d(value: Tex3DRTV)
-    }
-}
-
-impl fmt::Debug for RenderTargetViewDesc {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        try!(write!(f, "RenderTargetViewDesc {{ "));
-        try!(write!(f, "format: {:?}, ", self.format));
-        try!(write!(f, "view_dimension: {:?}", self.view_dimension));
-        match self.view_dimension {
-            RTVDimension::Unknown => { },
-            RTVDimension::Buffer => {
-                try!(write!(f, ", buffer: {:?}", self.buffer()));
-            },
-            RTVDimension::Texture1D => {
-                try!(write!(f, ", texture_1d: {:?}", self.texture_1d()));
-            },
-            RTVDimension::Texture1DArray => {
-                try!(write!(f, ", texture_1d_array: {:?}",
-                            self.texture_1d_array()));
-            },
-            RTVDimension::Texture2D => {
-                try!(write!(f, ", texture_2d: {:?}", self.texture_2d()));
-            },
-            RTVDimension::Texture2DArray => {
-                try!(write!(f, ", texture_2d_array: {:?}",
-                            self.texture_2d_array()));
-            },
-            RTVDimension::Texture2DMS => {
-                try!(write!(f, ", texture_2d_ms: {:?}", self.texture_2d_ms()));
-            },
-            RTVDimension::Texture2DMSArray => {
-                try!(write!(f, ", texture_2d_ms_array: {:?}",
-                            self.texture_2d_ms_array()));
-            },
-            RTVDimension::Texture3D => {
-                try!(write!(f, ", texture_3d: {:?}", self.texture_3d()));
-            }
-        }
-        write!(f, " }}")
-    }
-}
-
-impl Default for RenderTargetViewDesc {
-    fn default() -> RenderTargetViewDesc {
-        RenderTargetViewDesc {
-            format: dxgi::Format::Unknown,
-            view_dimension: RTVDimension::Unknown,
-            union: [0; 12]
-        }
     }
 }
 
@@ -651,12 +563,12 @@ pub struct Tex2DMSArrayDSV {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug, Default)]
 pub struct DepthStencilViewDesc {
     pub format: dxgi::Format,
     pub view_dimension: DSVDimension,
     pub flags: DSVFlag,
-    union: [u8; 12]
+    union: Tex2DArrayDSV,
 }
 
 union! {
@@ -673,51 +585,6 @@ union! {
         fn set_texture_2d_ms(value: Tex2DMSDSV),
         fn texture_2d_ms_array() -> Tex2DMSArrayDSV,
         fn set_texture_2d_ms_array(value: Tex2DMSArrayDSV)
-    }
-}
-
-impl fmt::Debug for DepthStencilViewDesc {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        try!(write!(f, "DepthStencilViewDesc {{ "));
-        try!(write!(f, "format: {:?}, ", self.format));
-        try!(write!(f, "view_dimension: {:?}, ", self.view_dimension));
-        try!(write!(f, "flags: {:?}", self.flags));
-        match self.view_dimension {
-            DSVDimension::Unknown => { },
-            DSVDimension::Texture1D => {
-                try!(write!(f, ", texture_1d: {:?}", self.texture_1d()));
-            },
-            DSVDimension::Texture1DArray => {
-                try!(write!(f, ", texture_1d_array: {:?}",
-                            self.texture_1d_array()));
-            },
-            DSVDimension::Texture2D => {
-                try!(write!(f, ", texture_2d: {:?}", self.texture_2d()));
-            },
-            DSVDimension::Texture2DArray => {
-                try!(write!(f, ", texture_2d_array: {:?}",
-                            self.texture_2d_array()));
-            },
-            DSVDimension::Texture2DMS => {
-                try!(write!(f, ", texture_2d_ms: {:?}", self.texture_2d_ms()));
-            },
-            DSVDimension::Texture2DMSArray => {
-                try!(write!(f, ", texture_2d_ms_array: {:?}",
-                            self.texture_2d_ms_array()));
-            }
-        }
-        write!(f, " }}")
-    }
-}
-
-impl Default for DepthStencilViewDesc {
-    fn default() -> DepthStencilViewDesc {
-        DepthStencilViewDesc {
-            format: dxgi::Format::Unknown,
-            view_dimension: DSVDimension::Unknown,
-            flags: DSVFlag::empty(),
-            union: [0; 12]
-        }
     }
 }
 
@@ -766,11 +633,11 @@ pub struct Tex3DUAV {
 }
 
 #[repr(C)]
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, Debug, Default)]
 pub struct UnorderedAccessViewDesc {
     pub format: dxgi::Format,
     pub view_dimension: UAVDimension,
-    union: [u8; 12]
+    union: Tex3DUAV,
 }
 
 union! {
@@ -787,48 +654,6 @@ union! {
         fn set_texture_2d_array(value: Tex2DArrayUAV),
         fn texture_3d() -> Tex3DUAV,
         fn set_texture_3d(value: Tex3DUAV)
-    }
-}
-
-impl fmt::Debug for UnorderedAccessViewDesc {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        try!(write!(f, "UnorderedAccessViewDesc {{ "));
-        try!(write!(f, "format: {:?}, ", self.format));
-        try!(write!(f, "view_dimension: {:?}", self.view_dimension));
-        match self.view_dimension {
-            UAVDimension::Unknown => { },
-            UAVDimension::Buffer => {
-                try!(write!(f, ", buffer: {:?}", self.buffer()));
-            },
-            UAVDimension::Texture1D => {
-                try!(write!(f, ", texture_1d: {:?}", self.texture_1d()));
-            },
-            UAVDimension::Texture1DArray => {
-                try!(write!(f, ", texture_1d_array: {:?}",
-                            self.texture_1d_array()));
-            },
-            UAVDimension::Texture2D => {
-                try!(write!(f, ", texture_2d: {:?}", self.texture_2d()));
-            },
-            UAVDimension::Texture2DArray => {
-                try!(write!(f, ", texture_2d_array: {:?}",
-                            self.texture_2d_array()));
-            },
-            UAVDimension::Texture3D => {
-                try!(write!(f, ", texture_3d: {:?}", self.texture_3d()));
-            }
-        }
-        write!(f, " }}")
-    }
-}
-
-impl Default for UnorderedAccessViewDesc {
-    fn default() -> UnorderedAccessViewDesc {
-        UnorderedAccessViewDesc {
-            format: dxgi::Format::Unknown,
-            view_dimension: UAVDimension::Unknown,
-            union: [0; 12]
-        }
     }
 }
 
@@ -1035,6 +860,35 @@ pub struct FeatureDataD3D9Options1 {
     pub simple_instancing_supported: BOOL,
     pub texture_cube_face_render_target_with_non_cube_depth_stencil_supported:
         BOOL
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct FeatureDataD3D11Options2 {
+    pub ps_specified_stencil_ref_supported: BOOL,
+    pub typed_uav_load_additional_formats: BOOL,
+    pub rovs_supported: BOOL,
+    pub conservative_rasterization_tier: ConservativeRasterizationTier,
+    pub tiled_resources_tier: TiledResourcesTier,
+    pub map_on_default_textures: BOOL,
+    pub standard_swizzle: BOOL,
+    pub unified_memory_architecture: BOOL,
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct FeatureDataD3D11Options3 {
+    pub vp_and_rt_array_index_from_any_shader_feeding_rasterizer: BOOL,
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub struct FeatureDataGPUVirtualAddressSupport {
+    pub max_gpu_virtual_address_bits_per_resource: UINT,
+    pub max_gpu_virtual_address_bits_per_process: UINT,
 }
 
 #[repr(C)]

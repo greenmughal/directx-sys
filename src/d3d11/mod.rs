@@ -11,4 +11,7 @@ pub use self::d3d11_2::*;
 #[cfg(feature = "d3d11_2")]
 mod d3d11_2;
 
-// TODO D3D11.3 functionality
+#[cfg(feature = "d3d11_3")]
+pub use self::d3d11_3::*;
+#[cfg(feature = "d3d11_3")]
+mod d3d11_3;

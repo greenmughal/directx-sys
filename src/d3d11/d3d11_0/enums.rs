@@ -297,6 +297,8 @@ bitflags! {
         const RESOURCE_MISC_GUARDED = 0x00008000,
         const RESOURCE_MISC_TILE_POOL = 0x00020000,
         const RESOURCE_MISC_TILED = 0x00040000,
+        #[cfg(feature = "d3d11_3")]
+        const RESOURCE_MISC_HW_PROTECTED = 0x00080000,
     }
 }
 
@@ -639,6 +641,8 @@ bitflags! {
         const FORMAT_SUPPORT2_OUTPUT_MERGER_LOGIC_OP = 0x00000100,
         const FORMAT_SUPPORT2_TILED = 0x00000200,
         const FORMAT_SUPPORT2_SHAREABLE = 0x00000400,
+        #[cfg(feature = "d3d11_3")]
+        const FORMAT_SUPPORT2_MULTIPLANE_OVERLAY = 0x00004000,
     }
 }
 
@@ -754,7 +758,10 @@ pub enum Feature {
     D3D11Options1,
     D3D9SimpleInstancingSupport,
     MarkerSupport,
-    D3D9Options1
+    D3D9Options1,
+    #[cfg(feature = "d3d11_3")] D3D11Options2,
+    #[cfg(feature = "d3d11_3")] D3D11Options3,
+    #[cfg(feature = "d3d11_3")] GPUVirtualAddressSupport,
 }
 
 bitflags! {
@@ -776,11 +783,29 @@ impl Default for ShaderMinPrecisionSupport {
 pub enum TiledResourcesTier {
     NotSupported = 0,
     Tier1 = 1,
-    Tier2 = 2
+    Tier2 = 2,
+    #[cfg(feature = "d3d11_3")] Tier3 = 3,
 }
 
 impl Default for TiledResourcesTier {
     fn default() -> TiledResourcesTier { TiledResourcesTier::NotSupported }
+}
+
+#[cfg(feature = "d3d11_3")]
+#[repr(C)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ConservativeRasterizationTier {
+    NotSupported = 0,
+    Tier1 = 1,
+    Tier2 = 2,
+    Tier3 = 3,
+}
+
+#[cfg(feature = "d3d11_3")]
+impl Default for ConservativeRasterizationTier {
+    fn default() -> ConservativeRasterizationTier {
+        ConservativeRasterizationTier::NotSupported
+    }
 }
 
 #[repr(C)]
@@ -828,6 +853,10 @@ bitflags! {
         const VIDEO_PROCESSOR_FEATURE_CAPS_ROTATION               = 0x40,
         const VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_STREAM           = 0x80,
         const VIDEO_PROCESSOR_FEATURE_CAPS_PIXEL_ASPECT_RATIO     = 0x100,
+        #[cfg(feature = "d3d11_3")]
+        const VIDEO_PROCESSOR_FEATURE_CAPS_MIRROR                 = 0x200,
+        #[cfg(feature = "d3d11_3")]
+        const VIDEO_PROCESSOR_FEATURE_CAPS_SHADER_USAGE           = 0x400,
     }
 }
 
@@ -894,6 +923,14 @@ bitflags! {
         const CONTENT_PROTECTION_CAPS_SEQUENTIAL_CTR_IV = 0x00000100,
         const CONTENT_PROTECTION_CAPS_ENCRYPT_SLICEDATA_ONLY = 0x00000200,
         const CONTENT_PROTECTION_CAPS_DECRYPTION_BLT = 0x00000400,
+        #[cfg(feature = "d3d11_3")]
+        const CONTENT_PROTECTION_CAPS_HARDWARE_PROTECT_UNCOMPRESSED = 0x00000800,
+        #[cfg(feature = "d3d11_3")]
+        const CONTENT_PROTECTION_CAPS_HARDWARE_PROTECTED_MEMORY_PAGEABLE = 0x00001000,
+        #[cfg(feature = "d3d11_3")]
+        const CONTENT_PROTECTION_CAPS_HARDWARE_TEARDOWN = 0x00002000,
+        #[cfg(feature = "d3d11_3")]
+        const CONTENT_PROTECTION_CAPS_HARDWARE_DRM_COMMUNICATION = 0x00004000,
     }
 }
 

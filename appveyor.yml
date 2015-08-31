@@ -32,10 +32,12 @@ test_script:
   # Test default feature set
   - cargo test -v
   # Test each feature to ensure they work in isolation
+  # DX12 level features not tested as they won't work on appveyor yet
+  #- cargo test -v --no-default-features --features="d3d11_3"
   - cargo test -v --no-default-features --features="d3d11_2"
   - cargo test -v --no-default-features --features="d3d11_1"
   - cargo test -v --no-default-features --features="d3d11"
-  - cargo test -v --no-default-features --features="dxgi1_4"
+  #- cargo test -v --no-default-features --features="dxgi1_4"
   - cargo test -v --no-default-features --features="dxgi1_3"
   - cargo test -v --no-default-features --features="dxgi1_2"
   - cargo test -v --no-default-features --features="dxgi"
