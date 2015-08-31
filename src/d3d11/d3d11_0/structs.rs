@@ -1743,7 +1743,7 @@ fn check_d3d11_struct_sizes() {
         assert_eq!(size_of::<MappedSubresource>(), 12);
         assert_eq!(size_of::<SODeclarationEntry>(), 16);
         assert_eq!(size_of::<SubresourceData>(), 12);
-        assert_eq!(size_of::<VideoDecoderBufferDesc>(), 68);
+        assert_eq!(size_of::<VideoDecoderBufferDesc>(), 64);
         assert_eq!(size_of::<VideoDecoderExtension>(), 28);
         assert_eq!(size_of::<VideoProcessorStream>(), 44);
     }
