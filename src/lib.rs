@@ -1,11 +1,11 @@
 /*!
-# directx-sys 0.0.6
+# directx-sys 0.0.7
 Rust FFI bindings for the DirectX API.
 
 # Components
-* [DXGI](dxgi/index.html) - mostly complete but untested.
-* [D3D11](d3d11/index.html) - 11.0 API complete but untested.
-  11.1/11.2 not yet implemented.
+* [DXGI](dxgi/index.html) - Complete (needs testing)
+* [D3D11](d3d11/index.html) - Complete (needs testing)
+* D3D12 - not yet implemented.
 * D3DCompiler - not yet implemented.
 * [Direct2D](d2d/index.html) - 1.0 API mostly complete but untested.
   1.1/1.2 not yet implemented.
