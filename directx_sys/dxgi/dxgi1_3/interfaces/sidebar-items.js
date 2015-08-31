@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["IDXGIDecodeSwapChain",""],["IDXGIDevice3",""],["IDXGIFactory3",""],["IDXGIFactoryMedia",""],["IDXGIOutput2",""],["IDXGIOutput3",""],["IDXGISwapChain2",""],["IDXGISwapChainMedia",""]]});

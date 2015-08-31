@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ID3D11Device3",""],["ID3D11DeviceContext3",""],["ID3D11Query1",""],["ID3D11RasterizerState2",""],["ID3D11RenderTargetView1",""],["ID3D11ShaderResourceView1",""],["ID3D11Texture2D1",""],["ID3D11Texture3D1",""],["ID3D11UnorderedAccessView1",""]]});

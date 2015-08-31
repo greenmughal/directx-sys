@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `IDXGISwapChain` struct in crate `directx_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, IDXGISwapChain">
+
+    <title>directx_sys::dxgi::IDXGISwapChain - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>directx_sys</a>::<wbr><a href='index.html'>dxgi</a></p><script>window.sidebarCurrent = {name: 'IDXGISwapChain', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>directx_sys</a>::<wbr><a href='index.html'>dxgi</a>::<wbr><a class='struct' href=''>IDXGISwapChain</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-18520' class='srclink' href='../../src/directx_sys/<com_rs macros>.html#12-13' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct IDXGISwapChain {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'><h4 id='method.present' class='method'><code>unsafe fn <a href='#method.present' class='fnname'>present</a>(&amp;self, sync_interval: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, flags: <a class='struct' href='../../directx_sys/dxgi/struct.PresentFlags.html' title='directx_sys::dxgi::PresentFlags'>PresentFlags</a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_buffer' class='method'><code>unsafe fn <a href='#method.get_buffer' class='fnname'>get_buffer</a>(&amp;self, buffer: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, iid: &amp;<a class='struct' href='../../com_rs/struct.IID.html' title='com_rs::IID'>IID</a>, surface: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='http://doc.rust-lang.org/nightly/std/os/raw/enum.c_void.html' title='std::os::raw::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.set_fullscreen_state' class='method'><code>unsafe fn <a href='#method.set_fullscreen_state' class='fnname'>set_fullscreen_state</a>(&amp;self, fullscreen: <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a>, target: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/dxgi/struct.IDXGIOutput.html' title='directx_sys::dxgi::IDXGIOutput'>IDXGIOutput</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_fullscreen_state' class='method'><code>unsafe fn <a href='#method.get_fullscreen_state' class='fnname'>get_fullscreen_state</a>(&amp;self, fullscreen: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.BOOL.html' title='winapi::minwindef::BOOL'>BOOL</a></a>, target: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/dxgi/struct.IDXGIOutput.html' title='directx_sys::dxgi::IDXGIOutput'>IDXGIOutput</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_desc' class='method'><code>unsafe fn <a href='#method.get_desc' class='fnname'>get_desc</a>(&amp;self, desc: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/dxgi/struct.SwapChainDesc.html' title='directx_sys::dxgi::SwapChainDesc'>SwapChainDesc</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.resize_buffers' class='method'><code>unsafe fn <a href='#method.resize_buffers' class='fnname'>resize_buffers</a>(&amp;self, buffer_count: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, width: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, height: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, new_format: <a class='enum' href='../../directx_sys/dxgi/enum.Format.html' title='directx_sys::dxgi::Format'>Format</a>, swap_chain_flags: <a class='struct' href='../../directx_sys/dxgi/struct.SwapChainFlag.html' title='directx_sys::dxgi::SwapChainFlag'>SwapChainFlag</a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.resize_target' class='method'><code>unsafe fn <a href='#method.resize_target' class='fnname'>resize_target</a>(&amp;self, new_target_parameters: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/dxgi/struct.ModeDesc.html' title='directx_sys::dxgi::ModeDesc'>ModeDesc</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_containing_output' class='method'><code>unsafe fn <a href='#method.get_containing_output' class='fnname'>get_containing_output</a>(&amp;self, output: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/dxgi/struct.IDXGIOutput.html' title='directx_sys::dxgi::IDXGIOutput'>IDXGIOutput</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_frame_statistics' class='method'><code>unsafe fn <a href='#method.get_frame_statistics' class='fnname'>get_frame_statistics</a>(&amp;self, stats: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/dxgi/struct.FrameStatistics.html' title='directx_sys::dxgi::FrameStatistics'>FrameStatistics</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_last_present_count' class='method'><code>unsafe fn <a href='#method.get_last_present_count' class='fnname'>get_last_present_count</a>(&amp;self, last_present_count: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='deref-methods'>Methods from <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=<a class='struct' href='../../directx_sys/dxgi/struct.IDXGIDeviceSubObject.html' title='directx_sys::dxgi::IDXGIDeviceSubObject'>IDXGIDeviceSubObject</a>&gt;</h2><div class='impl-items'><h4 id='method.get_device' class='method'><code>unsafe fn <a href='#method.get_device' class='fnname'>get_device</a>(&amp;self, iid: &amp;<a class='struct' href='../../com_rs/struct.IID.html' title='com_rs::IID'>IID</a>, device: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='http://doc.rust-lang.org/nightly/std/os/raw/enum.c_void.html' title='std::os::raw::c_void'>c_void</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><code>type Target = <a class='struct' href='../../directx_sys/dxgi/struct.IDXGIDeviceSubObject.html' title='directx_sys::dxgi::IDXGIDeviceSubObject'>IDXGIDeviceSubObject</a></code></h4>
+<h4 id='method.deref' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class='struct' href='../../directx_sys/dxgi/struct.IDXGIDeviceSubObject.html' title='directx_sys::dxgi::IDXGIDeviceSubObject'>IDXGIDeviceSubObject</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a>&gt; for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/dxgi/struct.IDXGIDeviceSubObject.html' title='directx_sys::dxgi::IDXGIDeviceSubObject'>IDXGIDeviceSubObject</a>&gt; for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.ComInterface.html' title='com_rs::comptr::ComInterface'>ComInterface</a> for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'><h4 id='method.iid' class='method'><code>fn <a href='../../com_rs/comptr/trait.ComInterface.html#method.iid' class='fnname'>iid</a>() -&gt; <a class='struct' href='../../com_rs/struct.IID.html' title='com_rs::IID'>IID</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/dxgi/struct.IDXGIObject.html' title='directx_sys::dxgi::IDXGIObject'>IDXGIObject</a>&gt; for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../com_rs/unknown/struct.IUnknown.html' title='com_rs::unknown::IUnknown'>IUnknown</a>&gt; for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../directx_sys/dxgi/struct.IDXGISwapChain.html' title='directx_sys::dxgi::IDXGISwapChain'>IDXGISwapChain</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div>
+            <div class="shortcuts">
+                <h1>Keyboard Shortcuts</h1>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h1>Search Tricks</h1>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>typedef</code> (or
+                    <code>tdef</code>).
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "directx_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

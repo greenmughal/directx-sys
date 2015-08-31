@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ID3D11Device3` struct in crate `directx_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ID3D11Device3">
+
+    <title>directx_sys::d3d11::ID3D11Device3 - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>directx_sys</a>::<wbr><a href='index.html'>d3d11</a></p><script>window.sidebarCurrent = {name: 'ID3D11Device3', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>directx_sys</a>::<wbr><a href='index.html'>d3d11</a>::<wbr><a class='struct' href=''>ID3D11Device3</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-159675' class='srclink' href='../../src/directx_sys/<com_rs macros>.html#12-13' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct ID3D11Device3 {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'><h4 id='method.create_texture2d1' class='method'><code>unsafe fn <a href='#method.create_texture2d1' class='fnname'>create_texture2d1</a>(&amp;self, desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.Texture2DDesc1.html' title='directx_sys::d3d11::Texture2DDesc1'>Texture2DDesc1</a></a>, initial_data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.SubresourceData.html' title='directx_sys::d3d11::SubresourceData'>SubresourceData</a></a>, texture_2d: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Texture2D1.html' title='directx_sys::d3d11::ID3D11Texture2D1'>ID3D11Texture2D1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_texture3d1' class='method'><code>unsafe fn <a href='#method.create_texture3d1' class='fnname'>create_texture3d1</a>(&amp;self, desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.Texture3DDesc1.html' title='directx_sys::d3d11::Texture3DDesc1'>Texture3DDesc1</a></a>, initial_data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.SubresourceData.html' title='directx_sys::d3d11::SubresourceData'>SubresourceData</a></a>, texture_3d: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Texture3D1.html' title='directx_sys::d3d11::ID3D11Texture3D1'>ID3D11Texture3D1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_rasterizer_state2' class='method'><code>unsafe fn <a href='#method.create_rasterizer_state2' class='fnname'>create_rasterizer_state2</a>(&amp;self, rasterizer_desc: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.RasterizerDesc2.html' title='directx_sys::d3d11::RasterizerDesc2'>RasterizerDesc2</a></a>, rasterizer_state: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11RasterizerState2.html' title='directx_sys::d3d11::ID3D11RasterizerState2'>ID3D11RasterizerState2</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_shader_resource_view1' class='method'><code>unsafe fn <a href='#method.create_shader_resource_view1' class='fnname'>create_shader_resource_view1</a>(&amp;self, resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ShaderResourceViewDesc1.html' title='directx_sys::d3d11::ShaderResourceViewDesc1'>ShaderResourceViewDesc1</a></a>, view1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11ShaderResourceView1.html' title='directx_sys::d3d11::ID3D11ShaderResourceView1'>ID3D11ShaderResourceView1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_unordered_access_view1' class='method'><code>unsafe fn <a href='#method.create_unordered_access_view1' class='fnname'>create_unordered_access_view1</a>(&amp;self, resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.UnorderedAccessViewDesc1.html' title='directx_sys::d3d11::UnorderedAccessViewDesc1'>UnorderedAccessViewDesc1</a></a>, view1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11UnorderedAccessView1.html' title='directx_sys::d3d11::ID3D11UnorderedAccessView1'>ID3D11UnorderedAccessView1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_render_target_view1' class='method'><code>unsafe fn <a href='#method.create_render_target_view1' class='fnname'>create_render_target_view1</a>(&amp;self, resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.RenderTargetViewDesc1.html' title='directx_sys::d3d11::RenderTargetViewDesc1'>RenderTargetViewDesc1</a></a>, view1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11RenderTargetView1.html' title='directx_sys::d3d11::ID3D11RenderTargetView1'>ID3D11RenderTargetView1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.create_query1' class='method'><code>unsafe fn <a href='#method.create_query1' class='fnname'>create_query1</a>(&amp;self, query_desc1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.QueryDesc1.html' title='directx_sys::d3d11::QueryDesc1'>QueryDesc1</a></a>, query1: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Query1.html' title='directx_sys::d3d11::ID3D11Query1'>ID3D11Query1</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_immediate_context3' class='method'><code>unsafe fn <a href='#method.get_immediate_context3' class='fnname'>get_immediate_context3</a>(&amp;self, immediate_context: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11DeviceContext3.html' title='directx_sys::d3d11::ID3D11DeviceContext3'>ID3D11DeviceContext3</a></a></a>)</code></h4>
+<h4 id='method.create_deferred_context3' class='method'><code>unsafe fn <a href='#method.create_deferred_context3' class='fnname'>create_deferred_context3</a>(&amp;self, context_flags: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, deferred_context: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11DeviceContext3.html' title='directx_sys::d3d11::ID3D11DeviceContext3'>ID3D11DeviceContext3</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.write_to_subresource' class='method'><code>unsafe fn <a href='#method.write_to_subresource' class='fnname'>write_to_subresource</a>(&amp;self, dst_resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, dst_subresource: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, dst_box: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.BoxRegion.html' title='directx_sys::d3d11::BoxRegion'>BoxRegion</a></a>, src_data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='enum' href='http://doc.rust-lang.org/nightly/std/os/raw/enum.c_void.html' title='std::os::raw::c_void'>c_void</a></a>, src_row_pitch: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, src_depth_pitch: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>)</code></h4>
+<h4 id='method.read_from_subresource' class='method'><code>unsafe fn <a href='#method.read_from_subresource' class='fnname'>read_from_subresource</a>(&amp;self, dst_data: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='enum' href='http://doc.rust-lang.org/nightly/std/os/raw/enum.c_void.html' title='std::os::raw::c_void'>c_void</a></a>, dst_row_pitch: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, dst_depth_pitch: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, src_resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, src_subresource: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, src_box: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.BoxRegion.html' title='directx_sys::d3d11::BoxRegion'>BoxRegion</a></a>)</code></h4>
+</div><h2 id='deref-methods'>Methods from <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a>&lt;Target=<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device2.html' title='directx_sys::d3d11::ID3D11Device2'>ID3D11Device2</a>&gt;</h2><div class='impl-items'><h4 id='method.get_immediate_context2' class='method'><code>unsafe fn <a href='#method.get_immediate_context2' class='fnname'>get_immediate_context2</a>(&amp;self, immediate_context: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11DeviceContext2.html' title='directx_sys::d3d11::ID3D11DeviceContext2'>ID3D11DeviceContext2</a></a></a>)</code></h4>
+<h4 id='method.create_deferred_context2' class='method'><code>unsafe fn <a href='#method.create_deferred_context2' class='fnname'>create_deferred_context2</a>(&amp;self, context_flags: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, deferred_context: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11DeviceContext2.html' title='directx_sys::d3d11::ID3D11DeviceContext2'>ID3D11DeviceContext2</a></a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+<h4 id='method.get_resource_tiling' class='method'><code>unsafe fn <a href='#method.get_resource_tiling' class='fnname'>get_resource_tiling</a>(&amp;self, tiled_resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*const <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Resource.html' title='directx_sys::d3d11::ID3D11Resource'>ID3D11Resource</a></a>, num_tiles_for_entire_resource: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></a>, packed_mip_desc: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.PackedMipDesc.html' title='directx_sys::d3d11::PackedMipDesc'>PackedMipDesc</a></a>, standard_tile_shape_for_non_packed_mips: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.TileShape.html' title='directx_sys::d3d11::TileShape'>TileShape</a></a>, num_subresource_tilings: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></a>, first_subresource_tiling_to_get: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, subresource_tilings_for_non_packed_mips: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='struct' href='../../directx_sys/d3d11/struct.SubresourceTiling.html' title='directx_sys::d3d11::SubresourceTiling'>SubresourceTiling</a></a>)</code></h4>
+<h4 id='method.check_multisample_quality_levels1' class='method'><code>unsafe fn <a href='#method.check_multisample_quality_levels1' class='fnname'>check_multisample_quality_levels1</a>(&amp;self, format: <a class='enum' href='../../directx_sys/dxgi/enum.Format.html' title='directx_sys::dxgi::Format'>Format</a>, sample_count: <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a>, flags: <a class='struct' href='../../directx_sys/d3d11/struct.CheckMultisampleQualityLevelsFlag.html' title='directx_sys::d3d11::CheckMultisampleQualityLevelsFlag'>CheckMultisampleQualityLevelsFlag</a>, num_quality_levels: <a href='http://doc.rust-lang.org/nightly/std/primitive.pointer.html'>*mut <a class='type' href='../../winapi/minwindef/type.UINT.html' title='winapi::minwindef::UINT'>UINT</a></a>) -&gt; <a class='type' href='../../winapi/winerror/type.HRESULT.html' title='winapi::winerror::HRESULT'>HRESULT</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html' title='core::ops::Deref'>Deref</a> for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'><h4 id='assoc_type.Target' class='type'><code>type Target = <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device2.html' title='directx_sys::d3d11::ID3D11Device2'>ID3D11Device2</a></code></h4>
+<h4 id='method.deref' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/ops/trait.Deref.html#method.deref' class='fnname'>deref</a>(&amp;self) -&gt; &amp;<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device2.html' title='directx_sys::d3d11::ID3D11Device2'>ID3D11Device2</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a>&gt; for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device2.html' title='directx_sys::d3d11::ID3D11Device2'>ID3D11Device2</a>&gt; for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.ComInterface.html' title='com_rs::comptr::ComInterface'>ComInterface</a> for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'><h4 id='method.iid' class='method'><code>fn <a href='../../com_rs/comptr/trait.ComInterface.html#method.iid' class='fnname'>iid</a>() -&gt; <a class='struct' href='../../com_rs/struct.IID.html' title='com_rs::IID'>IID</a></code></h4>
+</div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device1.html' title='directx_sys::d3d11::ID3D11Device1'>ID3D11Device1</a>&gt; for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device.html' title='directx_sys::d3d11::ID3D11Device'>ID3D11Device</a>&gt; for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'></div><h3 class='impl'><code>impl <a class='trait' href='../../com_rs/comptr/trait.AsComPtr.html' title='com_rs::comptr::AsComPtr'>AsComPtr</a>&lt;<a class='struct' href='../../com_rs/unknown/struct.IUnknown.html' title='com_rs::unknown::IUnknown'>IUnknown</a>&gt; for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'></div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='struct' href='../../directx_sys/d3d11/struct.ID3D11Device3.html' title='directx_sys::d3d11::ID3D11Device3'>ID3D11Device3</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='http://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='http://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div>
+            <div class="shortcuts">
+                <h1>Keyboard Shortcuts</h1>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h1>Search Tricks</h1>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>typedef</code> (or
+                    <code>tdef</code>).
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "directx_sys";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

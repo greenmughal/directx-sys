@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["QueryDesc1",""],["RasterizerDesc2",""],["RenderTargetViewDesc1",""],["ShaderResourceViewDesc1",""],["Tex2DArrayRTV1",""],["Tex2DArraySRV1",""],["Tex2DArrayUAV1",""],["Tex2DRTV1",""],["Tex2DSRV1",""],["Tex2DUAV1",""],["Texture2DDesc1",""],["Texture3DDesc1",""],["UnorderedAccessViewDesc1",""]]});

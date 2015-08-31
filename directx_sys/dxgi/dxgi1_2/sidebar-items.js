@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["SHARED_RESOURCE_READ",""],["SHARED_RESOURCE_WRITE",""]]});

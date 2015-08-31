@@ -1,0 +1,1 @@
+initSidebarItems({"constant":[["OVERLAY_COLOR_SPACE_SUPPORT_FLAG_PRESENT",""],["SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_OVERLAY_PRESENT",""],["SWAP_CHAIN_COLOR_SPACE_SUPPORT_FLAG_PRESENT",""]],"enum":[["ColorSpaceType",""],["MemorySegmentGroup",""]],"struct":[["OverlayColorSpaceSupportFlags",""],["SwapChainColorSpaceSupportFlags",""]]});

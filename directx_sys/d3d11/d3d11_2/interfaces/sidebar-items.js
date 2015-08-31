@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["ID3D11Device2",""],["ID3D11DeviceContext2",""]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["IDXGIAdapter2",""],["IDXGIDevice2",""],["IDXGIDisplayControl",""],["IDXGIFactory2",""],["IDXGIOutput1",""],["IDXGIOutputDuplication",""],["IDXGIResource1",""],["IDXGISurface2",""],["IDXGISwapChain1",""]]});
