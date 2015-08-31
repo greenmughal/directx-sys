@@ -114,7 +114,7 @@ macro_rules! guid {
     ($(#[$iid_attr:meta])*
     $name:ident = $d1:expr, $d2:expr, $d3:expr, $($d4:expr),*) => (
         $(#[$iid_attr])*
-        pub const $name: GUID = GUID {
+        pub const $name: ::winapi::GUID = ::winapi::GUID {
             Data1: $d1,
             Data2: $d2,
             Data3: $d3,

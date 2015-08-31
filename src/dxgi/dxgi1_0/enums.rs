@@ -1,4 +1,4 @@
-use winapi::{GUID, UINT};
+use winapi::UINT;
 
 #[repr(u32)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
