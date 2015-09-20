@@ -15,7 +15,12 @@ use com_rs::ComPtr;
 use directx_sys::{d3d11, dxgi};
 use kernel32::*;
 use user32::*;
-use winapi::*;
+
+use winapi::{
+    CS_HREDRAW, CS_OWNDC, CS_VREDRAW, CW_USEDEFAULT, HWND, LPARAM, LPCWSTR, LRESULT, MSG, PM_REMOVE,
+    SW_SHOW, TRUE, UINT, WM_DESTROY, WM_QUIT, WNDCLASSEXW, WPARAM, WS_EX_APPWINDOW,
+    WS_OVERLAPPEDWINDOW
+};
 
 fn utf16_str(s: &str) -> Vec<u16> {
     OsStr::new(s).encode_wide()
