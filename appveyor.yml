@@ -1,31 +1,28 @@
-platform:
-  - x86
-  - x64
-
-branches:
-  except:
-    - gh-pages
+# Based on the "trust" template v0.1.1
+# https://github.com/japaric/trust/tree/v0.1.1
 
 environment:
   matrix:
     # NOTE: Currently only works on msvc toolchain due to required libs
-    - RUST_VERSION: stable
-    - RUST_VERSION: beta
-    - RUST_VERSION: nightly
+    - TARGET: i686-pc-windows-msvc
+      RUST_VERSION: stable
+    - TARGET: x86_64-pc-windows-msvc
+      RUST_VERSION: stable
+    - TARGET: i686-pc-windows-msvc
+      RUST_VERSION: beta
+    - TARGET: x86_64-pc-windows-msvc
+      RUST_VERSION: beta
+    - TARGET: i686-pc-windows-msvc
+      RUST_VERSION: nightly
+    - TARGET: x86_64-pc-windows-msvc
+      RUST_VERSION: nightly
 
 install:
-  - ps: |
-      if ($env:PLATFORM -eq "x86") {
-        Start-FileDownload "https://static.rust-lang.org/dist/rust-$env:RUST_VERSION-i686-pc-windows-msvc.exe" -FileName rust.exe
-      } else {
-        Start-FileDownload "https://static.rust-lang.org/dist/rust-$env:RUST_VERSION-x86_64-pc-windows-msvc.exe" -FileName rust.exe
-      }
-  - rust.exe /VERYSILENT /NORESTART /DIR="C:\Program Files\Rust"
-  - SET PATH=%PATH%;C:\Program Files\Rust\bin
-  - rustc -V
+  - curl -sSf -o rustup-init.exe https://win.rustup.rs/
+  - rustup-init.exe -y --default-host %TARGET% --default-toolchain %RUST_VERSION%
+  - set PATH=%PATH%;C:\Users\appveyor\.cargo\bin
+  - rustc -Vv
   - cargo -V
-
-build: false
 
 test_script:
   # Test default feature set
@@ -42,3 +39,14 @@ test_script:
   - cargo test -v --no-default-features --features="dxgi"
   - cargo test -v --no-default-features --features="d2d"
   - cargo test -v --no-default-features --features="dwrite"
+
+cache:
+  - C:\Users\appveyor\.cargo\registry
+  - target
+
+branches:
+  except:
+    - gh-pages
+
+# disable automatic builds
+build: false
