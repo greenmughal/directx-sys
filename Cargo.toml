@@ -1,6 +1,6 @@
 [package]
 name = "directx-sys"
-version = "0.0.7"
+version = "0.1.0"
 build = "build.rs"
 
 description = "Rust FFI bindings for the DirectX API"

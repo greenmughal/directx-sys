@@ -1,5 +1,5 @@
 /*!
-# directx-sys 0.0.7
+# directx-sys 0.1.0
 Rust FFI bindings for the DirectX API.
 
 # Components
