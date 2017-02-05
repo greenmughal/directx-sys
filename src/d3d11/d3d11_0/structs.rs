@@ -212,7 +212,6 @@ impl Default for RasterizerDesc {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct SubresourceData {
     pub sys_mem: *const c_void,
@@ -221,7 +220,6 @@ pub struct SubresourceData {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct MappedSubresource {
     pub data: *mut c_void,
@@ -939,7 +937,6 @@ pub struct EncryptedBlockInfo {
 
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct VideoDecoderBufferDesc {
     pub buffer_type: VideoDecoderBufferType,
     pub buffer_index: UINT,
@@ -959,7 +956,6 @@ pub struct VideoDecoderBufferDesc {
 
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct VideoDecoderExtension {
     pub function: UINT,
     pub private_input_data: *mut c_void,
@@ -1085,7 +1081,6 @@ bitfields! {
 
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct VideoProcessorStream {
     pub enable: BOOL,
     pub output_index: UINT,

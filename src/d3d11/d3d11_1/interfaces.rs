@@ -12,7 +12,6 @@ use super::structs::*;
 #[cfg(feature = "dxgi1_4")]
 use dxgi::{ColorSpaceType, Format, Rational};
 
-#[link(name = "dxguid")]
 extern {
     static IID_ID3D11BlendState1: IID;
     static IID_ID3D11RasterizerState1: IID;

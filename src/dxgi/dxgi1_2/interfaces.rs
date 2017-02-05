@@ -9,7 +9,6 @@ use super::super::dxgi1_0::*;
 use super::enums::*;
 use super::structs::*;
 
-#[link(name = "dxguid")]
 extern {
     static IID_IDXGIAdapter2: IID;
     static IID_IDXGIDevice2: IID;

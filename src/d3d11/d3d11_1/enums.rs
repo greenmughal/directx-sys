@@ -1,6 +1,6 @@
 bitflags! {
     #[repr(C)]
-    flags CopyFlags: u32 {
+    pub flags CopyFlags: u32 {
         const COPY_NO_OVERWRITE = 0x00000001,
         const COPY_DISCARD      = 0x00000002,
     }
@@ -29,7 +29,7 @@ pub enum LogicOp {
 
 bitflags! {
     #[repr(C)]
-    flags CreateDeviceContextStateFlags: u32 {
+    pub flags CreateDeviceContextStateFlags: u32 {
         const CREATE_DEVICE_CONTEXT_STATE_SINGLETHREADED = 0x1,
     }
 }
@@ -37,7 +37,7 @@ bitflags! {
 #[cfg(feature = "dxgi1_4")]
 bitflags! {
     #[repr(C)]
-    flags VideoDecoderCaps: u32 {
+    pub flags VideoDecoderCaps: u32 {
         const VIDEO_DECODER_CAPS_DOWNSAMPLE = 0x1,
         const VIDEO_DECODER_CAPS_NON_REAL_TIME = 0x02,
         const VIDEO_DECODER_CAPS_DOWNSAMPLE_DYNAMIC = 0x04,
@@ -49,7 +49,7 @@ bitflags! {
 #[cfg(feature = "dxgi1_4")]
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorBehaviorHints: u32 {
+    pub flags VideoProcessorBehaviorHints: u32 {
         const VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_ROTATION = 0x01,
         const VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_RESIZE = 0x02,
         const VIDEO_PROCESSOR_BEHAVIOR_HINT_MULTIPLANE_OVERLAY_COLOR_SPACE_CONVERSION = 0x04,

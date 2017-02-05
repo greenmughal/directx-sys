@@ -248,7 +248,7 @@ impl Default for Usage {
 
 bitflags! {
     #[repr(C)]
-    flags BindFlag: UINT {
+    pub flags BindFlag: UINT {
         const BIND_VERTEX_BUFFER = 0x00000001,
         const BIND_INDEX_BUFFER = 0x00000002,
         const BIND_CONSTANT_BUFFER = 0x00000004,
@@ -268,7 +268,7 @@ impl Default for BindFlag {
 
 bitflags! {
     #[repr(C)]
-    flags CPUAccessFlag: UINT {
+    pub flags CPUAccessFlag: UINT {
         const CPU_ACCESS_WRITE = 0x00010000,
         const CPU_ACCESS_READ = 0x00020000
     }
@@ -280,7 +280,7 @@ impl Default for CPUAccessFlag {
 
 bitflags! {
     #[repr(C)]
-    flags ResourceMiscFlag: UINT {
+    pub flags ResourceMiscFlag: UINT {
         const RESOURCE_MISC_GENERATE_MIPS = 0x00000001,
         const RESOURCE_MISC_SHARED = 0x00000002,
         const RESOURCE_MISC_TEXTURECUBE = 0x00000004,
@@ -318,7 +318,7 @@ pub enum Map {
 
 bitflags! {
     #[repr(C)]
-    flags MapFlag: UINT {
+    pub flags MapFlag: UINT {
         const MAP_FLAG_DO_NOT_WAIT = 0x00100000
     }
 }
@@ -329,7 +329,7 @@ impl Default for MapFlag {
 
 bitflags! {
     #[repr(C)]
-    flags RaiseFlag: UINT {
+    pub flags RaiseFlag: UINT {
         const RAISE_FLAG_DRIVER_INTERNAL_ERROR = 0x1
     }
 }
@@ -340,7 +340,7 @@ impl Default for RaiseFlag {
 
 bitflags! {
     #[repr(C)]
-    flags ClearFlag: UINT {
+    pub flags ClearFlag: UINT {
         const CLEAR_DEPTH = 0x01,
         const CLEAR_STENCIL = 0x02
     }
@@ -371,7 +371,7 @@ impl Default for ComparisonFunc {
 
 bitflags! {
     #[repr(C)]
-    flags DepthWriteMask: UINT {
+    pub flags DepthWriteMask: UINT {
         const DEPTH_WRITE_MASK_ZERO = 0,
         const DEPTH_WRITE_MASK_ALL = 1
     }
@@ -432,7 +432,7 @@ pub enum BlendOp {
 
 bitflags! {
     #[repr(C)]
-    flags ColorWriteEnable: UINT {
+    pub flags ColorWriteEnable: UINT {
         const COLOR_WRITE_ENABLE_RED = 1,
         const COLOR_WRITE_ENABLE_GREEN = 2,
         const COLOR_WRITE_ENABLE_BLUE = 4,
@@ -457,7 +457,7 @@ pub enum TextureCubeFace {
 
 bitflags! {
     #[repr(C)]
-    flags BufferExSRVFlag: UINT {
+    pub flags BufferExSRVFlag: UINT {
         const BUFFEREX_SRV_FLAG_RAW = 0x00000001
     }
 }
@@ -468,7 +468,7 @@ impl Default for BufferExSRVFlag {
 
 bitflags! {
     #[repr(C)]
-    flags DSVFlag: UINT {
+    pub flags DSVFlag: UINT {
         const DSV_READ_ONLY_DEPTH = 0x1,
         const DSV_READ_ONLY_STENCIL = 0x2
     }
@@ -480,7 +480,7 @@ impl Default for DSVFlag {
 
 bitflags! {
     #[repr(C)]
-    flags BufferUAVFlag: UINT {
+    pub flags BufferUAVFlag: UINT {
         const BUFFER_UAV_FLAG_RAW = 0x00000001,
         const BUFFER_UAV_FLAG_APPEND = 0x00000002,
         const BUFFER_UAV_FLAG_COUNTER = 0x00000004
@@ -587,7 +587,7 @@ pub enum TextureAddressMode {
 
 bitflags! {
     #[repr(C)]
-    flags FormatSupport: UINT {
+    pub flags FormatSupport: UINT {
         const FORMAT_SUPPORT_BUFFER = 0x00000001,
         const FORMAT_SUPPORT_IA_VERTEX_BUFFER = 0x00000002,
         const FORMAT_SUPPORT_IA_INDEX_BUFFER = 0x00000004,
@@ -628,7 +628,7 @@ impl Default for FormatSupport {
 
 bitflags! {
     #[repr(C)]
-    flags FormatSupport2: UINT {
+    pub flags FormatSupport2: UINT {
         const FORMAT_SUPPORT2_UAV_ATOMIC_ADD = 0x00000001,
         const FORMAT_SUPPORT2_UAV_ATOMIC_BITWISE_OPS = 0x00000002,
         const FORMAT_SUPPORT2_UAV_ATOMIC_COMPARE_STORE_OR_COMPARE_EXCHANGE
@@ -652,7 +652,7 @@ impl Default for FormatSupport2 {
 
 bitflags! {
     #[repr(C)]
-    flags AsyncGetDataFlag: UINT {
+    pub flags AsyncGetDataFlag: UINT {
         const ASYNC_GETDATA_DONOTFLUSH = 0x1
     }
 }
@@ -688,7 +688,7 @@ impl Default for Query {
 
 bitflags! {
     #[repr(C)]
-    flags QueryMiscFlag: UINT {
+    pub flags QueryMiscFlag: UINT {
         const QUERY_MISC_PREDICATEHINT = 0x1
     }
 }
@@ -766,7 +766,7 @@ pub enum Feature {
 
 bitflags! {
     #[repr(C)]
-    flags ShaderMinPrecisionSupport: UINT {
+    pub flags ShaderMinPrecisionSupport: UINT {
         const SHADER_MIN_PRECISION_10_BIT = 0x1,
         const SHADER_MIN_PRECISION_16_BIT = 0x2
     }
@@ -824,7 +824,7 @@ pub enum VideoDecoderBufferType {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorFormatSupport: u32 {
+    pub flags VideoProcessorFormatSupport: u32 {
         const VIDEO_PROCESSOR_FORMAT_SUPPORT_INPUT = 0x00000001,
         const VIDEO_PROCESSOR_FORMAT_SUPPORT_OUTPUT = 0x00000002,
     }
@@ -832,7 +832,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorDeviceCaps: u32 {
+    pub flags VideoProcessorDeviceCaps: u32 {
         const VIDEO_PROCESSOR_DEVICE_CAPS_LINEAR_SPACE            = 0x1,
         const VIDEO_PROCESSOR_DEVICE_CAPS_XVYCC                   = 0x2,
         const VIDEO_PROCESSOR_DEVICE_CAPS_RGB_RANGE_CONVERSION    = 0x4,
@@ -843,7 +843,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorFeatureCaps: u32 {
+    pub flags VideoProcessorFeatureCaps: u32 {
         const VIDEO_PROCESSOR_FEATURE_CAPS_ALPHA_FILL             = 0x1,
         const VIDEO_PROCESSOR_FEATURE_CAPS_CONSTRICTION           = 0x2,
         const VIDEO_PROCESSOR_FEATURE_CAPS_LUMA_KEY               = 0x4,
@@ -862,7 +862,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorFilterCaps: u32 {
+    pub flags VideoProcessorFilterCaps: u32 {
         const VIDEO_PROCESSOR_FILTER_CAPS_BRIGHTNESS         = 0x1,
         const VIDEO_PROCESSOR_FILTER_CAPS_CONTRAST           = 0x2,
         const VIDEO_PROCESSOR_FILTER_CAPS_HUE                = 0x4,
@@ -876,7 +876,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorFormatCaps: u32 {
+    pub flags VideoProcessorFormatCaps: u32 {
         const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_INTERLACED     = 0x1,
         const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_PROCAMP        = 0x2,
         const VIDEO_PROCESSOR_FORMAT_CAPS_RGB_LUMA_KEY       = 0x4,
@@ -886,7 +886,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorAutoStreamCaps: u32 {
+    pub flags VideoProcessorAutoStreamCaps: u32 {
         const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DENOISE              = 0x01,
         const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_DERINGING            = 0x02,
         const VIDEO_PROCESSOR_AUTO_STREAM_CAPS_EDGE_ENHANCEMENT     = 0x04,
@@ -900,7 +900,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags VideoProcessorStereoCaps: u32 {
+    pub flags VideoProcessorStereoCaps: u32 {
         const VIDEO_PROCESSOR_STEREO_CAPS_MONO_OFFSET         = 0x01,
         const VIDEO_PROCESSOR_STEREO_CAPS_ROW_INTERLEAVED     = 0x02,
         const VIDEO_PROCESSOR_STEREO_CAPS_COLUMN_INTERLEAVED  = 0x04,
@@ -911,7 +911,7 @@ bitflags! {
 
 bitflags! {
     #[repr(C)]
-    flags ContentProtectionCaps: u32 {
+    pub flags ContentProtectionCaps: u32 {
         const CONTENT_PROTECTION_CAPS_SOFTWARE = 0x00000001,
         const CONTENT_PROTECTION_CAPS_HARDWARE = 0x00000002,
         const CONTENT_PROTECTION_CAPS_PROTECTION_ALWAYS_ON = 0x00000004,
@@ -1028,7 +1028,7 @@ pub enum AuthenticatedChannelType {
 
 bitflags! {
     #[repr(C)]
-    flags AuthenticatedProtectionFlags: u32 {
+    pub flags AuthenticatedProtectionFlags: u32 {
         const AUTHENTICATED_PROTECTION_FLAG_ENABLED                        = 0x1,
         const AUTHENTICATED_PROTECTION_FLAG_OVERLAY_OR_FULLSCREEN_REQUIRED = 0x2,
     }
@@ -1044,7 +1044,7 @@ pub enum AuthenticatedProcessIdentifierType {
 
 bitflags! {
     #[repr(C)]
-    flags BusType: u32 {
+    pub flags BusType: u32 {
         const BUS_TYPE_OTHER                                            = 0x00000000,
         const BUS_TYPE_PCI                                              = 0x00000001,
         const BUS_TYPE_PCIX                                             = 0x00000002,
@@ -1083,7 +1083,7 @@ pub enum VPOVDimension {
 
 bitflags! {
     #[repr(C)]
-    flags CreateDeviceFlag: UINT {
+    pub flags CreateDeviceFlag: UINT {
         const CREATE_DEVICE_SINGLETHREADED = 0x1,
         const CREATE_DEVICE_DEBUG = 0x2,
         const CREATE_DEVICE_SWITCH_TO_REF = 0x4,

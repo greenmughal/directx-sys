@@ -2,7 +2,7 @@ use winapi::UINT;
 
 bitflags! {
     #[repr(C)]
-    flags CreateFactoryFlags: UINT {
+    pub flags CreateFactoryFlags: UINT {
         const CREATE_FACTORY_DEBUG = 0x1
     }
 }
@@ -12,7 +12,7 @@ impl Default for CreateFactoryFlags {
 }
 
 bitflags! {
-    flags MultiPlaneOverlayYCbCrFlags: UINT {
+    pub flags MultiPlaneOverlayYCbCrFlags: UINT {
         const MULTIPLANE_OVERLAY_YCBCR_FLAG_NOMINAL_RANGE = 0x1,
         const MULTIPLANE_OVERLAY_YCBCR_FLAG_BT709 = 0x2,
         const MULTIPLANE_OVERLAY_YCBCR_FLAG_XVYCC = 0x4
@@ -39,7 +39,7 @@ impl Default for FramePresentationMode {
 }
 
 bitflags! {
-    flags OverlaySupportFlag: UINT {
+    pub flags OverlaySupportFlag: UINT {
         const OVERLAY_SUPPORT_FLAG_DIRECT = 0x1,
         const OVERLAY_SUPPORT_FLAG_SCALING = 0x2
     }

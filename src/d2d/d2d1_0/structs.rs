@@ -247,7 +247,6 @@ pub struct StrokeStyleProperties {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct LayerParameters {
     pub content_bounds: RectF,

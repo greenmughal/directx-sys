@@ -182,7 +182,7 @@ impl Default for CPUAccessFlags {
 
 bitflags! {
     #[repr(C)]
-    flags UsageFlags: UINT {
+    pub flags UsageFlags: UINT {
         const USAGE_SHADER_INPUT = 1,
         const USAGE_RENDER_TARGET_OUTPUT = 2,
         const USAGE_BACK_BUFFER = 4,
@@ -247,7 +247,7 @@ impl Default for SwapEffect {
 
 bitflags! {
     #[repr(C)]
-    flags SwapChainFlag: UINT {
+    pub flags SwapChainFlag: UINT {
         const SWAP_CHAIN_FLAG_NONPREROTATED = 1,
         const SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH = 2,
         const SWAP_CHAIN_FLAG_GDI_COMPATIBLE = 4,
@@ -269,7 +269,7 @@ impl Default for SwapChainFlag {
 
 bitflags! {
     #[repr(C)]
-    flags MapFlags: UINT {
+    pub flags MapFlags: UINT {
         const MAP_READ = 1,
         const MAP_WRITE = 2,
         const MAP_DISCARD = 4
@@ -282,7 +282,7 @@ impl Default for MapFlags {
 
 bitflags! {
     #[repr(C)]
-    flags DisplayModeFlag: UINT {
+    pub flags DisplayModeFlag: UINT {
         const ENUM_MODES_INTERLACED = 1,
         const ENUM_MODES_SCALING = 2,
         #[cfg(feature = "dxgi1_2")] const ENUM_MODES_STEREO = 4,
@@ -296,7 +296,7 @@ impl Default for DisplayModeFlag {
 
 bitflags! {
     #[repr(C)]
-    flags PresentFlags: UINT {
+    pub flags PresentFlags: UINT {
         const PRESENT_TEST = 0x01,
         const PRESENT_DO_NOT_SEQUENCE = 0x02,
         const PRESENT_RESTART = 0x04,
@@ -314,7 +314,7 @@ impl Default for PresentFlags {
 
 bitflags! {
     #[repr(C)]
-    flags WindowAssociationFlags: UINT {
+    pub flags WindowAssociationFlags: UINT {
         const MWA_NO_WINDOW_CHANGES = (1 << 0),
         const MWA_NO_ALT_ENTER = (1 << 1),
         const MWA_NO_PRINT_SCREEN = (1 << 2),
@@ -327,7 +327,7 @@ impl Default for WindowAssociationFlags {
 
 bitflags! {
     #[repr(C)]
-    flags AdapterFlag: UINT {
+    pub flags AdapterFlag: UINT {
         const ADAPTER_FLAG_NONE = 0,
         const ADAPTER_FLAG_REMOTE = 1,
         const ADAPTER_FLAG_SOFTWARE = 2
@@ -340,7 +340,7 @@ impl Default for AdapterFlag {
 
 bitflags! {
     #[repr(C)]
-    flags DebugRLOFlags: UINT {
+    pub flags DebugRLOFlags: UINT {
         const DEBUG_RLO_SUMMARY = 0x1,
         const DEBUG_RLO_DETAIL = 0x2,
         const DEBUG_RLO_ALL = 0x3

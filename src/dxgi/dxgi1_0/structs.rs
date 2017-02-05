@@ -125,7 +125,6 @@ pub struct FrameStatistics {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct MappedRect {
     pub pitch: INT,
@@ -291,7 +290,6 @@ impl Default for DisplayColorSpace {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct InfoQueueMessage {
     pub producer: GUID,
@@ -303,7 +301,6 @@ pub struct InfoQueueMessage {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct InfoQueueFilterDesc {
     pub num_categories: UINT,

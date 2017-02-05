@@ -22,7 +22,6 @@ use dxgi;
 use super::enums::*;
 use super::structs::*;
 
-#[link(name = "dxguid")]
 extern {
     static IID_ID2D1Bitmap: IID;
     static IID_ID2D1BitmapBrush: IID;

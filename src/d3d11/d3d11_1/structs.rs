@@ -106,7 +106,6 @@ pub struct VideoDecoderSubSampleMappingBlock {
 #[cfg(feature = "dxgi1_4")]
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct VideoDecoderBufferDesc1 {
     pub buffer_type: VideoDecoderBufferType,
     pub data_offset: UINT,
@@ -120,7 +119,6 @@ pub struct VideoDecoderBufferDesc1 {
 #[cfg(feature = "dxgi1_4")]
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct VideoDecoderBeginFrameCryptoSession {
     pub crypto_session: *mut ID3D11CryptoSession,
     pub blob_size: UINT,
@@ -164,7 +162,6 @@ pub struct KeyExchangeHWProtectionOutputData {
 #[cfg(feature = "dxgi1_4")]
 #[repr(C)]
 #[derive(Debug)]
-#[allow(raw_pointer_derive)]
 pub struct KeyExchangeHWProtectionData {
     pub hw_protection_function_id: UINT,
     pub input_data: *mut KeyExchangeHWProtectionInputData,

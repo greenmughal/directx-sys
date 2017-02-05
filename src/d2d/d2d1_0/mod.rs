@@ -11,7 +11,6 @@ mod enums;
 mod interfaces;
 mod structs;
 
-#[link(name = "d2d1")]
 extern "stdcall" {
     pub fn D2D1CreateFactory(
         factory_type: FactoryType,

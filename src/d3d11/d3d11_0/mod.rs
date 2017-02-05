@@ -12,7 +12,6 @@ mod structs;
 
 pub const SDK_VERSION: UINT = 7;
 
-#[link(name = "d3d11")]
 extern "stdcall" {
     pub fn D3D11CreateDevice(
         adapter: *const dxgi::IDXGIAdapter,

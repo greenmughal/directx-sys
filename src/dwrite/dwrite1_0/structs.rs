@@ -62,7 +62,6 @@ pub struct FontFeature {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct TypographicFeatures {
     pub features: *mut FontFeature,
@@ -130,7 +129,6 @@ bitfields! {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct GlyphRun {
     pub font_face: *const super::IDWriteFontFace,
@@ -144,7 +142,6 @@ pub struct GlyphRun {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct GlyphRunDescription {
     pub locale_name: *const WCHAR,
@@ -155,7 +152,6 @@ pub struct GlyphRunDescription {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct Underline {
     pub width: FLOAT,
@@ -169,7 +165,6 @@ pub struct Underline {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Debug)]
 pub struct Strikethrough {
     pub width: FLOAT,

@@ -101,7 +101,6 @@ pub struct SwapChainFullscreenDesc {
 }
 
 #[repr(C)]
-#[allow(raw_pointer_derive)]
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub struct PresentParameters {
     pub dirty_rects_count: UINT,

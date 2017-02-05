@@ -8,7 +8,6 @@ use dxgi;
 use super::enums::*;
 use super::structs::*;
 
-#[link(name = "dxguid")]
 extern {
     static IID_ID3D11DeviceChild: IID;
     static IID_ID3D11DepthStencilState: IID;

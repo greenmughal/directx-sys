@@ -7,7 +7,6 @@ use winapi::{BOOL, DWORD, GUID, HANDLE, HDC, HMODULE, HRESULT, HWND, INT,
 use super::enums::*;
 use super::structs::*;
 
-#[link(name = "dxguid")]
 extern {
     static IID_IDXGIAdapter: IID;
     static IID_IDXGIAdapter1: IID;

@@ -10,7 +10,6 @@ use super::super::dxgi1_0::*;
 use super::enums::*;
 use super::structs::*;
 
-#[link(name = "dxguid")]
 extern {
     static IID_IDXGISwapChain3: IID;
     static IID_IDXGIOutput4: IID;

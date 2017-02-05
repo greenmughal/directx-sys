@@ -9,7 +9,6 @@ mod enums;
 mod interfaces;
 mod structs;
 
-#[link(name = "dwrite")]
 extern "stdcall" {
     pub fn DWriteCreateFactory(
         factory_type: FactoryType,

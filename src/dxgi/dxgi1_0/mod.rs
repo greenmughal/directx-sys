@@ -13,7 +13,6 @@ mod structs;
 #[cfg(test)]
 mod tests;
 
-#[link(name = "dxgi")]
 extern "stdcall" {
     pub fn CreateDXGIFactory(
         iid: &IID,
@@ -22,10 +21,3 @@ extern "stdcall" {
         iid: &IID,
         factory: *mut *mut c_void) -> HResult;
 }
-
-// #[link(name = "dxgidebug")]
-// extern "stdcall" {
-//     pub fn DXGIGetDebugInterface(
-//         iid: &IID,
-//         debug: *mut *mut c_void) -> HRESULT;
-// }

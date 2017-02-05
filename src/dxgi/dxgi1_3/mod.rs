@@ -14,7 +14,6 @@ mod structs;
 #[cfg(test)]
 mod tests;
 
-#[link(name = "dxgi")]
 extern "stdcall" {
     pub fn CreateDXGIFactory2(
         flags: CreateFactoryFlags,
